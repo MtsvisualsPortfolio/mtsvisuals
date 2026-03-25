@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MTS Visuals — Cinematic</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  background:#07080f;
+  color:#fff;
+  font-family:Arial;
+  overflow-x:hidden;
+}
+
+/* PRELOADER */
+#preloader{
+  position:fixed;
+  inset:0;
+  background:#07080f;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:99999;
+  transition:opacity 1s;
+}
+#preloader.hide{opacity:0;pointer-events:none}
+
+/* HERO */
+#hero{
+  height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:40px;
+}
+
+/* AREAS */
+.area-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+}
+.area-cell{
+  padding:60px;
+  border:1px solid rgba(255,255,255,.08);
+  transition:.4s;
+  cursor:pointer;
+}
+.area-cell:hover{
+  background:#111;
+}
+
+/* PROJECTS */
+#section-page{
+  display:none;
+  padding:60px;
+}
+
+.proj-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+  gap:10px;
+}
+
+.proj-card{
+  background:#111;
+  padding:20px;
+  cursor:pointer;
+  transition:.3s;
+}
+.proj-card:hover{
+  background:#222;
+}
+
+/* MODAL */
+.modal-ov{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.95);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  opacity:0;
+  pointer-events:none;
+  transition:.4s;
+}
+.modal-ov.open{
+  opacity:1;
+  pointer-events:all;
+}
+
+.modal-box{
+  width:80vw;
+  height:45vw;
+}
+</style>
+</head>
+
+<body>
+
+<div id="preloader">MTS</div>
+
+<!-- HERO -->
+<section id="hero">
+  MTS VISUALS
+</section>
+
+<!-- AREAS -->
+<section class="area-grid">
+  <div class="area-cell">VIDEO</div>
+  <div class="area-cell">MOTION</div>
+  <div class="area-cell">3D</div>
+  <div class="area-cell">ILUSTRA</div>
+</section>
+
+<!-- PROJECTS -->
+<section id="section-page">
+  <div class="proj-grid">
+
+    <div class="proj-card" data-video="https://www.youtube.com/embed/dQw4w9WgXcQ">
+      Projeto 01
+    </div>
+
+    <div class="proj-card" data-video="https://www.youtube.com/embed/dQw4w9WgXcQ">
+      Projeto 02
+    </div>
+
+  </div>
+</section>
+
+<!-- MODAL -->
+<div class="modal-ov">
+  <div class="modal-box"></div>
+</div>
+
+<script>
+
+/* PRELOADER */
+window.onload = ()=>{
+  setTimeout(()=>{
+    document.getElementById('preloader').classList.add('hide');
+  },800);
+};
+
+/* ABRIR PROJETOS */
+const sectionPage = document.getElementById('section-page');
+
+document.querySelectorAll('.area-cell').forEach(cell=>{
+  cell.onclick=()=>{
+    sectionPage.style.display='block';
+    window.scrollTo({
+      top:sectionPage.offsetTop,
+      behavior:'smooth'
+    });
+  };
+});
+
+/* MODAL */
+const modal = document.querySelector('.modal-ov');
+const box = document.querySelector('.modal-box');
+
+document.querySelectorAll('.proj-card').forEach(card=>{
+  card.onclick=()=>{
+    modal.classList.add('open');
+    box.innerHTML = `
+      <iframe width="100%" height="100%"
+      src="${card.dataset.video}?autoplay=1"
+      frameborder="0" allow="autoplay"></iframe>`;
+  };
+});
+
+modal.onclick=()=>{
+  modal.classList.remove('open');
+  box.innerHTML="";
+};
+
+</script>
+
+</body>
+</html>
