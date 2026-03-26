@@ -6,92 +6,152 @@
 
 <title>MTS Visuals</title>
 
+<!-- FONTES -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;500;700&family=Great+Vibes&display=swap" rel="stylesheet">
+
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 
 body{
-  background:#0a0a0a;
+  font-family:'Inter',sans-serif;
   color:#fff;
-  font-family:-apple-system, BlinkMacSystemFont, sans-serif;
+  background:#050505;
+  overflow-x:hidden;
+}
+
+/* BACKGROUND ANIMADO */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:
+  radial-gradient(circle at 30% 20%, rgba(212,175,55,0.15), transparent 60%),
+  radial-gradient(circle at 80% 70%, rgba(255,255,255,0.08), transparent 60%);
+  animation:moveBg 12s infinite alternate ease-in-out;
+  z-index:-1;
+}
+
+@keyframes moveBg{
+  0%{transform:translate(0,0)}
+  100%{transform:translate(60px,40px)}
 }
 
 /* HERO */
-#hero{
-  height:90vh;
+.hero{
+  height:100vh;
+  padding:8%;
   display:flex;
-  align-items:center;
+  flex-direction:column;
   justify-content:center;
-  font-size:64px;
-  font-weight:600;
-  letter-spacing:-2px;
+}
+
+.logo{
+  font-family:'Great Vibes',cursive;
+  font-size:28px;
+  opacity:.8;
+}
+
+.hero h1{
+  font-size:56px;
+  margin-top:20px;
+  line-height:1.1;
+}
+
+.hero span{
   color:#d4af37;
 }
 
-/* SECTIONS */
-.section{
-  padding:80px 8%;
-  border-top:1px solid rgba(255,255,255,0.08);
-}
-
-.section h2{
-  font-size:32px;
-  margin-bottom:20px;
-}
-
-/* SUB LIST */
-.sub{
+.hero p{
+  margin-top:20px;
   opacity:.6;
-  margin-bottom:30px;
-  line-height:1.8;
 }
 
-/* PREVIEW */
-.preview{
-  width:100%;
-  height:420px;
-  border-radius:12px;
-  overflow:hidden;
-  margin-bottom:20px;
+/* BOTÕES */
+.nav{
+  margin-top:40px;
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
 }
 
-/* BUTTON */
-.btn{
-  border:1px solid #fff;
-  padding:12px 24px;
-  display:inline-block;
+.nav button{
+  padding:10px 20px;
+  border:1px solid rgba(255,255,255,.2);
+  background:transparent;
+  color:#fff;
   cursor:pointer;
-  margin-bottom:30px;
   transition:.3s;
 }
-.btn:hover{
+.nav button:hover{
   background:#fff;
   color:#000;
 }
 
-/* GRID */
-.grid{
-  display:none;
-  grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
-  gap:12px;
+/* SECTION */
+.section{
+  padding:80px 8%;
 }
 
+.section h2{
+  font-size:32px;
+  margin-bottom:30px;
+}
+
+/* GLASS CARD */
+.card-glass{
+  background:rgba(255,255,255,0.03);
+  backdrop-filter:blur(20px);
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:20px;
+  padding:30px;
+  margin-bottom:30px;
+}
+
+/* GRID */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+  gap:16px;
+}
+
+/* CARD */
 .card{
+  border-radius:14px;
+  overflow:hidden;
   background:#111;
-  padding:40px;
-  border-radius:10px;
   cursor:pointer;
   transition:.3s;
 }
 .card:hover{
-  background:#1a1a1a;
-  transform:translateY(-4px);
+  transform:translateY(-6px);
 }
 
-/* COLORS PER SECTION */
-.video{border-left:4px solid #ff4d4d}
-.motion{border-left:4px solid #ffb84d}
-.three{border-left:4px solid #4da6ff}
-.illu{border-left:4px solid #c44dff}
+/* THUMB */
+.thumb{
+  height:160px;
+  background:#222;
+}
+
+/* TITLE */
+.title{
+  padding:16px;
+}
+
+/* NUMBERS */
+.numbers{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+  gap:20px;
+  text-align:center;
+}
+.numbers div{
+  font-size:28px;
+}
+.numbers span{
+  display:block;
+  font-size:12px;
+  opacity:.6;
+}
 
 /* MODAL */
 .modal{
@@ -109,132 +169,146 @@ body{
   opacity:1;
   pointer-events:all;
 }
-
-.modal-box{
+.modal iframe{
   width:80vw;
   height:45vw;
-  max-height:500px;
 }
+
+/* TEXT */
+.text{
+  font-family:'Playfair Display',serif;
+  opacity:.8;
+  line-height:1.6;
+}
+
 </style>
 </head>
 
 <body>
 
 <!-- HERO -->
-<section id="hero">
-MTS VISUALS
+<section class="hero">
+<div class="logo">Visuals</div>
+
+<h1>
+Todo projeto<br>
+carrega <span>uma ideia</span>.<br>
+Visuais são a forma dela existir.
+</h1>
+
+<p>Direção criativa, vídeo, motion e 3D</p>
+
+<div class="nav">
+<button onclick="scrollToSection('video')">Vídeo</button>
+<button onclick="scrollToSection('ilustra')">Ilustração</button>
+<button onclick="scrollToSection('3d')">3D</button>
+<button onclick="scrollToSection('motion')">Motion</button>
+</div>
 </section>
 
 <!-- VIDEO -->
-<section class="section video">
+<section class="section" id="video">
+<h2>Vídeo</h2>
 
-<h2>VIDEO</h2>
-
-<div class="sub">
-Branded Content • Music Video • Event Film • Podcast • Social • Documentary • Corporate
+<div class="grid">
+<div class="card" data-video="https://player.vimeo.com/video/111111111">
+<div class="thumb"></div>
+<div class="title">Branded Content</div>
 </div>
-
-<iframe class="preview"
-src="https://player.vimeo.com/video/111111111"
-frameborder="0" allow="autoplay; fullscreen">
-</iframe>
-
-<div class="btn" onclick="toggle('grid1')">Ver mais</div>
-
-<div id="grid1" class="grid">
-<div class="card" data-video="https://player.vimeo.com/video/111111111">Projeto</div>
-<div class="card" data-video="https://player.vimeo.com/video/222222222">Projeto</div>
 </div>
-
-</section>
-
-<!-- MOTION -->
-<section class="section motion">
-
-<h2>MOTION</h2>
-
-<div class="sub">Design • Animation • Branding</div>
-
-<iframe class="preview"
-src="https://player.vimeo.com/video/333333333"
-frameborder="0"></iframe>
-
-<div class="btn" onclick="toggle('grid2')">Ver mais</div>
-
-<div id="grid2" class="grid">
-<div class="card" data-video="https://player.vimeo.com/video/333333333">Projeto</div>
-</div>
-
-</section>
-
-<!-- 3D -->
-<section class="section three">
-
-<h2>3D</h2>
-
-<div class="sub">Modeling • Render • Lookdev</div>
-
-<iframe class="preview"
-src="https://player.vimeo.com/video/444444444"
-frameborder="0"></iframe>
-
-<div class="btn" onclick="toggle('grid3')">Ver mais</div>
-
-<div id="grid3" class="grid">
-<div class="card" data-video="https://player.vimeo.com/video/444444444">Projeto</div>
-</div>
-
 </section>
 
 <!-- ILUSTRA -->
-<section class="section illu">
-
-<h2>ILUSTRAÇÃO</h2>
-
-<div class="sub">Editorial • Digital • Concept</div>
-
-<iframe class="preview"
-src="https://player.vimeo.com/video/555555555"
-frameborder="0"></iframe>
-
-<div class="btn" onclick="toggle('grid4')">Ver mais</div>
-
-<div id="grid4" class="grid">
-<div class="card" data-video="https://player.vimeo.com/video/555555555">Projeto</div>
+<section class="section" id="ilustra">
+<h2>Ilustração</h2>
+<div class="grid">
+<div class="card" data-video="https://player.vimeo.com/video/222222222">
+<div class="thumb"></div>
+<div class="title">Digital</div>
 </div>
+</div>
+</section>
 
+<!-- 3D -->
+<section class="section" id="3d">
+<h2>Modelagem 3D</h2>
+<div class="grid">
+<div class="card" data-video="https://player.vimeo.com/video/333333333">
+<div class="thumb"></div>
+<div class="title">3D</div>
+</div>
+</div>
+</section>
+
+<!-- MOTION -->
+<section class="section" id="motion">
+<h2>Motion</h2>
+<div class="grid">
+<div class="card" data-video="https://player.vimeo.com/video/444444444">
+<div class="thumb"></div>
+<div class="title">Motion Design</div>
+</div>
+</div>
+</section>
+
+<!-- SOBRE -->
+<section class="section">
+<div class="card-glass">
+<h2>Sobre</h2>
+<p class="text">
+Matheus dos Santos Alves, conhecido como MTS.
+Crescido na Zona Norte de São Paulo, sempre explorando arte, música e imagem.
+</p>
+</div>
+</section>
+
+<!-- TRAJETÓRIA -->
+<section class="section">
+<div class="card-glass">
+<h2>Trajetória</h2>
+<p class="text">
+2017 — início com design e freelas  
+2018–22 — evolução e clientes  
+2023 — entrada na produtora  
+Hoje — direção audiovisual completa
+</p>
+</div>
+</section>
+
+<!-- NÚMEROS -->
+<section class="section">
+<h2>Em números</h2>
+
+<div class="numbers">
+<div>9+<span>anos criando</span></div>
+<div>23<span>idade</span></div>
+<div>+50M<span>views</span></div>
+</div>
 </section>
 
 <!-- MODAL -->
-<div class="modal" id="modal">
-  <div class="modal-box" id="box"></div>
-</div>
+<div class="modal" id="modal"></div>
 
 <script>
-
-function toggle(id){
-  const g = document.getElementById(id);
-  g.style.display = g.style.display === 'grid' ? 'none' : 'grid';
+function scrollToSection(id){
+  document.getElementById(id).scrollIntoView({behavior:'smooth'});
 }
 
 const modal = document.getElementById('modal');
-const box = document.getElementById('box');
 
 document.querySelectorAll('.card').forEach(card=>{
   card.onclick=()=>{
     modal.classList.add('active');
-    box.innerHTML = `
-    <iframe width="100%" height="100%"
-    src="${card.dataset.video}?autoplay=1"
+    modal.innerHTML = `
+    <iframe src="${card.dataset.video}?autoplay=1"
     frameborder="0" allow="autoplay; fullscreen"></iframe>`;
   }
 });
 
 modal.onclick=()=>{
   modal.classList.remove('active');
-  box.innerHTML="";
+  modal.innerHTML="";
 }
-
 </script>
 
 </body>
