@@ -10,6 +10,8 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 
+html{scroll-behavior:smooth}
+
 body{
 font-family:'Inter',sans-serif;
 color:#fff;
@@ -51,14 +53,22 @@ z-index:1000;
 .logo{
 font-family:'Great Vibes';
 cursor:pointer;
+font-size:22px;
 }
 
 nav a{
 margin-left:20px;
 cursor:pointer;
 opacity:.7;
+text-decoration:none;
+color:#fff;
+transition:.3s;
 }
-nav a:hover{opacity:1}
+
+nav a:hover{
+opacity:1;
+color:#d4af37;
+}
 
 /* HERO */
 .hero{
@@ -71,6 +81,7 @@ padding:8%;
 .hero h1{
 font-size:64px;
 line-height:1.1;
+max-width:800px;
 }
 
 .gold{color:#d4af37}
@@ -85,6 +96,7 @@ padding:120px 8%;
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
 gap:20px;
+margin-top:40px;
 }
 
 /* CARD */
@@ -98,6 +110,8 @@ border:1px solid rgba(255,255,255,0.1);
 cursor:pointer;
 transition:.5s;
 overflow:hidden;
+text-decoration:none;
+color:#fff;
 }
 
 .card:hover{
@@ -137,6 +151,7 @@ transform:translateY(0);
 font-family:'Playfair Display';
 line-height:1.7;
 opacity:.85;
+max-width:700px;
 }
 
 /* LINKS */
@@ -144,6 +159,7 @@ opacity:.85;
 display:block;
 margin-top:10px;
 color:#d4af37;
+text-decoration:none;
 }
 
 /* FOOTER */
@@ -170,10 +186,11 @@ transform:translateY(0);
 
 <nav>
 <div class="logo" onclick="goTop()">Visuals</div>
+
 <div>
-<a onclick="goTo('criacao')">Criação</a>
-<a onclick="goTo('sobre')">Sobre</a>
-<a onclick="goTo('contato')">Contato</a>
+<a href="#criacao">Criação</a>
+<a href="#sobre">Sobre</a>
+<a href="#contato">Contato</a>
 </div>
 </nav>
 
@@ -193,7 +210,7 @@ Visuais são a forma dela existir.
 <h3>Vídeo</h3>
 <p>Produção audiovisual completa</p>
 <div class="subs">
-Branded Content • Music Video • Event Film • Podcast Production • Social Clips • Documentary • Corporate Video
+Branded • Music • Event • Podcast • Social • Doc • Corporate
 </div>
 </a>
 
@@ -201,7 +218,7 @@ Branded Content • Music Video • Event Film • Podcast Production • Social
 <h3>Motion</h3>
 <p>Animação e linguagem em movimento</p>
 <div class="subs">
-Logo Animation • Title Sequence • Brand Motion • Motion Graphics • Explainer Video • Custom Assets
+Logo • Titles • Branding • Explainer
 </div>
 </a>
 
@@ -209,7 +226,7 @@ Logo Animation • Title Sequence • Brand Motion • Motion Graphics • Expla
 <h3>3D</h3>
 <p>Construção visual tridimensional</p>
 <div class="subs">
-Character Design • Archviz • Exhibition Design • 3D Editorial
+Character • Archviz • Editorial
 </div>
 </a>
 
@@ -217,7 +234,7 @@ Character Design • Archviz • Exhibition Design • 3D Editorial
 <h3>Ilustração</h3>
 <p>Expressão visual autoral</p>
 <div class="subs">
-Key Visual • Character Design • Concept Art • Personal Work
+Concept • Key Visual • Personal
 </div>
 </a>
 
@@ -227,7 +244,21 @@ Key Visual • Character Design • Concept Art • Personal Work
 <section class="section fade" id="sobre">
 <h2>Sobre</h2>
 <p class="text">
-Matheus dos Santos Alves, criador multidisciplinar explorando imagem, som e movimento como linguagem.
+Matheus dos Santos Alves. Mais conhecido como MTS.<br><br>
+
+Como toda criança, eu gostava de desenhar. A diferença é que eu nunca parei.<br><br>
+
+Cresci na Zona Norte de São Paulo — onde rua, música e imagem sempre andaram juntas. Com o tempo, ficou claro que criar não era uma escolha, era necessidade. O primeiro contato com o Photoshop foi o ponto de virada.<br><br>
+
+Desde então, transformar ideias em linguagem visual deixou de ser só prática e virou propósito.<br><br>
+
+Hoje, atuo como diretor de audiovisual, acompanhando cada etapa do processo: da ideia ao roteiro, da captação à edição, da trilha à entrega final. Mais do que executar, meu trabalho é estruturar e potencializar o projeto como um todo.<br><br>
+
+Minha base multidisciplinar — passando por ilustração, vídeo, motion e 3D — me permite enxergar com profundidade, resolver com clareza e construir com intenção.<br><br>
+
+Não é sobre uma ferramenta ou formato.<br><br>
+
+É sobre dar forma a ideias.
 </p>
 </section>
 
@@ -241,13 +272,13 @@ Design → Audiovisual → Direção criativa.
 <section class="section fade">
 <h2>Em números</h2>
 <p class="text">
-9 anos de mercado • 23 anos • +3 países • +50M views
+9 anos • 23 anos • +3 países • +50M views
 </p>
 </section>
 
 <section class="section fade">
 <p class="text">
-“A experiência multidisciplinar permite enxergar o projeto de forma completa e potencializar ideias.”
+“Não é sobre o meio. É sobre a ideia — e a melhor forma de fazê-la existir.”
 </p>
 </section>
 
@@ -286,15 +317,10 @@ Instagram
 </footer>
 
 <script>
-function goTo(id){
-document.getElementById(id).scrollIntoView({behavior:'smooth'});
-}
-
 function goTop(){
 window.scrollTo({top:0,behavior:'smooth'});
 }
 
-/* ANIMAÇÃO SCROLL */
 const fades = document.querySelectorAll('.fade');
 
 window.addEventListener('scroll', ()=>{
