@@ -20,10 +20,10 @@ overflow-x:hidden;
 /* FADE PAGE */
 body.fade-out{
 opacity:0;
-transition:0.6s ease;
+transition:.6s ease;
 }
 
-/* GLOW CURSOR */
+/* CURSOR GLOW */
 .cursor-glow{
 position:fixed;
 width:300px;
@@ -59,8 +59,8 @@ height:60vh;
 display:flex;
 align-items:center;
 padding:8%;
-z-index:1;
 position:relative;
+z-index:1;
 }
 
 .hero h1{
@@ -95,6 +95,9 @@ text-decoration:none;
 color:#fff;
 overflow:hidden;
 height:200px;
+display:flex;
+flex-direction:column;
+justify-content:center;
 }
 
 /* LIGHT EFFECT */
@@ -120,6 +123,7 @@ border-color:#d4af37;
 .desc{
 opacity:.7;
 transition:.4s;
+font-size:14px;
 }
 
 .sub{
@@ -128,6 +132,8 @@ transform:translateY(20px);
 transition:.4s;
 font-size:13px;
 color:#aaa;
+margin-top:10px;
+line-height:1.6;
 }
 
 .card:hover .desc{
@@ -153,28 +159,66 @@ transform:translateY(0);
 <section class="hero">
 <div>
 <h1>Vídeo</h1>
-<p>Produção audiovisual passando pela ideia até o impacto final.</p>
+<p>Produção audiovisual passando pela ideia, direção e execução até o impacto final.</p>
 </div>
 </section>
 
 <section class="grid">
 
 <a href="branded.html" class="card link">
-<h2>Branded</h2>
-<div class="desc">Conteúdo para marcas</div>
-<div class="sub">Campanhas • Branding • Conteúdo digital</div>
-</a>
-
-<a href="event.html" class="card link">
-<h2>Event</h2>
-<div class="desc">Melhores momentos</div>
-<div class="sub">Shows • Festivais • Aftermovies</div>
+<h2>Branded Content</h2>
+<div class="desc">Conteúdo para marcas com narrativa e identidade.</div>
+<div class="sub">
+Campanhas • Publicidade • Conteúdo digital • Branding visual
+</div>
 </a>
 
 <a href="music.html" class="card link">
-<h2>Music</h2>
-<div class="desc">Clipes musicais</div>
-<div class="sub">Narrativa • Estética • Performance</div>
+<h2>Music Video</h2>
+<div class="desc">Clipes com estética forte e direção criativa.</div>
+<div class="sub">
+Videoclipes • Performance • Narrativa musical • Estética autoral
+</div>
+</a>
+
+<a href="event.html" class="card link">
+<h2>Event Film</h2>
+<div class="desc">Vídeos de melhores momentos do evento.</div>
+<div class="sub">
+Shows • Festivais • Cobertura • Aftermovies
+</div>
+</a>
+
+<a href="podcast.html" class="card link">
+<h2>Podcast Production</h2>
+<div class="desc">Captação, edição e identidade audiovisual.</div>
+<div class="sub">
+Captação multicâmera • Corte • Distribuição • Identidade visual
+</div>
+</a>
+
+<a href="social.html" class="card link">
+<h2>Social Clips</h2>
+<div class="desc">Conteúdo rápido e estratégico para redes.</div>
+<div class="sub">
+Reels • TikTok • Shorts • Conteúdo viral
+</div>
+</a>
+
+<a href="doc.html" class="card link">
+<h2>Documentary</h2>
+<div class="desc">Histórias reais com profundidade e estética.</div>
+<div class="sub">
+Entrevistas • Storytelling • Narrativa real • Cultura
+</div>
+</a>
+
+<a href="corporate.html" class="card link">
+<h2>Corporate Video</h2>
+<div class="desc">Vídeos institucionais com linguagem moderna.</div>
+<div class="sub">
+Institucional • Branding • Apresentação • Conteúdo interno
+</div>
 </a>
 
 </section>
@@ -183,13 +227,12 @@ transform:translateY(0);
 
 /* CURSOR GLOW */
 const glow = document.getElementById("cursorGlow");
-
 document.addEventListener("mousemove", e=>{
 glow.style.left = e.clientX + "px";
 glow.style.top = e.clientY + "px";
 });
 
-/* CARD LIGHT FOLLOW */
+/* LIGHT FOLLOW */
 document.querySelectorAll('.card').forEach(card=>{
 card.addEventListener('mousemove', e=>{
 const rect = card.getBoundingClientRect();
