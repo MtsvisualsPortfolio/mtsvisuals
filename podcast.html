@@ -3,54 +3,99 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Podcast Production</title>
+<title>Event Film | MTS Visuals</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
 
 <style>
+*{margin:0;padding:0;box-sizing:border-box}
+
 body{
-background:#0b0b0b;
+font-family:'Inter',sans-serif;
+background:#050505;
 color:#fff;
-font-family:sans-serif;
-padding:40px;
 }
 
-.back{
-margin-bottom:30px;
-cursor:pointer;
-opacity:.6;
+/* NAV */
+nav{
+position:fixed;
+top:0;
+width:100%;
+display:flex;
+justify-content:space-between;
+padding:20px 8%;
+background:rgba(0,0,0,.5);
 }
-.back:hover{opacity:1}
 
+.logo{cursor:pointer}
+
+/* HERO */
+.hero{
+height:60vh;
+display:flex;
+align-items:center;
+padding:8%;
+}
+
+.hero h1{font-size:48px}
+
+/* PREVIEW */
+.preview{
+height:400px;
+margin:40px 8%;
+background:rgba(255,255,255,0.05);
+display:flex;
+align-items:center;
+justify-content:center;
+border-radius:20px;
+}
+
+/* GRID */
 .grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 gap:20px;
+padding:40px 8%;
 }
 
-iframe{
-width:100%;
+.video{
 height:200px;
-border:none;
+background:#111;
+border-radius:16px;
+display:flex;
+align-items:center;
+justify-content:center;
+transition:.3s;
+}
+
+.video:hover{
+transform:scale(1.05);
 }
 </style>
 </head>
 
 <body>
 
-<div class="back" onclick="voltar()">← Voltar</div>
+<nav>
+<div class="logo" onclick="goBack()">Visuals</div>
+</nav>
 
+<section class="hero">
 <h1>Podcast Production</h1>
-<p>Edição de podcasts e criação de cortes otimizados para redes sociais.</p>
+</section>
 
-<div class="grid">
-
-<iframe src="https://player.vimeo.com/video/76979871"></iframe>
-<iframe src="https://player.vimeo.com/video/22439234"></iframe>
-<iframe src="https://player.vimeo.com/video/146022717"></iframe>
-
+<div class="preview">
+Preview principal (colocar vídeo depois)
 </div>
 
+<section class="grid">
+<div class="video">Projeto 1</div>
+<div class="video">Projeto 2</div>
+<div class="video">Projeto 3</div>
+</section>
+
 <script>
-function voltar(){
+function goBack(){
 window.location.href = "video.html";
 }
 </script>
