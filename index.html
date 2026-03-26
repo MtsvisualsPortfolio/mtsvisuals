@@ -45,7 +45,7 @@ opacity:0;
 pointer-events:none;
 }
 
-/* CURSOR GLOW */
+/* CURSOR */
 .cursor-glow{
 position:fixed;
 width:300px;
@@ -54,12 +54,6 @@ background:radial-gradient(circle, rgba(212,175,55,0.15), transparent 70%);
 pointer-events:none;
 z-index:0;
 transform:translate(-50%,-50%);
-}
-
-/* PAGE TRANSITION */
-.fade-out{
-opacity:0;
-transition:.6s;
 }
 
 /* NAV */
@@ -130,7 +124,6 @@ flex-direction:column;
 justify-content:center;
 }
 
-/* LIGHT EFFECT */
 .card::before{
 content:"";
 position:absolute;
@@ -140,20 +133,16 @@ opacity:0;
 transition:.3s;
 }
 
-.card:hover::before{
-opacity:1;
-}
+.card:hover::before{opacity:1}
 
 .card:hover{
 transform:translateY(-10px);
 border-color:#d4af37;
 }
 
-/* TEXT */
 .desc{
 opacity:.7;
 transition:.4s;
-font-size:14px;
 }
 
 .sub{
@@ -175,7 +164,7 @@ opacity:1;
 transform:translateY(0);
 }
 
-/* TEXT BLOCK */
+/* TEXT */
 .text{
 font-family:'Playfair Display';
 line-height:1.8;
@@ -183,7 +172,85 @@ opacity:.85;
 max-width:700px;
 }
 
-/* FADE SCROLL */
+/* TIMELINE */
+.timeline{
+margin-top:40px;
+border-left:1px solid rgba(255,255,255,0.2);
+padding-left:30px;
+}
+
+.step{
+margin-bottom:30px;
+opacity:0;
+transform:translateY(20px);
+transition:.6s;
+}
+
+.step.show{
+opacity:1;
+transform:translateY(0);
+}
+
+.step span{
+color:#d4af37;
+font-size:14px;
+}
+
+/* NÚMEROS */
+.numbers{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+gap:30px;
+margin-top:40px;
+text-align:center;
+}
+
+.numbers h3{
+font-size:40px;
+color:#d4af37;
+}
+
+/* FRASE */
+.quote{
+text-align:center;
+font-family:'Playfair Display';
+font-size:22px;
+max-width:800px;
+margin:auto;
+opacity:.9;
+}
+
+/* COLABS */
+.brands{
+display:flex;
+flex-wrap:wrap;
+gap:15px;
+margin-top:40px;
+}
+
+.brands a{
+border:1px solid rgba(255,255,255,0.2);
+padding:10px 18px;
+border-radius:30px;
+text-decoration:none;
+color:#fff;
+transition:.3s;
+}
+
+.brands a:hover{
+background:#d4af37;
+color:#000;
+}
+
+/* LINKS */
+.link{
+color:#d4af37;
+text-decoration:none;
+display:block;
+margin-top:10px;
+}
+
+/* FADE */
 .fade{
 opacity:0;
 transform:translateY(40px);
@@ -194,25 +261,15 @@ transition:1s;
 opacity:1;
 transform:translateY(0);
 }
-
-/* LINKS */
-.link{
-color:#d4af37;
-text-decoration:none;
-display:block;
-margin-top:10px;
-}
 </style>
 </head>
 
 <body>
 
-<!-- LOADER -->
 <div class="loader" id="loader">
 <h1>Visuals</h1>
 </div>
 
-<!-- CURSOR -->
 <div class="cursor-glow" id="cursorGlow"></div>
 
 <nav>
@@ -226,6 +283,7 @@ Visuais são a forma dela existir.
 </h1>
 </section>
 
+<!-- CRIAÇÃO -->
 <section class="section fade" id="criacao">
 <h2>Criação</h2>
 
@@ -258,20 +316,88 @@ Visuais são a forma dela existir.
 </div>
 </section>
 
+<!-- SOBRE -->
 <section class="section fade" id="sobre">
 <h2>Sobre</h2>
+
 <p class="text">
-Matheus dos Santos Alves, criador multidisciplinar. Minha base passando por ilustração, vídeo, motion e 3D permite enxergar projetos com profundidade e construir soluções completas.
+Matheus dos Santos Alves. Mais conhecido como MTS.<br><br>
+Como toda criança, eu gostava de desenhar. A diferença é que eu nunca parei.<br><br>
+Cresci na Zona Norte de São Paulo — onde rua, música e imagem sempre andaram juntas.<br><br>
+Comecei aos 14 anos como freelancer criando artes e identidade visual.<br><br>
+Hoje atuo como diretor de audiovisual, acompanhando todo o processo criativo.<br><br>
+Minha base multidisciplinar — passando por ilustração, vídeo, motion e 3D — me permite construir soluções completas.<br><br>
+Não é sobre ferramenta.<br>
+É sobre dar forma a ideias.
 </p>
 </section>
 
+<!-- TRAJETÓRIA -->
+<section class="section fade">
+<h2>Trajetória</h2>
+
+<div class="timeline">
+
+<div class="step">
+<span>2017</span>
+<p>Início como freelancer vendendo artes.</p>
+</div>
+
+<div class="step">
+<span>2018–22</span>
+<p>Desenvolvimento técnico e trabalhos com artistas.</p>
+</div>
+
+<div class="step">
+<span>2023</span>
+<p>Entrada na Empuxo Criativo.</p>
+</div>
+
+<div class="step">
+<span>Hoje</span>
+<p>Diretor audiovisual.</p>
+</div>
+
+</div>
+</section>
+
+<!-- NÚMEROS -->
 <section class="section fade">
 <h2>Em números</h2>
-<p class="text">
-9 anos de mercado • 23 anos • +3 países • +50M views
+
+<div class="numbers">
+<div><h3>9+</h3><p>Anos criando</p></div>
+<div><h3>23</h3><p>Anos</p></div>
+<div><h3>3+</h3><p>Países</p></div>
+<div><h3>50M+</h3><p>Views</p></div>
+</div>
+</section>
+
+<!-- FRASE -->
+<section class="section fade quote">
+<p>
+“A experiência multidisciplinar permite enxergar o projeto de forma completa e potencializar ideias.”
 </p>
 </section>
 
+<!-- COLABS -->
+<section class="section fade">
+<h2>Colaborações</h2>
+
+<div class="brands">
+<a href="https://www.instagram.com/planoeplano/" target="_blank">Plano&Plano</a>
+<a href="https://www.instagram.com/djmattd/" target="_blank">Matt D</a>
+<a href="https://www.instagram.com/macvlr/" target="_blank">Tiago Mac</a>
+<a href="https://www.instagram.com/majorrd/" target="_blank">Major RD</a>
+<a href="https://www.instagram.com/pele.milflows/" target="_blank">Pele Milflows</a>
+<a href="https://www.instagram.com/chrigoroficial/">Chrigor</a>
+<a href="https://www.instagram.com/rastape/">Rastapé</a>
+<a href="https://www.instagram.com/greecassuaprodutora_/">Gree Cassua</a>
+<a href="https://www.instagram.com/empuxocriativo/">Empuxo Criativo</a>
+</div>
+</section>
+
+<!-- CONTATO -->
 <footer class="section fade" id="contato">
 <h2>Contato</h2>
 
@@ -297,7 +423,7 @@ glow.style.left = e.clientX+"px";
 glow.style.top = e.clientY+"px";
 });
 
-/* LIGHT FOLLOW */
+/* CARD LIGHT */
 document.querySelectorAll('.card').forEach(card=>{
 card.addEventListener('mousemove', e=>{
 const rect = card.getBoundingClientRect();
@@ -306,7 +432,7 @@ card.style.setProperty('--y', (e.clientY - rect.top) + 'px');
 });
 });
 
-/* SCROLL FADE */
+/* FADE */
 const fades = document.querySelectorAll('.fade');
 window.addEventListener('scroll', ()=>{
 fades.forEach(el=>{
@@ -316,17 +442,17 @@ el.classList.add('show');
 });
 });
 
-/* PAGE TRANSITION */
-document.querySelectorAll(".link").forEach(link=>{
-link.addEventListener("click", e=>{
-e.preventDefault();
-document.body.classList.add("fade-out");
-setTimeout(()=>{
-window.location.href = link.href;
-},600);
+/* TIMELINE */
+const steps = document.querySelectorAll('.step');
+window.addEventListener('scroll', ()=>{
+steps.forEach(step=>{
+if(step.getBoundingClientRect().top < window.innerHeight-80){
+step.classList.add('show');
+}
 });
 });
 
+/* SCROLL TOP */
 function goTop(){
 window.scrollTo({top:0,behavior:'smooth'});
 }
