@@ -40,6 +40,7 @@ margin-left:20px;
 text-decoration:none;
 color:#fff;
 opacity:.7;
+transition:.3s;
 }
 
 nav a:hover{
@@ -62,6 +63,7 @@ font-size:48px;
 .hero p{
 opacity:.7;
 max-width:500px;
+margin-top:10px;
 }
 
 /* GRID */
@@ -72,7 +74,9 @@ gap:20px;
 padding:60px 8%;
 }
 
+/* CARD */
 .card{
+position:relative;
 padding:40px;
 border-radius:20px;
 background:rgba(255,255,255,0.05);
@@ -81,6 +85,7 @@ cursor:pointer;
 transition:.4s;
 text-decoration:none;
 color:#fff;
+overflow:hidden;
 }
 
 .card:hover{
@@ -88,10 +93,30 @@ transform:translateY(-10px);
 border-color:#d4af37;
 }
 
-.sub{
+/* DESCRIÇÃO */
+.desc{
 margin-top:10px;
-opacity:.6;
+opacity:.7;
 font-size:14px;
+}
+
+/* SUB (hover) */
+.sub{
+position:absolute;
+bottom:20px;
+left:40px;
+right:40px;
+opacity:0;
+transform:translateY(20px);
+transition:.4s;
+font-size:13px;
+line-height:1.6;
+color:#aaa;
+}
+
+.card:hover .sub{
+opacity:1;
+transform:translateY(0);
 }
 </style>
 </head>
@@ -111,7 +136,7 @@ font-size:14px;
 <section class="hero">
 <div>
 <h1>Vídeo</h1>
-<p>Direção, captação e edição com foco em narrativa e impacto.</p>
+<p>Produção audiovisual passando pela ideia, direção e execução até o impacto final.</p>
 </div>
 </section>
 
@@ -119,37 +144,58 @@ font-size:14px;
 
 <a href="branded.html" class="card">
 <h2>Branded Content</h2>
-<div class="sub">Conteúdo para marcas</div>
+<div class="desc">Conteúdo para marcas com narrativa e identidade.</div>
+<div class="sub">
+Campanhas • Publicidade • Conteúdo digital • Branding visual
+</div>
 </a>
 
 <a href="music.html" class="card">
 <h2>Music Video</h2>
-<div class="sub">Clipes e estética musical</div>
+<div class="desc">Clipes com estética forte e direção criativa.</div>
+<div class="sub">
+Videoclipes • Performance • Narrativa musical • Estética autoral
+</div>
 </a>
 
 <a href="event.html" class="card">
 <h2>Event Film</h2>
-<div class="sub">Melhores momentos de eventos</div>
+<div class="desc">Vídeos de melhores momentos do evento.</div>
+<div class="sub">
+Shows • Festivais • Cobertura • Aftermovies
+</div>
 </a>
 
 <a href="podcast.html" class="card">
-<h2>Podcast</h2>
-<div class="sub">Captação e edição</div>
+<h2>Podcast Production</h2>
+<div class="desc">Captação, edição e identidade audiovisual.</div>
+<div class="sub">
+Captação multicâmera • Corte • Distribuição • Identidade visual
+</div>
 </a>
 
 <a href="social.html" class="card">
 <h2>Social Clips</h2>
-<div class="sub">Conteúdo para redes</div>
+<div class="desc">Conteúdo rápido e estratégico para redes.</div>
+<div class="sub">
+Reels • TikTok • Shorts • Conteúdo viral
+</div>
 </a>
 
 <a href="doc.html" class="card">
 <h2>Documentary</h2>
-<div class="sub">Narrativas reais</div>
+<div class="desc">Histórias reais com profundidade e estética.</div>
+<div class="sub">
+Entrevistas • Storytelling • Narrativa real • Cultura
+</div>
 </a>
 
 <a href="corporate.html" class="card">
-<h2>Corporate</h2>
-<div class="sub">Vídeos institucionais</div>
+<h2>Corporate Video</h2>
+<div class="desc">Vídeos institucionais com linguagem moderna.</div>
+<div class="sub">
+Institucional • Branding • Apresentação • Conteúdo interno
+</div>
 </a>
 
 </section>
