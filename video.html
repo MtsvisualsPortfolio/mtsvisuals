@@ -3,263 +3,161 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vídeo - MTS Visuals</title>
+<title>Vídeo | MTS Visuals</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Inter:wght@300;500;700&family=Great+Vibes&display=swap" rel="stylesheet">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 
 body{
-font-family:sans-serif;
+font-family:'Inter',sans-serif;
+background:#020202;
 color:#fff;
-background:#050505;
-overflow-x:hidden;
 }
 
-/* FUNDO CINEMÁTICO */
-body::before{
-content:"";
+/* NAV */
+nav{
 position:fixed;
-inset:-20%;
-background:
-radial-gradient(circle at 30% 30%, rgba(212,175,55,0.2), transparent 60%),
-radial-gradient(circle at 70% 70%, rgba(255,255,255,0.05), transparent 60%);
-filter:blur(80px);
-animation:move 20s infinite alternate ease-in-out;
-z-index:-1;
+top:0;
+width:100%;
+display:flex;
+justify-content:space-between;
+padding:20px 8%;
+background:rgba(0,0,0,.5);
+backdrop-filter:blur(20px);
+z-index:1000;
 }
 
-@keyframes move{
-0%{transform:translate(0,0)}
-100%{transform:translate(80px,60px)}
-}
-
-/* VOLTAR */
-.back{
-padding:30px 8%;
+.logo{
+font-family:'Great Vibes';
+font-size:22px;
 cursor:pointer;
-opacity:.6;
 }
-.back:hover{opacity:1}
 
-/* TITULO */
-h1{
-padding:0 8%;
+nav a{
+margin-left:20px;
+text-decoration:none;
+color:#fff;
+opacity:.7;
+}
+
+nav a:hover{
+opacity:1;
+color:#d4af37;
+}
+
+/* HERO */
+.hero{
+height:60vh;
+display:flex;
+align-items:center;
+padding:8%;
+}
+
+.hero h1{
 font-size:48px;
 }
 
-/* GRID */
-.container{
-padding:40px 8%;
+.hero p{
+opacity:.7;
+max-width:500px;
 }
+
+/* GRID */
 .grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
 gap:20px;
+padding:60px 8%;
 }
 
-/* CARD */
 .card{
-padding:30px;
+padding:40px;
 border-radius:20px;
-background:rgba(255,255,255,0.04);
-backdrop-filter:blur(20px);
+background:rgba(255,255,255,0.05);
 border:1px solid rgba(255,255,255,0.1);
 cursor:pointer;
 transition:.4s;
+text-decoration:none;
+color:#fff;
 }
+
 .card:hover{
-transform:translateY(-10px) scale(1.02);
-box-shadow:0 20px 60px rgba(0,0,0,.6);
+transform:translateY(-10px);
+border-color:#d4af37;
 }
 
-.card h3{margin-bottom:10px}
-.card p{opacity:.6;font-size:14px}
-
-/* MODAL */
-.modal{
-position:fixed;
-inset:0;
-background:rgba(0,0,0,.95);
-display:flex;
-align-items:center;
-justify-content:center;
-opacity:0;
-pointer-events:none;
-transition:.4s;
-z-index:1000;
-}
-
-.modal.active{
-opacity:1;
-pointer-events:all;
-}
-
-.modal-content{
-width:80%;
-max-width:900px;
-}
-
-iframe{
-width:100%;
-height:450px;
-border:none;
-border-radius:12px;
-}
-
-.modal h2{margin-top:20px}
-.modal p{opacity:.6}
-
-.btn{
-margin-top:20px;
-display:inline-block;
-padding:10px 20px;
-border:1px solid #fff;
-cursor:pointer;
+.sub{
+margin-top:10px;
+opacity:.6;
+font-size:14px;
 }
 </style>
 </head>
 
 <body>
 
-<div class="back" onclick="voltar()">← Voltar</div>
+<nav>
+<div class="logo" onclick="goHome()">Visuals</div>
 
+<div>
+<a href="index.html#criacao">Criação</a>
+<a href="index.html#sobre">Sobre</a>
+<a href="index.html#contato">Contato</a>
+</div>
+</nav>
+
+<section class="hero">
+<div>
 <h1>Vídeo</h1>
-
-<div class="container">
-<div class="grid">
-
-<div class="card" onclick="openModal('branded')">
-<h3>Branded Content</h3>
-<p>Conteúdos criados para marcas</p>
+<p>Direção, captação e edição com foco em narrativa e impacto.</p>
 </div>
+</section>
 
-<div class="card" onclick="openModal('music')">
-<h3>Music Video</h3>
-<p>Videoclipes com direção estética</p>
-</div>
+<section class="grid">
 
-<div class="card" onclick="openModal('event')">
-<h3>Event Film</h3>
-<p>Melhores momentos de eventos</p>
-</div>
+<a href="branded.html" class="card">
+<h2>Branded Content</h2>
+<div class="sub">Conteúdo para marcas</div>
+</a>
 
-<div class="card" onclick="openModal('podcast')">
-<h3>Podcast Production</h3>
-<p>Edição e cortes para redes sociais</p>
-</div>
+<a href="music.html" class="card">
+<h2>Music Video</h2>
+<div class="sub">Clipes e estética musical</div>
+</a>
 
-<div class="card" onclick="openModal('social')">
-<h3>Social Clips</h3>
-<p>Conteúdos curtos e dinâmicos</p>
-</div>
+<a href="event.html" class="card">
+<h2>Event Film</h2>
+<div class="sub">Melhores momentos de eventos</div>
+</a>
 
-<div class="card" onclick="openModal('doc')">
-<h3>Documentary</h3>
-<p>Narrativas reais</p>
-</div>
+<a href="podcast.html" class="card">
+<h2>Podcast</h2>
+<div class="sub">Captação e edição</div>
+</a>
 
-<div class="card" onclick="openModal('corporate')">
-<h3>Corporate Video</h3>
-<p>Vídeos institucionais</p>
-</div>
+<a href="social.html" class="card">
+<h2>Social Clips</h2>
+<div class="sub">Conteúdo para redes</div>
+</a>
 
-</div>
-</div>
+<a href="doc.html" class="card">
+<h2>Documentary</h2>
+<div class="sub">Narrativas reais</div>
+</a>
 
-<!-- MODAL -->
-<div class="modal" id="modal"></div>
+<a href="corporate.html" class="card">
+<h2>Corporate</h2>
+<div class="sub">Vídeos institucionais</div>
+</a>
+
+</section>
 
 <script>
-
-function voltar(){
+function goHome(){
 window.location.href = "index.html";
 }
-
-const modal = document.getElementById("modal");
-
-function openModal(type){
-
-let html = "";
-
-if(type==="branded"){
-html=`
-<div class="modal-content">
-<iframe src="https://player.vimeo.com/video/146022717?autoplay=1"></iframe>
-<h2>Branded Content</h2>
-<p>Conteúdos criados para marcas com foco em narrativa e conexão.</p>
-<div class="btn" onclick="window.location.href='branded.html'">Ver mais</div>
-</div>`;
-}
-
-if(type==="music"){
-html=`
-<div class="modal-content">
-<iframe src="https://player.vimeo.com/video/22439234?autoplay=1"></iframe>
-<h2>Music Video</h2>
-<p>Videoclipes com direção estética alinhada ao artista.</p>
-<div class="btn" onclick="window.location.href='music.html'">Ver mais</div>
-</div>`;
-}
-
-if(type==="event"){
-html=`
-<div class="modal-content">
-<iframe src="https://player.vimeo.com/video/76979871?autoplay=1"></iframe>
-<h2>Event Film</h2>
-<p>Vídeos de melhores momentos do evento.</p>
-<div class="btn" onclick="window.location.href='event.html'">Ver mais</div>
-</div>`;
-}
-
-if(type==="podcast"){
-html=`
-<div class="modal-content">
-<iframe src="https://player.vimeo.com/video/76979871?autoplay=1"></iframe>
-<h2>Podcast Production</h2>
-<p>Edição e cortes otimizados para redes sociais.</p>
-<div class="btn" onclick="window.location.href='podcast.html'">Ver mais</div>
-</div>`;
-}
-
-if(type==="social"){
-html=`
-<div class="modal-content">
-<iframe src="https://player.vimeo.com/video/22439234?autoplay=1"></iframe>
-<h2>Social Clips</h2>
-<p>Conteúdos curtos focados em impacto.</p>
-<div class="btn" onclick="window.location.href='social.html'">Ver mais</div>
-</div>`;
-}
-
-if(type==="doc"){
-html=`
-<div class="modal-content">
-<iframe src="https://player.vimeo.com/video/146022717?autoplay=1"></iframe>
-<h2>Documentary</h2>
-<p>Narrativas reais com profundidade.</p>
-<div class="btn" onclick="window.location.href='doc.html'">Ver mais</div>
-</div>`;
-}
-
-if(type==="corporate"){
-html=`
-<div class="modal-content">
-<iframe src="https://player.vimeo.com/video/76979871?autoplay=1"></iframe>
-<h2>Corporate Video</h2>
-<p>Comunicação institucional estratégica.</p>
-<div class="btn" onclick="window.location.href='corporate.html'">Ver mais</div>
-</div>`;
-}
-
-modal.innerHTML = html;
-modal.classList.add("active");
-}
-
-modal.onclick = () => {
-modal.classList.remove("active");
-modal.innerHTML = "";
-}
-
 </script>
 
 </body>
