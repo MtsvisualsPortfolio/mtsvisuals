@@ -10,31 +10,56 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 
-html{scroll-behavior:smooth}
-
 body{
 font-family:'Inter',sans-serif;
-color:#fff;
 background:#050505;
+color:#fff;
 overflow-x:hidden;
 }
 
-/* FUNDO */
-body::before{
-content:"";
+/* LOADER */
+.loader{
 position:fixed;
-inset:-20%;
-background:
-radial-gradient(circle at 30% 30%, rgba(212,175,55,0.2), transparent 60%),
-radial-gradient(circle at 70% 70%, rgba(255,255,255,0.05), transparent 60%);
-filter:blur(80px);
-animation:move 20s infinite alternate ease-in-out;
-z-index:-1;
+inset:0;
+background:#000;
+display:flex;
+align-items:center;
+justify-content:center;
+z-index:9999;
+transition:1s;
 }
 
-@keyframes move{
-0%{transform:translate(0,0)}
-100%{transform:translate(80px,60px)}
+.loader h1{
+font-family:'Great Vibes';
+font-size:40px;
+opacity:0;
+animation:fadeIn 2s forwards;
+}
+
+@keyframes fadeIn{
+to{opacity:1}
+}
+
+.loader.hide{
+opacity:0;
+pointer-events:none;
+}
+
+/* CURSOR GLOW */
+.cursor-glow{
+position:fixed;
+width:300px;
+height:300px;
+background:radial-gradient(circle, rgba(212,175,55,0.15), transparent 70%);
+pointer-events:none;
+z-index:0;
+transform:translate(-50%,-50%);
+}
+
+/* FADE PAGE */
+.fade-out{
+opacity:0;
+transition:.6s;
 }
 
 /* NAV */
@@ -56,20 +81,6 @@ cursor:pointer;
 font-size:22px;
 }
 
-nav a{
-margin-left:20px;
-cursor:pointer;
-opacity:.7;
-text-decoration:none;
-color:#fff;
-transition:.3s;
-}
-
-nav a:hover{
-opacity:1;
-color:#d4af37;
-}
-
 /* HERO */
 .hero{
 height:100vh;
@@ -80,11 +91,8 @@ padding:8%;
 
 .hero h1{
 font-size:64px;
-line-height:1.1;
 max-width:800px;
 }
-
-.gold{color:#d4af37}
 
 /* SECTION */
 .section{
@@ -96,57 +104,26 @@ padding:120px 8%;
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
 gap:20px;
-margin-top:40px;
 }
 
 /* CARD */
 .card{
-position:relative;
 padding:40px;
 border-radius:20px;
 background:rgba(255,255,255,0.04);
-backdrop-filter:blur(20px);
 border:1px solid rgba(255,255,255,0.1);
 cursor:pointer;
-transition:.5s;
-overflow:hidden;
+transition:.4s;
 text-decoration:none;
 color:#fff;
 }
 
 .card:hover{
-transform:translateY(-12px) scale(1.03);
-box-shadow:0 30px 80px rgba(0,0,0,.6);
+transform:translateY(-10px);
+border-color:#d4af37;
 }
 
-/* GLOW */
-.video:hover{box-shadow:0 30px 80px rgba(212,175,55,.3)}
-.motion:hover{box-shadow:0 30px 80px rgba(255,100,0,.3)}
-.threed:hover{box-shadow:0 30px 80px rgba(0,150,255,.3)}
-.illus:hover{box-shadow:0 30px 80px rgba(180,0,255,.3)}
-
-/* SUBS */
-.subs{
-position:absolute;
-bottom:20px;
-left:40px;
-right:40px;
-opacity:0;
-transform:translateY(20px);
-transition:.4s;
-font-size:13px;
-line-height:1.6;
-}
-
-.card:hover .subs{
-opacity:1;
-transform:translateY(0);
-}
-
-.card h3{margin-bottom:10px}
-.card p{opacity:.6;font-size:14px}
-
-/* TEXTO */
+/* TEXT */
 .text{
 font-family:'Playfair Display';
 line-height:1.7;
@@ -154,25 +131,11 @@ opacity:.85;
 max-width:700px;
 }
 
-/* LINKS */
-.link{
-display:block;
-margin-top:10px;
-color:#d4af37;
-text-decoration:none;
-}
-
-/* FOOTER */
-footer{
-text-align:center;
-padding:80px;
-}
-
-/* ANIMAÇÃO */
+/* FADE SCROLL */
 .fade{
 opacity:0;
 transform:translateY(40px);
-transition:1s ease;
+transition:1s;
 }
 
 .fade.show{
@@ -184,153 +147,83 @@ transform:translateY(0);
 
 <body>
 
+<!-- LOADER -->
+<div class="loader" id="loader">
+<h1>Visuals</h1>
+</div>
+
+<!-- CURSOR -->
+<div class="cursor-glow" id="cursorGlow"></div>
+
 <nav>
 <div class="logo" onclick="goTop()">Visuals</div>
-
-<div>
-<a href="#criacao">Criação</a>
-<a href="#sobre">Sobre</a>
-<a href="#contato">Contato</a>
-</div>
 </nav>
 
 <section class="hero">
 <h1>
-Todo projeto carrega <span class="gold">uma ideia</span>.<br>
+Todo projeto carrega uma ideia.<br>
 Visuais são a forma dela existir.
 </h1>
 </section>
 
-<section class="section fade" id="criacao">
+<section class="section fade">
 <h2>Criação</h2>
 
 <div class="grid">
-
-<a href="video.html" class="card video">
-<h3>Vídeo</h3>
-<p>Produção audiovisual completa</p>
-<div class="subs">
-Branded • Music • Event • Podcast • Social • Doc • Corporate
-</div>
-</a>
-
-<a href="motion.html" class="card motion">
-<h3>Motion</h3>
-<p>Animação e linguagem em movimento</p>
-<div class="subs">
-Logo • Titles • Branding • Explainer
-</div>
-</a>
-
-<a href="3d.html" class="card threed">
-<h3>3D</h3>
-<p>Construção visual tridimensional</p>
-<div class="subs">
-Character • Archviz • Editorial
-</div>
-</a>
-
-<a href="ilustracao.html" class="card illus">
-<h3>Ilustração</h3>
-<p>Expressão visual autoral</p>
-<div class="subs">
-Concept • Key Visual • Personal
-</div>
-</a>
-
+<a href="video.html" class="card link">Vídeo</a>
+<a href="#" class="card">Motion</a>
+<a href="#" class="card">3D</a>
+<a href="#" class="card">Ilustração</a>
 </div>
 </section>
 
-<section class="section fade" id="sobre">
+<section class="section fade">
 <h2>Sobre</h2>
 <p class="text">
-Matheus dos Santos Alves. Mais conhecido como MTS.<br><br>
-
-Como toda criança, eu gostava de desenhar. A diferença é que eu nunca parei.<br><br>
-
-Cresci na Zona Norte de São Paulo — onde rua, música e imagem sempre andaram juntas. Com o tempo, ficou claro que criar não era uma escolha, era necessidade. O primeiro contato com o Photoshop foi o ponto de virada.<br><br>
-
-Desde então, transformar ideias em linguagem visual deixou de ser só prática e virou propósito.<br><br>
-
-Hoje, atuo como diretor de audiovisual, acompanhando cada etapa do processo: da ideia ao roteiro, da captação à edição, da trilha à entrega final. Mais do que executar, meu trabalho é estruturar e potencializar o projeto como um todo.<br><br>
-
-Minha base multidisciplinar — passando por ilustração, vídeo, motion e 3D — me permite enxergar com profundidade, resolver com clareza e construir com intenção.<br><br>
-
-Não é sobre uma ferramenta ou formato.<br><br>
-
-É sobre dar forma a ideias.
+Minha base multidisciplinar — passando por ilustração, vídeo, motion e 3D — permite enxergar, resolver e construir ideias com profundidade.
 </p>
 </section>
-
-<section class="section fade">
-<h2>Trajetória</h2>
-<p class="text">
-Design → Audiovisual → Direção criativa.
-</p>
-</section>
-
-<section class="section fade">
-<h2>Em números</h2>
-<p class="text">
-9 anos • 23 anos • +3 países • +50M views
-</p>
-</section>
-
-<section class="section fade">
-<p class="text">
-“Não é sobre o meio. É sobre a ideia — e a melhor forma de fazê-la existir.”
-</p>
-</section>
-
-<section class="section fade">
-<h2>Colaborações</h2>
-
-<a class="link" target="_blank" href="https://www.instagram.com/planoeplano/">Plano&Plano</a>
-<a class="link" target="_blank" href="https://www.instagram.com/djmattd/">Matt D</a>
-<a class="link" target="_blank" href="https://www.instagram.com/macvlr/">Tiago Mac</a>
-<a class="link" target="_blank" href="https://www.instagram.com/majorrd/">Major RD</a>
-<a class="link" target="_blank" href="https://www.instagram.com/pele.milflows/">Pele Milflows</a>
-<a class="link" target="_blank" href="https://www.instagram.com/chrigoroficial/">Chrigor</a>
-<a class="link" target="_blank" href="https://www.instagram.com/rastape/">Rastapé</a>
-<a class="link" target="_blank" href="https://www.instagram.com/greecassuaprodutora_/">Gree Cassua</a>
-<a class="link" target="_blank" href="https://www.instagram.com/empuxocriativo/">Empuxo Criativo</a>
-
-</section>
-
-<footer id="contato" class="fade">
-<h2>Contato</h2>
-
-<a class="link" target="_blank"
-href="https://wa.me/5511977520741?text=Olá%20vi%20seu%20portfólio">
-WhatsApp
-</a>
-
-<a class="link" href="mailto:mtsvisualss@gmail.com">
-mtsvisualss@gmail.com
-</a>
-
-<a class="link" target="_blank"
-href="https://instagram.com/mtsvisualss">
-Instagram
-</a>
-
-</footer>
 
 <script>
-function goTop(){
-window.scrollTo({top:0,behavior:'smooth'});
-}
 
+/* LOADER */
+window.addEventListener("load", ()=>{
+setTimeout(()=>{
+document.getElementById("loader").classList.add("hide");
+},2000);
+});
+
+/* CURSOR */
+const glow = document.getElementById("cursorGlow");
+document.addEventListener("mousemove", e=>{
+glow.style.left = e.clientX+"px";
+glow.style.top = e.clientY+"px";
+});
+
+/* FADE SCROLL */
 const fades = document.querySelectorAll('.fade');
-
 window.addEventListener('scroll', ()=>{
 fades.forEach(el=>{
-const top = el.getBoundingClientRect().top;
-if(top < window.innerHeight - 100){
+if(el.getBoundingClientRect().top < window.innerHeight-100){
 el.classList.add('show');
 }
 });
 });
+
+/* PAGE TRANSITION */
+document.querySelectorAll(".link").forEach(link=>{
+link.addEventListener("click", e=>{
+e.preventDefault();
+document.body.classList.add("fade-out");
+setTimeout(()=>{
+window.location.href = link.href;
+},600);
+});
+});
+
+function goTop(){
+window.scrollTo({top:0,behavior:'smooth'});
+}
 </script>
 
 </body>
