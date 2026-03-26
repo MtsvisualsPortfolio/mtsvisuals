@@ -3,75 +3,95 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>MTS Visuals</title>
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
+
 body{
-  background:#07080f;
+  background:#0a0a0a;
   color:#fff;
-  font-family:Arial;
+  font-family:-apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 /* HERO */
 #hero{
-  height:80vh;
+  height:90vh;
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:48px;
+  font-size:64px;
+  font-weight:600;
+  letter-spacing:-2px;
+  color:#d4af37;
 }
 
-/* SECTION */
+/* SECTIONS */
 .section{
-  padding:60px;
-  border-top:1px solid rgba(255,255,255,.1);
+  padding:80px 8%;
+  border-top:1px solid rgba(255,255,255,0.08);
 }
 
 .section h2{
-  font-size:28px;
+  font-size:32px;
   margin-bottom:20px;
 }
 
-/* SUBSECTIONS */
-.sub-list{
-  margin-bottom:20px;
-  opacity:.7;
+/* SUB LIST */
+.sub{
+  opacity:.6;
+  margin-bottom:30px;
   line-height:1.8;
 }
 
-/* VIDEO PREVIEW */
+/* PREVIEW */
 .preview{
   width:100%;
-  height:400px;
+  height:420px;
+  border-radius:12px;
+  overflow:hidden;
   margin-bottom:20px;
 }
 
 /* BUTTON */
 .btn{
-  padding:12px 20px;
   border:1px solid #fff;
+  padding:12px 24px;
   display:inline-block;
   cursor:pointer;
   margin-bottom:30px;
+  transition:.3s;
+}
+.btn:hover{
+  background:#fff;
+  color:#000;
 }
 
 /* GRID */
 .grid{
   display:none;
-  grid-template-columns:repeat(auto-fill,minmax(250px,1fr));
-  gap:10px;
+  grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+  gap:12px;
 }
 
 .card{
   background:#111;
-  padding:20px;
+  padding:40px;
+  border-radius:10px;
   cursor:pointer;
   transition:.3s;
 }
 .card:hover{
-  background:#222;
+  background:#1a1a1a;
+  transform:translateY(-4px);
 }
+
+/* COLORS PER SECTION */
+.video{border-left:4px solid #ff4d4d}
+.motion{border-left:4px solid #ffb84d}
+.three{border-left:4px solid #4da6ff}
+.illu{border-left:4px solid #c44dff}
 
 /* MODAL */
 .modal{
@@ -83,7 +103,7 @@ body{
   justify-content:center;
   opacity:0;
   pointer-events:none;
-  transition:.3s;
+  transition:.4s;
 }
 .modal.active{
   opacity:1;
@@ -93,6 +113,7 @@ body{
 .modal-box{
   width:80vw;
   height:45vw;
+  max-height:500px;
 }
 </style>
 </head>
@@ -101,75 +122,118 @@ body{
 
 <!-- HERO -->
 <section id="hero">
-  MTS VISUALS
+MTS VISUALS
 </section>
 
-<!-- VIDEO SECTION -->
-<section class="section">
+<!-- VIDEO -->
+<section class="section video">
 
 <h2>VIDEO</h2>
 
-<div class="sub-list">
-1. Branded Content<br>
-2. Music Video<br>
-3. Event Film<br>
-4. Podcast Production<br>
-5. Social Clips<br>
-6. Documentary<br>
-7. Corporate Video
+<div class="sub">
+Branded Content • Music Video • Event Film • Podcast • Social • Documentary • Corporate
 </div>
 
-<!-- PREVIEW VIDEO -->
 <iframe class="preview"
 src="https://player.vimeo.com/video/111111111"
-frameborder="0" allow="autoplay; fullscreen"></iframe>
+frameborder="0" allow="autoplay; fullscreen">
+</iframe>
 
-<div class="btn" onclick="toggleGrid('videoGrid')">
-Ver mais
+<div class="btn" onclick="toggle('grid1')">Ver mais</div>
+
+<div id="grid1" class="grid">
+<div class="card" data-video="https://player.vimeo.com/video/111111111">Projeto</div>
+<div class="card" data-video="https://player.vimeo.com/video/222222222">Projeto</div>
 </div>
 
-<div id="videoGrid" class="grid">
+</section>
 
-<div class="card" data-video="https://player.vimeo.com/video/111111111">Projeto 1</div>
-<div class="card" data-video="https://player.vimeo.com/video/222222222">Projeto 2</div>
-<div class="card" data-video="https://player.vimeo.com/video/333333333">Projeto 3</div>
+<!-- MOTION -->
+<section class="section motion">
 
+<h2>MOTION</h2>
+
+<div class="sub">Design • Animation • Branding</div>
+
+<iframe class="preview"
+src="https://player.vimeo.com/video/333333333"
+frameborder="0"></iframe>
+
+<div class="btn" onclick="toggle('grid2')">Ver mais</div>
+
+<div id="grid2" class="grid">
+<div class="card" data-video="https://player.vimeo.com/video/333333333">Projeto</div>
+</div>
+
+</section>
+
+<!-- 3D -->
+<section class="section three">
+
+<h2>3D</h2>
+
+<div class="sub">Modeling • Render • Lookdev</div>
+
+<iframe class="preview"
+src="https://player.vimeo.com/video/444444444"
+frameborder="0"></iframe>
+
+<div class="btn" onclick="toggle('grid3')">Ver mais</div>
+
+<div id="grid3" class="grid">
+<div class="card" data-video="https://player.vimeo.com/video/444444444">Projeto</div>
+</div>
+
+</section>
+
+<!-- ILUSTRA -->
+<section class="section illu">
+
+<h2>ILUSTRAÇÃO</h2>
+
+<div class="sub">Editorial • Digital • Concept</div>
+
+<iframe class="preview"
+src="https://player.vimeo.com/video/555555555"
+frameborder="0"></iframe>
+
+<div class="btn" onclick="toggle('grid4')">Ver mais</div>
+
+<div id="grid4" class="grid">
+<div class="card" data-video="https://player.vimeo.com/video/555555555">Projeto</div>
 </div>
 
 </section>
 
 <!-- MODAL -->
 <div class="modal" id="modal">
-  <div class="modal-box" id="modalBox"></div>
+  <div class="modal-box" id="box"></div>
 </div>
 
 <script>
 
-/* TOGGLE GRID */
-function toggleGrid(id){
-  const grid = document.getElementById(id);
-  grid.style.display = grid.style.display === 'grid' ? 'none' : 'grid';
+function toggle(id){
+  const g = document.getElementById(id);
+  g.style.display = g.style.display === 'grid' ? 'none' : 'grid';
 }
 
-/* MODAL */
 const modal = document.getElementById('modal');
-const box = document.getElementById('modalBox');
+const box = document.getElementById('box');
 
 document.querySelectorAll('.card').forEach(card=>{
   card.onclick=()=>{
     modal.classList.add('active');
     box.innerHTML = `
-      <iframe width="100%" height="100%"
-      src="${card.dataset.video}?autoplay=1"
-      frameborder="0" allow="autoplay; fullscreen">
-      </iframe>`;
-  };
+    <iframe width="100%" height="100%"
+    src="${card.dataset.video}?autoplay=1"
+    frameborder="0" allow="autoplay; fullscreen"></iframe>`;
+  }
 });
 
 modal.onclick=()=>{
   modal.classList.remove('active');
   box.innerHTML="";
-};
+}
 
 </script>
 
