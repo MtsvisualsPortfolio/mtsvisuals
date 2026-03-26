@@ -13,9 +13,17 @@ font-family:sans-serif;
 padding:40px;
 }
 
+/* VOLTAR */
+.back{
+margin-bottom:30px;
+cursor:pointer;
+opacity:.6;
+}
+.back:hover{opacity:1}
+
 /* CARD */
 .card{
-padding:20px;
+padding:18px;
 border:1px solid rgba(255,255,255,.1);
 margin-bottom:10px;
 cursor:pointer;
@@ -23,8 +31,8 @@ transition:.3s;
 }
 .card:hover{background:#111}
 
-/* PLAYER */
-#player{
+/* CONTEÚDO */
+#content{
 margin-top:30px;
 }
 
@@ -41,63 +49,124 @@ cursor:pointer;
 
 <body>
 
+<div class="back" onclick="voltar()">← Voltar</div>
+
 <h1>Vídeo</h1>
 
 <!-- SUBSEÇÕES -->
-<div class="card" onclick="openSub('event')">Event Film</div>
+<div class="card" onclick="openSub('branded')">Branded Content</div>
 <div class="card" onclick="openSub('music')">Music Video</div>
-<div class="card" onclick="openSub('brand')">Branded Content</div>
+<div class="card" onclick="openSub('event')">Event Film</div>
+<div class="card" onclick="openSub('podcast')">Podcast Production</div>
+<div class="card" onclick="openSub('social')">Social Clips</div>
+<div class="card" onclick="openSub('doc')">Documentary</div>
+<div class="card" onclick="openSub('corporate')">Corporate Video</div>
 
-<!-- PREVIEW -->
+<!-- CONTEÚDO DINÂMICO -->
 <div id="content"></div>
 
 <script>
+
+function voltar(){
+window.location.href = "index.html";
+}
 
 function openSub(type){
 
 let html = "";
 
-if(type === "event"){
-html = `
-<h2>Event Film</h2>
-<p>Vídeos de melhores momentos de eventos.</p>
-
-<iframe src="https://player.vimeo.com/video/76979871"
-width="100%" height="400"></iframe>
-
-<div class="btn" onclick="verMais()">Ver mais</div>
-`;
-}
-
-if(type === "music"){
-html = `
-<h2>Music Video</h2>
-<p>Videoclipes com direção estética.</p>
-
-<iframe src="https://player.vimeo.com/video/22439234"
-width="100%" height="400"></iframe>
-
-<div class="btn" onclick="verMais()">Ver mais</div>
-`;
-}
-
-if(type === "brand"){
+/* BRANDED */
+if(type === "branded"){
 html = `
 <h2>Branded Content</h2>
-<p>Conteúdos para marcas.</p>
+<p>Conteúdos criados para marcas com foco em narrativa e conexão com o público.</p>
 
 <iframe src="https://player.vimeo.com/video/146022717"
 width="100%" height="400"></iframe>
 
-<div class="btn" onclick="verMais()">Ver mais</div>
+<div class="btn" onclick="window.location.href='branded.html'">Ver mais</div>
+`;
+}
+
+/* MUSIC */
+if(type === "music"){
+html = `
+<h2>Music Video</h2>
+<p>Videoclipes com direção estética alinhada à identidade do artista.</p>
+
+<iframe src="https://player.vimeo.com/video/22439234"
+width="100%" height="400"></iframe>
+
+<div class="btn" onclick="window.location.href='music.html'">Ver mais</div>
+`;
+}
+
+/* EVENT */
+if(type === "event"){
+html = `
+<h2>Event Film</h2>
+<p>Vídeos de melhores momentos do evento.</p>
+
+<iframe src="https://player.vimeo.com/video/76979871"
+width="100%" height="400"></iframe>
+
+<div class="btn" onclick="window.location.href='event.html'">Ver mais</div>
+`;
+}
+
+/* PODCAST */
+if(type === "podcast"){
+html = `
+<h2>Podcast Production</h2>
+<p>Edição de podcasts e criação de cortes otimizados para redes sociais.</p>
+
+<iframe src="https://player.vimeo.com/video/76979871"
+width="100%" height="400"></iframe>
+
+<div class="btn" onclick="window.location.href='podcast.html'">Ver mais</div>
+`;
+}
+
+/* SOCIAL */
+if(type === "social"){
+html = `
+<h2>Social Clips</h2>
+<p>Conteúdos curtos pensados para retenção e impacto nas redes sociais.</p>
+
+<iframe src="https://player.vimeo.com/video/22439234"
+width="100%" height="400"></iframe>
+
+<div class="btn" onclick="window.location.href='social.html'">Ver mais</div>
+`;
+}
+
+/* DOC */
+if(type === "doc"){
+html = `
+<h2>Documentary</h2>
+<p>Narrativas reais com foco em história e contexto.</p>
+
+<iframe src="https://player.vimeo.com/video/146022717"
+width="100%" height="400"></iframe>
+
+<div class="btn" onclick="window.location.href='doc.html'">Ver mais</div>
+`;
+}
+
+/* CORPORATE */
+if(type === "corporate"){
+html = `
+<h2>Corporate Video</h2>
+<p>Vídeos institucionais que comunicam valores e posicionamento.</p>
+
+<iframe src="https://player.vimeo.com/video/76979871"
+width="100%" height="400"></iframe>
+
+<div class="btn" onclick="window.location.href='corporate.html'">Ver mais</div>
 `;
 }
 
 document.getElementById("content").innerHTML = html;
-}
-
-function verMais(){
-alert("Aqui vai abrir os projetos completos depois");
 }
 
 </script>
