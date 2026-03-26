@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Categoria</title>
+
+<style>
+body{
+background:#0b0b0b;
+color:#fff;
+font-family:sans-serif;
+padding:40px;
+}
+
+.back{
+margin-bottom:30px;
+cursor:pointer;
+opacity:.6;
+}
+.back:hover{opacity:1}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:20px;
+}
+
+iframe{
+width:100%;
+height:200px;
+border:none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="back" onclick="voltar()">← Voltar</div>
+
+<h1 id="title">Categoria</h1>
+<p id="desc">Descrição aqui</p>
+
+<div class="grid">
+
+<iframe src="https://player.vimeo.com/video/76979871"></iframe>
+<iframe src="https://player.vimeo.com/video/22439234"></iframe>
+<iframe src="https://player.vimeo.com/video/146022717"></iframe>
+
+</div>
+
+<script>
+function voltar(){
+window.location.href = "video.html";
+}
+</script>
+
+</body>
+</html>
