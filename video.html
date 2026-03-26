@@ -6,37 +6,96 @@
 <title>Vídeo - MTS Visuals</title>
 
 <style>
+*{margin:0;padding:0;box-sizing:border-box}
+
 body{
-background:#0b0b0b;
-color:#fff;
 font-family:sans-serif;
-padding:40px;
+color:#fff;
+background:#050505;
+overflow-x:hidden;
+}
+
+/* FUNDO CINEMÁTICO */
+body::before{
+content:"";
+position:fixed;
+inset:-20%;
+background:
+radial-gradient(circle at 30% 30%, rgba(212,175,55,0.2), transparent 60%),
+radial-gradient(circle at 70% 70%, rgba(255,255,255,0.05), transparent 60%);
+filter:blur(80px);
+animation:move 20s infinite alternate ease-in-out;
+z-index:-1;
+}
+
+@keyframes move{
+0%{transform:translate(0,0)}
+100%{transform:translate(80px,60px)}
 }
 
 /* VOLTAR */
 .back{
-margin-bottom:30px;
+padding:30px 8%;
 cursor:pointer;
 opacity:.6;
 }
 .back:hover{opacity:1}
 
+/* CONTAINER */
+.container{
+padding:40px 8%;
+}
+
+/* GRID */
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:20px;
+}
+
 /* CARD */
 .card{
-padding:18px;
-border:1px solid rgba(255,255,255,.1);
-margin-bottom:10px;
+padding:30px;
+border-radius:20px;
+background:rgba(255,255,255,0.04);
+backdrop-filter:blur(20px);
+border:1px solid rgba(255,255,255,0.1);
 cursor:pointer;
-transition:.3s;
+transition:.4s;
 }
-.card:hover{background:#111}
 
-/* CONTEÚDO */
+.card:hover{
+transform:translateY(-10px) scale(1.02);
+box-shadow:0 20px 60px rgba(0,0,0,.6);
+}
+
+/* TITULO */
+h1{
+padding:0 8%;
+font-size:48px;
+}
+
+.card h3{
+margin-bottom:10px;
+}
+
+.card p{
+opacity:.6;
+font-size:14px;
+}
+
+/* PREVIEW */
 #content{
-margin-top:30px;
+padding:40px 8%;
 }
 
-/* BOTÃO */
+iframe{
+width:100%;
+height:400px;
+border:none;
+border-radius:12px;
+}
+
 .btn{
 margin-top:20px;
 display:inline-block;
@@ -53,16 +112,48 @@ cursor:pointer;
 
 <h1>Vídeo</h1>
 
-<!-- SUBSEÇÕES -->
-<div class="card" onclick="openSub('branded')">Branded Content</div>
-<div class="card" onclick="openSub('music')">Music Video</div>
-<div class="card" onclick="openSub('event')">Event Film</div>
-<div class="card" onclick="openSub('podcast')">Podcast Production</div>
-<div class="card" onclick="openSub('social')">Social Clips</div>
-<div class="card" onclick="openSub('doc')">Documentary</div>
-<div class="card" onclick="openSub('corporate')">Corporate Video</div>
+<div class="container">
 
-<!-- CONTEÚDO DINÂMICO -->
+<div class="grid">
+
+<div class="card" onclick="openSub('branded')">
+<h3>Branded Content</h3>
+<p>Conteúdos criados para marcas</p>
+</div>
+
+<div class="card" onclick="openSub('music')">
+<h3>Music Video</h3>
+<p>Videoclipes com direção estética</p>
+</div>
+
+<div class="card" onclick="openSub('event')">
+<h3>Event Film</h3>
+<p>Melhores momentos de eventos</p>
+</div>
+
+<div class="card" onclick="openSub('podcast')">
+<h3>Podcast Production</h3>
+<p>Edição e cortes para redes sociais</p>
+</div>
+
+<div class="card" onclick="openSub('social')">
+<h3>Social Clips</h3>
+<p>Conteúdos curtos e dinâmicos</p>
+</div>
+
+<div class="card" onclick="openSub('doc')">
+<h3>Documentary</h3>
+<p>Narrativas reais</p>
+</div>
+
+<div class="card" onclick="openSub('corporate')">
+<h3>Corporate Video</h3>
+<p>Vídeos institucionais</p>
+</div>
+
+</div>
+</div>
+
 <div id="content"></div>
 
 <script>
@@ -73,97 +164,62 @@ window.location.href = "index.html";
 
 function openSub(type){
 
-let html = "";
+let html="";
 
-/* BRANDED */
-if(type === "branded"){
-html = `
+if(type==="branded"){
+html=`
 <h2>Branded Content</h2>
-<p>Conteúdos criados para marcas com foco em narrativa e conexão com o público.</p>
-
-<iframe src="https://player.vimeo.com/video/146022717"
-width="100%" height="400"></iframe>
-
-<div class="btn" onclick="window.location.href='branded.html'">Ver mais</div>
-`;
+<p>Conteúdos criados para marcas com foco em narrativa e conexão.</p>
+<iframe src="https://player.vimeo.com/video/146022717"></iframe>
+<div class="btn" onclick="window.location.href='branded.html'">Ver mais</div>`;
 }
 
-/* MUSIC */
-if(type === "music"){
-html = `
+if(type==="music"){
+html=`
 <h2>Music Video</h2>
-<p>Videoclipes com direção estética alinhada à identidade do artista.</p>
-
-<iframe src="https://player.vimeo.com/video/22439234"
-width="100%" height="400"></iframe>
-
-<div class="btn" onclick="window.location.href='music.html'">Ver mais</div>
-`;
+<p>Videoclipes com direção estética alinhada ao artista.</p>
+<iframe src="https://player.vimeo.com/video/22439234"></iframe>
+<div class="btn" onclick="window.location.href='music.html'">Ver mais</div>`;
 }
 
-/* EVENT */
-if(type === "event"){
-html = `
+if(type==="event"){
+html=`
 <h2>Event Film</h2>
 <p>Vídeos de melhores momentos do evento.</p>
-
-<iframe src="https://player.vimeo.com/video/76979871"
-width="100%" height="400"></iframe>
-
-<div class="btn" onclick="window.location.href='event.html'">Ver mais</div>
-`;
+<iframe src="https://player.vimeo.com/video/76979871"></iframe>
+<div class="btn" onclick="window.location.href='event.html'">Ver mais</div>`;
 }
 
-/* PODCAST */
-if(type === "podcast"){
-html = `
+if(type==="podcast"){
+html=`
 <h2>Podcast Production</h2>
-<p>Edição de podcasts e criação de cortes otimizados para redes sociais.</p>
-
-<iframe src="https://player.vimeo.com/video/76979871"
-width="100%" height="400"></iframe>
-
-<div class="btn" onclick="window.location.href='podcast.html'">Ver mais</div>
-`;
+<p>Edição e cortes otimizados para redes sociais.</p>
+<iframe src="https://player.vimeo.com/video/76979871"></iframe>
+<div class="btn" onclick="window.location.href='podcast.html'">Ver mais</div>`;
 }
 
-/* SOCIAL */
-if(type === "social"){
-html = `
+if(type==="social"){
+html=`
 <h2>Social Clips</h2>
-<p>Conteúdos curtos pensados para retenção e impacto nas redes sociais.</p>
-
-<iframe src="https://player.vimeo.com/video/22439234"
-width="100%" height="400"></iframe>
-
-<div class="btn" onclick="window.location.href='social.html'">Ver mais</div>
-`;
+<p>Conteúdos curtos focados em impacto.</p>
+<iframe src="https://player.vimeo.com/video/22439234"></iframe>
+<div class="btn" onclick="window.location.href='social.html'">Ver mais</div>`;
 }
 
-/* DOC */
-if(type === "doc"){
-html = `
+if(type==="doc"){
+html=`
 <h2>Documentary</h2>
-<p>Narrativas reais com foco em história e contexto.</p>
-
-<iframe src="https://player.vimeo.com/video/146022717"
-width="100%" height="400"></iframe>
-
-<div class="btn" onclick="window.location.href='doc.html'">Ver mais</div>
-`;
+<p>Narrativas reais com profundidade.</p>
+<iframe src="https://player.vimeo.com/video/146022717"></iframe>
+<div class="btn" onclick="window.location.href='doc.html'">Ver mais</div>`;
 }
 
-/* CORPORATE */
-if(type === "corporate"){
-html = `
+if(type==="corporate"){
+html=`
 <h2>Corporate Video</h2>
-<p>Vídeos institucionais que comunicam valores e posicionamento.</p>
-
-<iframe src="https://player.vimeo.com/video/76979871"
-width="100%" height="400"></iframe>
-
-<div class="btn" onclick="window.location.href='corporate.html'">Ver mais</div>
-`;
+<p>Comunicação institucional estratégica.</p>
+<iframe src="https://player.vimeo.com/video/76979871"></iframe>
+<div class="btn" onclick="window.location.href='corporate.html'">Ver mais</div>`;
 }
 
 document.getElementById("content").innerHTML = html;
