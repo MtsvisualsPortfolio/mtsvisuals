@@ -6,7 +6,6 @@
 
 <title>MTS Visuals</title>
 
-<!-- FONTES -->
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;500;700&family=Great+Vibes&display=swap" rel="stylesheet">
 
 <style>
@@ -19,21 +18,26 @@ body{
   overflow-x:hidden;
 }
 
-/* BACKGROUND ANIMADO */
-body::before{
+/* FUNDO CINEMATOGRÁFICO */
+body::before, body::after{
   content:"";
   position:fixed;
-  inset:0;
+  inset:-20%;
   background:
-  radial-gradient(circle at 30% 20%, rgba(212,175,55,0.15), transparent 60%),
-  radial-gradient(circle at 80% 70%, rgba(255,255,255,0.08), transparent 60%);
-  animation:moveBg 12s infinite alternate ease-in-out;
-  z-index:-1;
+    radial-gradient(circle at 30% 30%, rgba(212,175,55,0.25), transparent 60%),
+    radial-gradient(circle at 70% 70%, rgba(255,255,255,0.08), transparent 60%);
+  filter:blur(80px);
+  animation:move 20s infinite alternate ease-in-out;
+  z-index:-2;
 }
 
-@keyframes moveBg{
-  0%{transform:translate(0,0)}
-  100%{transform:translate(60px,40px)}
+body::after{
+  animation-direction:alternate-reverse;
+}
+
+@keyframes move{
+  0%{transform:translate(0,0) scale(1)}
+  100%{transform:translate(80px,60px) scale(1.2)}
 }
 
 /* HERO */
@@ -46,20 +50,18 @@ body::before{
 }
 
 .logo{
-  font-family:'Great Vibes',cursive;
+  font-family:'Great Vibes';
   font-size:28px;
-  opacity:.8;
+  opacity:.7;
 }
 
 .hero h1{
-  font-size:56px;
-  margin-top:20px;
+  font-size:64px;
   line-height:1.1;
+  margin-top:20px;
 }
 
-.hero span{
-  color:#d4af37;
-}
+.gold{color:#d4af37}
 
 .hero p{
   margin-top:20px;
@@ -71,13 +73,13 @@ body::before{
   margin-top:40px;
   display:flex;
   gap:12px;
-  flex-wrap:wrap;
 }
 
 .nav button{
   padding:10px 20px;
   border:1px solid rgba(255,255,255,.2);
-  background:transparent;
+  background:rgba(255,255,255,0.03);
+  backdrop-filter:blur(10px);
   color:#fff;
   cursor:pointer;
   transition:.3s;
@@ -87,49 +89,47 @@ body::before{
   color:#000;
 }
 
-/* SECTION */
+/* SEÇÃO */
 .section{
-  padding:80px 8%;
+  padding:100px 8%;
 }
 
-.section h2{
-  font-size:32px;
-  margin-bottom:30px;
-}
-
-/* GLASS CARD */
-.card-glass{
-  background:rgba(255,255,255,0.03);
-  backdrop-filter:blur(20px);
-  border:1px solid rgba(255,255,255,0.08);
+/* GLASS */
+.glass{
+  background:rgba(255,255,255,0.04);
+  backdrop-filter:blur(30px);
   border-radius:20px;
-  padding:30px;
-  margin-bottom:30px;
+  border:1px solid rgba(255,255,255,0.1);
+  box-shadow:0 0 40px rgba(212,175,55,0.1);
+  padding:40px;
+  margin-bottom:40px;
 }
 
 /* GRID */
 .grid{
   display:grid;
   grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
-  gap:16px;
+  gap:20px;
 }
 
 /* CARD */
 .card{
-  border-radius:14px;
+  border-radius:16px;
   overflow:hidden;
-  background:#111;
+  background:rgba(255,255,255,0.03);
+  backdrop-filter:blur(10px);
   cursor:pointer;
-  transition:.3s;
+  transition:.4s;
 }
 .card:hover{
-  transform:translateY(-6px);
+  transform:translateY(-10px) scale(1.02);
+  box-shadow:0 20px 60px rgba(0,0,0,.5);
 }
 
 /* THUMB */
 .thumb{
   height:160px;
-  background:#222;
+  background:linear-gradient(120deg,#111,#222);
 }
 
 /* TITLE */
@@ -137,20 +137,22 @@ body::before{
   padding:16px;
 }
 
-/* NUMBERS */
-.numbers{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
-  gap:20px;
-  text-align:center;
+/* TEXTO */
+.text{
+  font-family:'Playfair Display';
+  line-height:1.7;
+  opacity:.85;
 }
-.numbers div{
-  font-size:28px;
+
+/* ANIMAÇÃO */
+.fade{
+  opacity:0;
+  transform:translateY(40px);
+  transition:1s ease;
 }
-.numbers span{
-  display:block;
-  font-size:12px;
-  opacity:.6;
+.fade.show{
+  opacity:1;
+  transform:translateY(0);
 }
 
 /* MODAL */
@@ -173,30 +175,21 @@ body::before{
   width:80vw;
   height:45vw;
 }
-
-/* TEXT */
-.text{
-  font-family:'Playfair Display',serif;
-  opacity:.8;
-  line-height:1.6;
-}
-
 </style>
 </head>
 
 <body>
 
-<!-- HERO -->
 <section class="hero">
 <div class="logo">Visuals</div>
 
 <h1>
 Todo projeto<br>
-carrega <span>uma ideia</span>.<br>
+carrega <span class="gold">uma ideia</span>.<br>
 Visuais são a forma dela existir.
 </h1>
 
-<p>Direção criativa, vídeo, motion e 3D</p>
+<p>Direção criativa • Vídeo • Motion • 3D</p>
 
 <div class="nav">
 <button onclick="scrollToSection('video')">Vídeo</button>
@@ -206,87 +199,27 @@ Visuais são a forma dela existir.
 </div>
 </section>
 
-<!-- VIDEO -->
-<section class="section" id="video">
+<section class="section fade" id="video">
+<div class="glass">
 <h2>Vídeo</h2>
-
 <div class="grid">
 <div class="card" data-video="https://player.vimeo.com/video/111111111">
 <div class="thumb"></div>
 <div class="title">Branded Content</div>
 </div>
 </div>
-</section>
-
-<!-- ILUSTRA -->
-<section class="section" id="ilustra">
-<h2>Ilustração</h2>
-<div class="grid">
-<div class="card" data-video="https://player.vimeo.com/video/222222222">
-<div class="thumb"></div>
-<div class="title">Digital</div>
-</div>
 </div>
 </section>
 
-<!-- 3D -->
-<section class="section" id="3d">
-<h2>Modelagem 3D</h2>
-<div class="grid">
-<div class="card" data-video="https://player.vimeo.com/video/333333333">
-<div class="thumb"></div>
-<div class="title">3D</div>
-</div>
-</div>
-</section>
-
-<!-- MOTION -->
-<section class="section" id="motion">
-<h2>Motion</h2>
-<div class="grid">
-<div class="card" data-video="https://player.vimeo.com/video/444444444">
-<div class="thumb"></div>
-<div class="title">Motion Design</div>
-</div>
-</div>
-</section>
-
-<!-- SOBRE -->
-<section class="section">
-<div class="card-glass">
+<section class="section fade">
+<div class="glass">
 <h2>Sobre</h2>
 <p class="text">
-Matheus dos Santos Alves, conhecido como MTS.
-Crescido na Zona Norte de São Paulo, sempre explorando arte, música e imagem.
+Matheus dos Santos Alves, criador multidisciplinar explorando imagem, som e movimento como linguagem.
 </p>
 </div>
 </section>
 
-<!-- TRAJETÓRIA -->
-<section class="section">
-<div class="card-glass">
-<h2>Trajetória</h2>
-<p class="text">
-2017 — início com design e freelas  
-2018–22 — evolução e clientes  
-2023 — entrada na produtora  
-Hoje — direção audiovisual completa
-</p>
-</div>
-</section>
-
-<!-- NÚMEROS -->
-<section class="section">
-<h2>Em números</h2>
-
-<div class="numbers">
-<div>9+<span>anos criando</span></div>
-<div>23<span>idade</span></div>
-<div>+50M<span>views</span></div>
-</div>
-</section>
-
-<!-- MODAL -->
 <div class="modal" id="modal"></div>
 
 <script>
@@ -309,6 +242,18 @@ modal.onclick=()=>{
   modal.classList.remove('active');
   modal.innerHTML="";
 }
+
+/* SCROLL ANIMATION */
+const fades = document.querySelectorAll('.fade');
+
+window.addEventListener('scroll', ()=>{
+  fades.forEach(el=>{
+    const top = el.getBoundingClientRect().top;
+    if(top < window.innerHeight - 100){
+      el.classList.add('show');
+    }
+  });
+});
 </script>
 
 </body>
