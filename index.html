@@ -105,7 +105,7 @@ transform:translateY(-12px) scale(1.03);
 box-shadow:0 30px 80px rgba(0,0,0,.6);
 }
 
-/* GLOW POR CATEGORIA */
+/* GLOW */
 .video:hover{box-shadow:0 30px 80px rgba(212,175,55,.3)}
 .motion:hover{box-shadow:0 30px 80px rgba(255,100,0,.3)}
 .threed:hover{box-shadow:0 30px 80px rgba(0,150,255,.3)}
@@ -151,6 +151,18 @@ footer{
 text-align:center;
 padding:80px;
 }
+
+/* ANIMAÇÃO */
+.fade{
+opacity:0;
+transform:translateY(40px);
+transition:1s ease;
+}
+
+.fade.show{
+opacity:1;
+transform:translateY(0);
+}
 </style>
 </head>
 
@@ -172,7 +184,7 @@ Visuais são a forma dela existir.
 </h1>
 </section>
 
-<section class="section" id="criacao">
+<section class="section fade" id="criacao">
 <h2>Criação</h2>
 
 <div class="grid">
@@ -212,34 +224,34 @@ Key Visual • Character Design • Concept Art • Personal Work
 </div>
 </section>
 
-<section class="section" id="sobre">
+<section class="section fade" id="sobre">
 <h2>Sobre</h2>
 <p class="text">
 Matheus dos Santos Alves, criador multidisciplinar explorando imagem, som e movimento como linguagem.
 </p>
 </section>
 
-<section class="section">
+<section class="section fade">
 <h2>Trajetória</h2>
 <p class="text">
 Design → Audiovisual → Direção criativa.
 </p>
 </section>
 
-<section class="section">
+<section class="section fade">
 <h2>Em números</h2>
 <p class="text">
 9 anos de mercado • 23 anos • +3 países • +50M views
 </p>
 </section>
 
-<section class="section">
+<section class="section fade">
 <p class="text">
 “A experiência multidisciplinar permite enxergar o projeto de forma completa e potencializar ideias.”
 </p>
 </section>
 
-<section class="section">
+<section class="section fade">
 <h2>Colaborações</h2>
 
 <a class="link" target="_blank" href="https://www.instagram.com/planoeplano/">Plano&Plano</a>
@@ -254,7 +266,7 @@ Design → Audiovisual → Direção criativa.
 
 </section>
 
-<footer id="contato">
+<footer id="contato" class="fade">
 <h2>Contato</h2>
 
 <a class="link" target="_blank"
@@ -281,6 +293,18 @@ document.getElementById(id).scrollIntoView({behavior:'smooth'});
 function goTop(){
 window.scrollTo({top:0,behavior:'smooth'});
 }
+
+/* ANIMAÇÃO SCROLL */
+const fades = document.querySelectorAll('.fade');
+
+window.addEventListener('scroll', ()=>{
+fades.forEach(el=>{
+const top = el.getBoundingClientRect().top;
+if(top < window.innerHeight - 100){
+el.classList.add('show');
+}
+});
+});
 </script>
 
 </body>
