@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Vídeo | MTS Visuals</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Inter:wght@300;500;700&family=Great+Vibes&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&family=Great+Vibes&display=swap" rel="stylesheet">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -14,6 +14,24 @@ body{
 font-family:'Inter',sans-serif;
 background:#020202;
 color:#fff;
+overflow-x:hidden;
+}
+
+/* FADE PAGE */
+body.fade-out{
+opacity:0;
+transition:0.6s ease;
+}
+
+/* GLOW CURSOR */
+.cursor-glow{
+position:fixed;
+width:300px;
+height:300px;
+background:radial-gradient(circle, rgba(212,175,55,0.15), transparent 70%);
+pointer-events:none;
+z-index:0;
+transform:translate(-50%,-50%);
 }
 
 /* NAV */
@@ -24,7 +42,7 @@ width:100%;
 display:flex;
 justify-content:space-between;
 padding:20px 8%;
-background:rgba(0,0,0,.5);
+background:rgba(0,0,0,.4);
 backdrop-filter:blur(20px);
 z-index:1000;
 }
@@ -35,25 +53,14 @@ font-size:22px;
 cursor:pointer;
 }
 
-nav a{
-margin-left:20px;
-text-decoration:none;
-color:#fff;
-opacity:.7;
-transition:.3s;
-}
-
-nav a:hover{
-opacity:1;
-color:#d4af37;
-}
-
 /* HERO */
 .hero{
 height:60vh;
 display:flex;
 align-items:center;
 padding:8%;
+z-index:1;
+position:relative;
 }
 
 .hero h1{
@@ -62,7 +69,6 @@ font-size:48px;
 
 .hero p{
 opacity:.7;
-max-width:500px;
 margin-top:10px;
 }
 
@@ -70,8 +76,10 @@ margin-top:10px;
 .grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:20px;
+gap:25px;
 padding:60px 8%;
+position:relative;
+z-index:1;
 }
 
 /* CARD */
@@ -86,6 +94,21 @@ transition:.4s;
 text-decoration:none;
 color:#fff;
 overflow:hidden;
+height:200px;
+}
+
+/* LIGHT EFFECT */
+.card::before{
+content:"";
+position:absolute;
+inset:0;
+background:radial-gradient(circle at var(--x) var(--y), rgba(212,175,55,0.2), transparent 40%);
+opacity:0;
+transition:.3s;
+}
+
+.card:hover::before{
+opacity:1;
 }
 
 .card:hover{
@@ -93,25 +116,23 @@ transform:translateY(-10px);
 border-color:#d4af37;
 }
 
-/* DESCRIÇÃO */
+/* TEXT */
 .desc{
-margin-top:10px;
 opacity:.7;
-font-size:14px;
+transition:.4s;
 }
 
-/* SUB (hover) */
 .sub{
-position:absolute;
-bottom:20px;
-left:40px;
-right:40px;
 opacity:0;
 transform:translateY(20px);
 transition:.4s;
 font-size:13px;
-line-height:1.6;
 color:#aaa;
+}
+
+.card:hover .desc{
+opacity:0;
+transform:translateY(-10px);
 }
 
 .card:hover .sub{
@@ -123,86 +144,76 @@ transform:translateY(0);
 
 <body>
 
+<div class="cursor-glow" id="cursorGlow"></div>
+
 <nav>
 <div class="logo" onclick="goHome()">Visuals</div>
-
-<div>
-<a href="index.html#criacao">Criação</a>
-<a href="index.html#sobre">Sobre</a>
-<a href="index.html#contato">Contato</a>
-</div>
 </nav>
 
 <section class="hero">
 <div>
 <h1>Vídeo</h1>
-<p>Produção audiovisual passando pela ideia, direção e execução até o impacto final.</p>
+<p>Produção audiovisual passando pela ideia até o impacto final.</p>
 </div>
 </section>
 
 <section class="grid">
 
-<a href="branded.html" class="card">
-<h2>Branded Content</h2>
-<div class="desc">Conteúdo para marcas com narrativa e identidade.</div>
-<div class="sub">
-Campanhas • Publicidade • Conteúdo digital • Branding visual
-</div>
+<a href="branded.html" class="card link">
+<h2>Branded</h2>
+<div class="desc">Conteúdo para marcas</div>
+<div class="sub">Campanhas • Branding • Conteúdo digital</div>
 </a>
 
-<a href="music.html" class="card">
-<h2>Music Video</h2>
-<div class="desc">Clipes com estética forte e direção criativa.</div>
-<div class="sub">
-Videoclipes • Performance • Narrativa musical • Estética autoral
-</div>
+<a href="event.html" class="card link">
+<h2>Event</h2>
+<div class="desc">Melhores momentos</div>
+<div class="sub">Shows • Festivais • Aftermovies</div>
 </a>
 
-<a href="event.html" class="card">
-<h2>Event Film</h2>
-<div class="desc">Vídeos de melhores momentos do evento.</div>
-<div class="sub">
-Shows • Festivais • Cobertura • Aftermovies
-</div>
-</a>
-
-<a href="podcast.html" class="card">
-<h2>Podcast Production</h2>
-<div class="desc">Captação, edição e identidade audiovisual.</div>
-<div class="sub">
-Captação multicâmera • Corte • Distribuição • Identidade visual
-</div>
-</a>
-
-<a href="social.html" class="card">
-<h2>Social Clips</h2>
-<div class="desc">Conteúdo rápido e estratégico para redes.</div>
-<div class="sub">
-Reels • TikTok • Shorts • Conteúdo viral
-</div>
-</a>
-
-<a href="doc.html" class="card">
-<h2>Documentary</h2>
-<div class="desc">Histórias reais com profundidade e estética.</div>
-<div class="sub">
-Entrevistas • Storytelling • Narrativa real • Cultura
-</div>
-</a>
-
-<a href="corporate.html" class="card">
-<h2>Corporate Video</h2>
-<div class="desc">Vídeos institucionais com linguagem moderna.</div>
-<div class="sub">
-Institucional • Branding • Apresentação • Conteúdo interno
-</div>
+<a href="music.html" class="card link">
+<h2>Music</h2>
+<div class="desc">Clipes musicais</div>
+<div class="sub">Narrativa • Estética • Performance</div>
 </a>
 
 </section>
 
 <script>
+
+/* CURSOR GLOW */
+const glow = document.getElementById("cursorGlow");
+
+document.addEventListener("mousemove", e=>{
+glow.style.left = e.clientX + "px";
+glow.style.top = e.clientY + "px";
+});
+
+/* CARD LIGHT FOLLOW */
+document.querySelectorAll('.card').forEach(card=>{
+card.addEventListener('mousemove', e=>{
+const rect = card.getBoundingClientRect();
+card.style.setProperty('--x', (e.clientX - rect.left) + 'px');
+card.style.setProperty('--y', (e.clientY - rect.top) + 'px');
+});
+});
+
+/* PAGE TRANSITION */
+document.querySelectorAll(".link").forEach(link=>{
+link.addEventListener("click", e=>{
+e.preventDefault();
+document.body.classList.add("fade-out");
+setTimeout(()=>{
+window.location.href = link.href;
+},600);
+});
+});
+
 function goHome(){
-window.location.href = "index.html";
+document.body.classList.add("fade-out");
+setTimeout(()=>{
+window.location.href="index.html";
+},600);
 }
 </script>
 
