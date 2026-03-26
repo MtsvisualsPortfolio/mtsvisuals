@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Vídeo</title>
+
+<style>
+body{background:#1a0a0a;color:#fff;font-family:sans-serif;padding:40px}
+.card{margin-bottom:20px;cursor:pointer}
+</style>
+</head>
+
+<body>
+
+<h1>Vídeo</h1>
+
+<div class="card" onclick="openVideo('111111111')">
+Branded Content
+</div>
+
+<div class="card" onclick="openVideo('222222222')">
+Event Film
+</div>
+
+<div id="player"></div>
+
+<script>
+function openVideo(id){
+document.getElementById('player').innerHTML =
+`<iframe src="https://player.vimeo.com/video/${id}"
+width="100%" height="400"></iframe>`;
+}
+</script>
+
+</body>
+</html>
