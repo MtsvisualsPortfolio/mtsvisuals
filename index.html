@@ -31,7 +31,7 @@ transition:1s;
 
 .loader h1{
 font-family:'Great Vibes';
-font-size:40px;
+font-size:42px;
 opacity:0;
 animation:fadeIn 2s forwards;
 }
@@ -56,7 +56,7 @@ z-index:0;
 transform:translate(-50%,-50%);
 }
 
-/* FADE PAGE */
+/* PAGE TRANSITION */
 .fade-out{
 opacity:0;
 transition:.6s;
@@ -77,8 +77,8 @@ z-index:1000;
 
 .logo{
 font-family:'Great Vibes';
-cursor:pointer;
 font-size:22px;
+cursor:pointer;
 }
 
 /* HERO */
@@ -87,27 +87,34 @@ height:100vh;
 display:flex;
 align-items:center;
 padding:8%;
+position:relative;
+z-index:1;
 }
 
 .hero h1{
 font-size:64px;
 max-width:800px;
+line-height:1.1;
 }
 
 /* SECTION */
 .section{
-padding:120px 8%;
+padding:140px 8%;
+position:relative;
+z-index:1;
 }
 
 /* GRID */
 .grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:20px;
+gap:25px;
+margin-top:40px;
 }
 
 /* CARD */
 .card{
+position:relative;
 padding:40px;
 border-radius:20px;
 background:rgba(255,255,255,0.04);
@@ -116,6 +123,25 @@ cursor:pointer;
 transition:.4s;
 text-decoration:none;
 color:#fff;
+overflow:hidden;
+height:200px;
+display:flex;
+flex-direction:column;
+justify-content:center;
+}
+
+/* LIGHT EFFECT */
+.card::before{
+content:"";
+position:absolute;
+inset:0;
+background:radial-gradient(circle at var(--x) var(--y), rgba(212,175,55,0.2), transparent 40%);
+opacity:0;
+transition:.3s;
+}
+
+.card:hover::before{
+opacity:1;
 }
 
 .card:hover{
@@ -124,9 +150,35 @@ border-color:#d4af37;
 }
 
 /* TEXT */
+.desc{
+opacity:.7;
+transition:.4s;
+font-size:14px;
+}
+
+.sub{
+opacity:0;
+transform:translateY(20px);
+transition:.4s;
+font-size:13px;
+color:#aaa;
+margin-top:10px;
+}
+
+.card:hover .desc{
+opacity:0;
+transform:translateY(-10px);
+}
+
+.card:hover .sub{
+opacity:1;
+transform:translateY(0);
+}
+
+/* TEXT BLOCK */
 .text{
 font-family:'Playfair Display';
-line-height:1.7;
+line-height:1.8;
 opacity:.85;
 max-width:700px;
 }
@@ -141,6 +193,14 @@ transition:1s;
 .fade.show{
 opacity:1;
 transform:translateY(0);
+}
+
+/* LINKS */
+.link{
+color:#d4af37;
+text-decoration:none;
+display:block;
+margin-top:10px;
 }
 </style>
 </head>
@@ -166,23 +226,60 @@ Visuais são a forma dela existir.
 </h1>
 </section>
 
-<section class="section fade">
+<section class="section fade" id="criacao">
 <h2>Criação</h2>
 
 <div class="grid">
-<a href="video.html" class="card link">Vídeo</a>
-<a href="#" class="card">Motion</a>
-<a href="#" class="card">3D</a>
-<a href="#" class="card">Ilustração</a>
+
+<a href="video.html" class="card link">
+<h2>Vídeo</h2>
+<div class="desc">Produção audiovisual completa</div>
+<div class="sub">Direção • Captação • Edição • Narrativa</div>
+</a>
+
+<a href="#" class="card">
+<h2>Motion</h2>
+<div class="desc">Animação e linguagem visual</div>
+<div class="sub">Logo • Branding • Motion Graphics</div>
+</a>
+
+<a href="#" class="card">
+<h2>3D</h2>
+<div class="desc">Construção tridimensional</div>
+<div class="sub">Archviz • Produto • Visual</div>
+</a>
+
+<a href="#" class="card">
+<h2>Ilustração</h2>
+<div class="desc">Expressão visual autoral</div>
+<div class="sub">Concept • Key Visual • Arte</div>
+</a>
+
 </div>
 </section>
 
-<section class="section fade">
+<section class="section fade" id="sobre">
 <h2>Sobre</h2>
 <p class="text">
-Minha base multidisciplinar — passando por ilustração, vídeo, motion e 3D — permite enxergar, resolver e construir ideias com profundidade.
+Matheus dos Santos Alves, criador multidisciplinar. Minha base passando por ilustração, vídeo, motion e 3D permite enxergar projetos com profundidade e construir soluções completas.
 </p>
 </section>
+
+<section class="section fade">
+<h2>Em números</h2>
+<p class="text">
+9 anos de mercado • 23 anos • +3 países • +50M views
+</p>
+</section>
+
+<footer class="section fade" id="contato">
+<h2>Contato</h2>
+
+<a class="link" href="https://wa.me/5511977520741">WhatsApp</a>
+<a class="link" href="mailto:mtsvisualss@gmail.com">Email</a>
+<a class="link" href="https://instagram.com/mtsvisualss">Instagram</a>
+
+</footer>
 
 <script>
 
@@ -200,7 +297,16 @@ glow.style.left = e.clientX+"px";
 glow.style.top = e.clientY+"px";
 });
 
-/* FADE SCROLL */
+/* LIGHT FOLLOW */
+document.querySelectorAll('.card').forEach(card=>{
+card.addEventListener('mousemove', e=>{
+const rect = card.getBoundingClientRect();
+card.style.setProperty('--x', (e.clientX - rect.left) + 'px');
+card.style.setProperty('--y', (e.clientY - rect.top) + 'px');
+});
+});
+
+/* SCROLL FADE */
 const fades = document.querySelectorAll('.fade');
 window.addEventListener('scroll', ()=>{
 fades.forEach(el=>{
