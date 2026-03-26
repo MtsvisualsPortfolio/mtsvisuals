@@ -41,12 +41,16 @@ opacity:.6;
 }
 .back:hover{opacity:1}
 
-/* CONTAINER */
-.container{
-padding:40px 8%;
+/* TITULO */
+h1{
+padding:0 8%;
+font-size:48px;
 }
 
 /* GRID */
+.container{
+padding:40px 8%;
+}
 .grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
@@ -63,38 +67,47 @@ border:1px solid rgba(255,255,255,0.1);
 cursor:pointer;
 transition:.4s;
 }
-
 .card:hover{
 transform:translateY(-10px) scale(1.02);
 box-shadow:0 20px 60px rgba(0,0,0,.6);
 }
 
-/* TITULO */
-h1{
-padding:0 8%;
-font-size:48px;
+.card h3{margin-bottom:10px}
+.card p{opacity:.6;font-size:14px}
+
+/* MODAL */
+.modal{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.95);
+display:flex;
+align-items:center;
+justify-content:center;
+opacity:0;
+pointer-events:none;
+transition:.4s;
+z-index:1000;
 }
 
-.card h3{
-margin-bottom:10px;
+.modal.active{
+opacity:1;
+pointer-events:all;
 }
 
-.card p{
-opacity:.6;
-font-size:14px;
-}
-
-/* PREVIEW */
-#content{
-padding:40px 8%;
+.modal-content{
+width:80%;
+max-width:900px;
 }
 
 iframe{
 width:100%;
-height:400px;
+height:450px;
 border:none;
 border-radius:12px;
 }
+
+.modal h2{margin-top:20px}
+.modal p{opacity:.6}
 
 .btn{
 margin-top:20px;
@@ -113,40 +126,39 @@ cursor:pointer;
 <h1>Vídeo</h1>
 
 <div class="container">
-
 <div class="grid">
 
-<div class="card" onclick="openSub('branded')">
+<div class="card" onclick="openModal('branded')">
 <h3>Branded Content</h3>
 <p>Conteúdos criados para marcas</p>
 </div>
 
-<div class="card" onclick="openSub('music')">
+<div class="card" onclick="openModal('music')">
 <h3>Music Video</h3>
 <p>Videoclipes com direção estética</p>
 </div>
 
-<div class="card" onclick="openSub('event')">
+<div class="card" onclick="openModal('event')">
 <h3>Event Film</h3>
 <p>Melhores momentos de eventos</p>
 </div>
 
-<div class="card" onclick="openSub('podcast')">
+<div class="card" onclick="openModal('podcast')">
 <h3>Podcast Production</h3>
 <p>Edição e cortes para redes sociais</p>
 </div>
 
-<div class="card" onclick="openSub('social')">
+<div class="card" onclick="openModal('social')">
 <h3>Social Clips</h3>
 <p>Conteúdos curtos e dinâmicos</p>
 </div>
 
-<div class="card" onclick="openSub('doc')">
+<div class="card" onclick="openModal('doc')">
 <h3>Documentary</h3>
 <p>Narrativas reais</p>
 </div>
 
-<div class="card" onclick="openSub('corporate')">
+<div class="card" onclick="openModal('corporate')">
 <h3>Corporate Video</h3>
 <p>Vídeos institucionais</p>
 </div>
@@ -154,7 +166,8 @@ cursor:pointer;
 </div>
 </div>
 
-<div id="content"></div>
+<!-- MODAL -->
+<div class="modal" id="modal"></div>
 
 <script>
 
@@ -162,67 +175,89 @@ function voltar(){
 window.location.href = "index.html";
 }
 
-function openSub(type){
+const modal = document.getElementById("modal");
 
-let html="";
+function openModal(type){
+
+let html = "";
 
 if(type==="branded"){
 html=`
+<div class="modal-content">
+<iframe src="https://player.vimeo.com/video/146022717?autoplay=1"></iframe>
 <h2>Branded Content</h2>
 <p>Conteúdos criados para marcas com foco em narrativa e conexão.</p>
-<iframe src="https://player.vimeo.com/video/146022717"></iframe>
-<div class="btn" onclick="window.location.href='branded.html'">Ver mais</div>`;
+<div class="btn" onclick="window.location.href='branded.html'">Ver mais</div>
+</div>`;
 }
 
 if(type==="music"){
 html=`
+<div class="modal-content">
+<iframe src="https://player.vimeo.com/video/22439234?autoplay=1"></iframe>
 <h2>Music Video</h2>
 <p>Videoclipes com direção estética alinhada ao artista.</p>
-<iframe src="https://player.vimeo.com/video/22439234"></iframe>
-<div class="btn" onclick="window.location.href='music.html'">Ver mais</div>`;
+<div class="btn" onclick="window.location.href='music.html'">Ver mais</div>
+</div>`;
 }
 
 if(type==="event"){
 html=`
+<div class="modal-content">
+<iframe src="https://player.vimeo.com/video/76979871?autoplay=1"></iframe>
 <h2>Event Film</h2>
 <p>Vídeos de melhores momentos do evento.</p>
-<iframe src="https://player.vimeo.com/video/76979871"></iframe>
-<div class="btn" onclick="window.location.href='event.html'">Ver mais</div>`;
+<div class="btn" onclick="window.location.href='event.html'">Ver mais</div>
+</div>`;
 }
 
 if(type==="podcast"){
 html=`
+<div class="modal-content">
+<iframe src="https://player.vimeo.com/video/76979871?autoplay=1"></iframe>
 <h2>Podcast Production</h2>
 <p>Edição e cortes otimizados para redes sociais.</p>
-<iframe src="https://player.vimeo.com/video/76979871"></iframe>
-<div class="btn" onclick="window.location.href='podcast.html'">Ver mais</div>`;
+<div class="btn" onclick="window.location.href='podcast.html'">Ver mais</div>
+</div>`;
 }
 
 if(type==="social"){
 html=`
+<div class="modal-content">
+<iframe src="https://player.vimeo.com/video/22439234?autoplay=1"></iframe>
 <h2>Social Clips</h2>
 <p>Conteúdos curtos focados em impacto.</p>
-<iframe src="https://player.vimeo.com/video/22439234"></iframe>
-<div class="btn" onclick="window.location.href='social.html'">Ver mais</div>`;
+<div class="btn" onclick="window.location.href='social.html'">Ver mais</div>
+</div>`;
 }
 
 if(type==="doc"){
 html=`
+<div class="modal-content">
+<iframe src="https://player.vimeo.com/video/146022717?autoplay=1"></iframe>
 <h2>Documentary</h2>
 <p>Narrativas reais com profundidade.</p>
-<iframe src="https://player.vimeo.com/video/146022717"></iframe>
-<div class="btn" onclick="window.location.href='doc.html'">Ver mais</div>`;
+<div class="btn" onclick="window.location.href='doc.html'">Ver mais</div>
+</div>`;
 }
 
 if(type==="corporate"){
 html=`
+<div class="modal-content">
+<iframe src="https://player.vimeo.com/video/76979871?autoplay=1"></iframe>
 <h2>Corporate Video</h2>
 <p>Comunicação institucional estratégica.</p>
-<iframe src="https://player.vimeo.com/video/76979871"></iframe>
-<div class="btn" onclick="window.location.href='corporate.html'">Ver mais</div>`;
+<div class="btn" onclick="window.location.href='corporate.html'">Ver mais</div>
+</div>`;
 }
 
-document.getElementById("content").innerHTML = html;
+modal.innerHTML = html;
+modal.classList.add("active");
+}
+
+modal.onclick = () => {
+modal.classList.remove("active");
+modal.innerHTML = "";
 }
 
 </script>
