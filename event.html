@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Event Film | MTS Visuals</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&family=Great+Vibes&display=swap" rel="stylesheet">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -14,6 +14,7 @@ body{
 font-family:'Inter',sans-serif;
 background:#050505;
 color:#fff;
+overflow-x:hidden;
 }
 
 /* NAV */
@@ -25,9 +26,15 @@ display:flex;
 justify-content:space-between;
 padding:20px 8%;
 background:rgba(0,0,0,.5);
+backdrop-filter:blur(20px);
+z-index:1000;
 }
 
-.logo{cursor:pointer}
+.logo{
+font-family:'Great Vibes';
+font-size:22px;
+cursor:pointer;
+}
 
 /* HERO */
 .hero{
@@ -37,17 +44,40 @@ align-items:center;
 padding:8%;
 }
 
-.hero h1{font-size:48px}
+.hero h1{
+font-size:48px;
+}
 
 /* PREVIEW */
 .preview{
-height:400px;
+position:relative;
+height:70vh;
 margin:40px 8%;
-background:rgba(255,255,255,0.05);
-display:flex;
-align-items:center;
-justify-content:center;
 border-radius:20px;
+overflow:hidden;
+}
+
+.preview video{
+width:100%;
+height:100%;
+object-fit:cover;
+filter:brightness(0.6);
+}
+
+/* OVERLAY */
+.overlay{
+position:absolute;
+bottom:40px;
+left:40px;
+}
+
+.overlay h2{
+font-size:28px;
+margin-bottom:10px;
+}
+
+.overlay p{
+opacity:.8;
 }
 
 /* GRID */
@@ -58,18 +88,41 @@ gap:20px;
 padding:40px 8%;
 }
 
-.video{
+/* CARD */
+.video-card{
+position:relative;
 height:200px;
-background:#111;
 border-radius:16px;
-display:flex;
-align-items:center;
-justify-content:center;
-transition:.3s;
+overflow:hidden;
+cursor:pointer;
 }
 
-.video:hover{
-transform:scale(1.05);
+.video-card video{
+width:100%;
+height:100%;
+object-fit:cover;
+filter:brightness(0.7);
+transition:.4s;
+}
+
+.video-card:hover video{
+transform:scale(1.1);
+}
+
+/* INFO */
+.info{
+position:absolute;
+bottom:15px;
+left:15px;
+}
+
+.info h3{
+font-size:16px;
+}
+
+.info span{
+font-size:12px;
+opacity:.7;
 }
 </style>
 </head>
@@ -81,17 +134,48 @@ transform:scale(1.05);
 </nav>
 
 <section class="hero">
-<h1>Event Film </h1>
+<h1>Event Film</h1>
 </section>
 
+<!-- PREVIEW PRINCIPAL -->
 <div class="preview">
-Preview principal (colocar vídeo depois)
+
+<video src="preview-event.mp4" autoplay muted loop></video>
+
+<div class="overlay">
+<h2>Eventos em movimento</h2>
+<p>Registro de energia, público e experiência em tempo real.</p>
 </div>
 
+</div>
+
+<!-- GRID DE PROJETOS -->
 <section class="grid">
-<div class="video">Projeto 1</div>
-<div class="video">Projeto 2</div>
-<div class="video">Projeto 3</div>
+
+<div class="video-card">
+<video src="video1.mp4" muted loop autoplay></video>
+<div class="info">
+<h3>Festival XYZ</h3>
+<span>2024</span>
+</div>
+</div>
+
+<div class="video-card">
+<video src="video2.mp4" muted loop autoplay></video>
+<div class="info">
+<h3>Show ABC</h3>
+<span>2023</span>
+</div>
+</div>
+
+<div class="video-card">
+<video src="video3.mp4" muted loop autoplay></video>
+<div class="info">
+<h3>Evento Corporativo</h3>
+<span>2023</span>
+</div>
+</div>
+
 </section>
 
 <script>
