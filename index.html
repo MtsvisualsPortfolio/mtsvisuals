@@ -61,26 +61,45 @@ padding:8%;
 }
 
 .hero h1{
-font-size:70px;
+font-size:68px;
 line-height:1.05;
 }
 
-.light{opacity:.6}
-.strong{font-family:'Playfair Display';font-size:80px}
-.script{font-family:'Great Vibes';font-size:85px;color:#d4af37}
+.light{opacity:.5}
+.strong{font-family:'Playfair Display';font-size:78px}
+.script{font-family:'Great Vibes';font-size:82px;color:#cfcfcf}
 
 /* SECTION */
 .section{
-padding:90px 8%;
+padding:80px 8%;
 }
 
-/* GLASS */
+/* GLASS METAL */
 .glass{
-background:rgba(255,255,255,0.06);
+background:linear-gradient(145deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
 border:1px solid rgba(255,255,255,0.2);
 backdrop-filter:blur(18px);
 border-radius:20px;
-padding:35px;
+padding:30px;
+position:relative;
+overflow:hidden;
+}
+
+.glass::before{
+content:"";
+position:absolute;
+top:0;
+left:-100%;
+width:200%;
+height:100%;
+background:linear-gradient(120deg, transparent, rgba(255,255,255,0.2), transparent);
+transform:skewX(-20deg);
+animation:shine 6s infinite;
+}
+
+@keyframes shine{
+0%{left:-100%}
+100%{left:100%}
 }
 
 /* GRID */
@@ -88,30 +107,31 @@ padding:35px;
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 gap:20px;
-margin-top:30px;
+margin-top:25px;
 }
 
 .card{
-padding:30px;
-border-radius:20px;
-background:rgba(255,255,255,0.05);
-border:1px solid rgba(255,255,255,0.1);
+padding:28px;
+border-radius:18px;
+background:rgba(255,255,255,0.04);
+border:1px solid rgba(255,255,255,0.15);
 transition:.4s;
 cursor:pointer;
 text-decoration:none;
 color:#fff;
+position:relative;
 }
 
 .card:hover{
-transform:translateY(-10px);
-border-color:#d4af37;
+transform:translateY(-8px) scale(1.02);
+border-color:#fff;
 }
 
 /* TEXT */
 .text{
 font-family:'Playfair Display';
 line-height:1.7;
-opacity:.85;
+opacity:.9;
 }
 
 /* TIMELINE */
@@ -121,7 +141,7 @@ padding-left:20px;
 }
 
 .timeline div{
-margin-bottom:15px;
+margin-bottom:12px;
 }
 
 /* NUMBERS */
@@ -134,21 +154,21 @@ text-align:center;
 }
 
 .numbers h3{
-color:#d4af37;
-font-size:36px;
+color:#e5e5e5;
+font-size:34px;
 }
 
 /* BRANDS */
 .brands{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
-gap:15px;
+gap:12px;
 margin-top:20px;
 }
 
 .brands a{
-padding:12px;
-border-radius:12px;
+padding:10px;
+border-radius:10px;
 background:rgba(255,255,255,0.05);
 text-align:center;
 transition:.3s;
@@ -157,20 +177,20 @@ color:#fff;
 }
 
 .brands a:hover{
-background:#d4af37;
+background:#fff;
 color:#000;
 }
 
 /* CONTATO */
 .contact{
 display:flex;
-gap:20px;
+gap:15px;
 flex-wrap:wrap;
 margin-top:20px;
 }
 
 .contact a{
-padding:12px 20px;
+padding:10px 18px;
 border-radius:30px;
 border:1px solid rgba(255,255,255,0.2);
 text-decoration:none;
@@ -179,7 +199,7 @@ transition:.3s;
 }
 
 .contact a:hover{
-background:#d4af37;
+background:#fff;
 color:#000;
 }
 
@@ -206,7 +226,6 @@ transform:translateY(0);
 <div class="logo" onclick="scrollToTop()">Visuals</div>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
 <h1>
 <span class="light">Todo projeto carrega</span><br>
@@ -216,7 +235,6 @@ transform:translateY(0);
 </h1>
 </section>
 
-<!-- CRIAÇÃO -->
 <section class="section fade">
 <div class="glass">
 <h2>Criação</h2>
@@ -231,152 +249,108 @@ transform:translateY(0);
 </div>
 </section>
 
-<!-- SOBRE COMPLETO -->
 <section class="section fade">
 <div class="glass">
 <h2>Sobre</h2>
-
 <p class="text">
 Matheus dos Santos Alves. Mais conhecido como MTS.<br><br>
-
-Como toda criança, eu gostava de desenhar. A diferença é que eu nunca parei.<br><br>
-
-Cresci na Zona Norte de São Paulo — a rua, a música e o desenho sempre andaram juntos. Com o tempo ficou claro que criar não era opção, era necessidade.<br><br>
-
-Comecei aos 14 anos vendendo artes como freelancer — logos, capas, retratos.<br><br>
-
-Com o tempo, a prática virou processo e os projetos cresceram.<br><br>
-
-Hoje atuo como diretor audiovisual — da ideia à entrega final.<br><br>
-
-Minha base multidisciplinar — passando por ilustração, vídeo, motion e 3D — me permite construir soluções completas.<br><br>
-
-Não é sobre ferramenta.<br>
-É sobre dar forma a ideias.
+Cresci na Zona Norte de São Paulo onde rua, música e desenho sempre caminharam juntos.<br><br>
+Comecei aos 14 anos como freelancer e hoje atuo como diretor audiovisual, construindo projetos do conceito à entrega.<br><br>
+Minha base multidisciplinar — passando por ilustração, vídeo, motion e 3D — me permite enxergar e construir ideias de forma completa.
 </p>
-
 </div>
 </section>
 
-<!-- TRAJETÓRIA -->
 <section class="section fade">
 <div class="glass">
 <h2>Trajetória</h2>
-
 <div class="timeline">
-<div><b>2017</b> — Freelancer</div>
-<div><b>2018–22</b> — Evolução técnica</div>
-<div><b>2023</b> — Empuxo Criativo</div>
-<div><b>Hoje</b> — Direção audiovisual</div>
+<div>2017 — Freelancer</div>
+<div>2018–22 — Evolução técnica</div>
+<div>2023 — Empuxo Criativo</div>
+<div>Hoje — Direção audiovisual</div>
 </div>
-
 </div>
 </section>
 
-<!-- NÚMEROS -->
 <section class="section fade">
 <div class="glass">
 <h2>Em números</h2>
-
 <div class="numbers">
 <div><h3>9+</h3><p>anos</p></div>
 <div><h3>23</h3><p>idade</p></div>
 <div><h3>3+</h3><p>países</p></div>
 <div><h3>50M+</h3><p>views</p></div>
 </div>
-
 </div>
 </section>
 
-<!-- FRASE -->
 <section class="section fade">
 <div class="glass">
-<p>
-“A experiência multidisciplinar permite enxergar o projeto de forma completa e potencializar ideias.”
-</p>
+<p>“A experiência multidisciplinar permite enxergar o projeto de forma completa e potencializar ideias.”</p>
 </div>
 </section>
 
-<!-- COLABS -->
 <section class="section fade">
 <div class="glass">
 <h2>Colaborações</h2>
-
 <div class="brands">
 <a href="https://www.instagram.com/planoeplano/">Plano&Plano</a>
 <a href="https://www.instagram.com/djmattd/">Matt D</a>
 <a href="https://www.instagram.com/macvlr/">Tiago Mac</a>
 <a href="https://www.instagram.com/majorrd/">Major RD</a>
-<a href="https://www.instagram.com/pele.milflows/">Pele Milflows</a>
-<a href="https://www.instagram.com/chrigoroficial/">Chrigor</a>
-<a href="https://www.instagram.com/rastape/">Rastapé</a>
-<a href="https://www.instagram.com/greecassuaprodutora_/">Gree Cassua</a>
 <a href="https://www.instagram.com/empuxocriativo/">Empuxo Criativo</a>
 </div>
-
 </div>
 </section>
 
-<!-- CONTATO -->
 <section class="section fade">
 <div class="glass">
 <h2>Contato</h2>
-
 <div class="contact">
 <a href="https://wa.me/5511977520741">WhatsApp</a>
 <a href="mailto:mtsvisualss@gmail.com">Email</a>
 <a href="https://instagram.com/mtsvisualss">Instagram</a>
 </div>
-
 </div>
 </section>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
 
 <script>
+const scene=new THREE.Scene();
+const camera=new THREE.PerspectiveCamera(75,innerWidth/innerHeight,0.1,1000);
+const renderer=new THREE.WebGLRenderer({canvas:bg,alpha:true,antialias:true});
+renderer.setSize(innerWidth,innerHeight);
 
-/* THREE + SHADER */
-const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
-const renderer = new THREE.WebGLRenderer({canvas:bg, alpha:true, antialias:true});
-renderer.setSize(window.innerWidth, window.innerHeight);
+const geometry=new THREE.IcosahedronGeometry(1.8,50);
 
-/* LIGHT */
-const light = new THREE.PointLight(0xffffff,1);
-light.position.set(5,5,5);
-scene.add(light);
-
-/* GEOMETRY */
-const geometry = new THREE.SphereGeometry(1.5,128,128);
-
-/* SHADER */
-const material = new THREE.ShaderMaterial({
+const material=new THREE.ShaderMaterial({
 uniforms:{time:{value:0}},
 vertexShader:`
 uniform float time;
 void main(){
-vec3 pos = position;
-float noise = sin(pos.x*3.0+time)*0.1 + sin(pos.y*4.0+time)*0.1;
-pos += normal * noise;
-gl_Position = projectionMatrix * modelViewMatrix * vec4(pos,1.0);
+vec3 pos=position;
+float noise=sin(pos.x*4.0+time)*0.15 + sin(pos.y*3.0+time)*0.15;
+pos+=normal*noise;
+gl_Position=projectionMatrix*modelViewMatrix*vec4(pos,1.0);
 }`,
-fragmentShader:`void main(){gl_FragColor=vec4(0.83,0.68,0.21,1.0);}`
+fragmentShader:`void main(){gl_FragColor=vec4(0.8,0.8,0.8,1.0);}`
 });
 
-const blob = new THREE.Mesh(geometry, material);
+const blob=new THREE.Mesh(geometry,material);
 scene.add(blob);
 
-camera.position.z = 5;
+camera.position.z=5;
 
 function animate(){
 requestAnimationFrame(animate);
-material.uniforms.time.value += 0.03;
-blob.rotation.y += 0.003;
+material.uniforms.time.value+=0.02;
+blob.rotation.y+=0.002;
 renderer.render(scene,camera);
 }
 animate();
 
-/* SCROLL FADE */
 const fades=document.querySelectorAll('.fade');
 window.addEventListener('scroll',()=>{
 fades.forEach(el=>{
@@ -387,7 +361,7 @@ el.classList.add('show');
 });
 
 function scrollToTop(){
-window.scrollTo({top:0,behavior:'smooth'});
+scrollTo({top:0,behavior:'smooth'});
 }
 </script>
 
