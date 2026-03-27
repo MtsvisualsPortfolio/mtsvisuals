@@ -26,10 +26,10 @@ width:100%;
 height:100%;
 object-fit:cover;
 z-index:-3;
-filter:brightness(0.4) contrast(1.2) blur(8px);
+filter:brightness(0.35) contrast(1.4) saturate(0.8);
 }
 
-/* OVERLAY */
+/* OVERLAY ESCURO */
 .overlay{
 position:fixed;
 inset:0;
@@ -51,6 +51,8 @@ nav{
 position:fixed;
 top:0;
 width:100%;
+display:flex;
+justify-content:space-between;
 padding:20px 8%;
 backdrop-filter:blur(10px);
 z-index:1000;
@@ -62,16 +64,23 @@ font-size:26px;
 cursor:pointer;
 }
 
+nav a{
+margin-left:20px;
+cursor:pointer;
+opacity:.7;
+}
+nav a:hover{opacity:1}
+
 /* HERO */
 .hero{
-height:85vh;
+height:90vh;
 display:flex;
 align-items:center;
 padding:8%;
 }
 
 .hero h1{
-font-size:70px;
+font-size:68px;
 line-height:1.05;
 }
 
@@ -81,10 +90,10 @@ line-height:1.05;
 
 /* SECTION */
 .section{
-padding:80px 8%;
+padding:70px 8%;
 }
 
-/* GLASS */
+/* GLASS PREMIUM */
 .glass{
 background:rgba(255,255,255,0.05);
 border:1px solid rgba(212,175,55,0.2);
@@ -97,24 +106,25 @@ position:relative;
 /* GRID */
 .grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
 gap:20px;
 margin-top:25px;
 }
 
 .card{
-padding:28px;
-border-radius:18px;
+padding:30px;
+border-radius:20px;
 background:rgba(255,255,255,0.04);
 border:1px solid rgba(255,255,255,0.1);
 transition:.4s;
 cursor:pointer;
 text-decoration:none;
 color:#fff;
+position:relative;
 }
 
 .card:hover{
-transform:translateY(-8px);
+transform:translateY(-10px);
 border-color:#d4af37;
 box-shadow:0 10px 40px rgba(212,175,55,0.2);
 }
@@ -213,16 +223,23 @@ transform:translateY(0);
 
 <!-- VIDEO FUNDO -->
 <video class="bg-video" autoplay muted loop playsinline>
-<source src="https://cdn.coverr.co/videos/coverr-liquid-metal-abstract-5173/1080p.mp4" type="video/mp4">
+<source src="metal.mp4" type="video/mp4">
 </video>
 
 <div class="overlay"></div>
 <div class="texture"></div>
 
+<!-- NAV -->
 <nav>
-<div class="logo" onclick="scrollToTop()">Visuals</div>
+<div class="logo" onclick="scrollTop()">Visuals</div>
+<div>
+<a onclick="scrollToSection('criacao')">Criação</a>
+<a onclick="scrollToSection('sobre')">Sobre</a>
+<a onclick="scrollToSection('contato')">Contato</a>
+</div>
 </nav>
 
+<!-- HERO -->
 <section class="hero">
 <h1>
 <span class="light">Todo projeto carrega</span><br>
@@ -232,40 +249,128 @@ transform:translateY(0);
 </h1>
 </section>
 
-<section class="section fade">
+<!-- CRIAÇÃO -->
+<section class="section fade" id="criacao">
 <div class="glass">
 <h2>Criação</h2>
+
 <div class="grid">
 <a href="video.html" class="card">Vídeo</a>
-<div class="card">Motion</div>
-<div class="card">3D</div>
-<div class="card">Ilustração</div>
+<a href="motion.html" class="card">Motion</a>
+<a href="3d.html" class="card">3D</a>
+<a href="ilustracao.html" class="card">Ilustração</a>
 </div>
+
 </div>
 </section>
 
-<section class="section fade">
+<!-- SOBRE -->
+<section class="section fade" id="sobre">
 <div class="glass">
 <h2>Sobre</h2>
+
 <p class="text">
-(cole aqui seu texto completo que já fizemos)
+Matheus dos Santos Alves. Mais conhecido como MTS.<br><br>
+
+Como toda criança, eu gostava de desenhar. A diferença é que eu nunca parei.<br><br>
+
+Cresci na Zona Norte de São Paulo — a rua, a música e o desenho sempre andaram juntos. Com o tempo ficou claro que criar não era opção, era necessidade.<br><br>
+
+Comecei aos 14 anos vendendo artes como freelancer — logos, capas, retratos.<br><br>
+
+Hoje atuo como diretor audiovisual — da ideia à entrega final.<br><br>
+
+Minha base multidisciplinar — passando por ilustração, vídeo, motion e 3D — me permite construir soluções completas.
+</p>
+
+</div>
+</section>
+
+<!-- TRAJETÓRIA -->
+<section class="section fade">
+<div class="glass">
+<h2>Trajetória</h2>
+
+<div class="timeline">
+<div>2017 — Freelancer</div>
+<div>2018–22 — Evolução técnica</div>
+<div>2023 — Empuxo Criativo</div>
+<div>Hoje — Direção audiovisual</div>
+</div>
+
+</div>
+</section>
+
+<!-- NÚMEROS -->
+<section class="section fade">
+<div class="glass">
+<h2>Em números</h2>
+
+<div class="numbers">
+<div><h3>9+</h3><p>anos</p></div>
+<div><h3>23</h3><p>idade</p></div>
+<div><h3>3+</h3><p>países</p></div>
+<div><h3>50M+</h3><p>views</p></div>
+</div>
+
+</div>
+</section>
+
+<!-- FRASE -->
+<section class="section fade">
+<div class="glass">
+<p>
+“A experiência multidisciplinar permite enxergar o projeto de forma completa e potencializar ideias.”
 </p>
 </div>
 </section>
 
+<!-- COLABORAÇÕES -->
 <section class="section fade">
 <div class="glass">
-<h2>Contato</h2>
-<div class="contact">
-<a href="https://wa.me/5511977520741">WhatsApp</a>
-<a href="mailto:mtsvisualss@gmail.com">Email</a>
-<a href="https://instagram.com/mtsvisualss">Instagram</a>
+<h2>Colaborações</h2>
+
+<div class="brands">
+<a href="https://www.instagram.com/planoeplano/" target="_blank">Plano&Plano</a>
+<a href="https://www.instagram.com/djmattd/" target="_blank">Matt D</a>
+<a href="https://www.instagram.com/macvlr/" target="_blank">Tiago Mac</a>
+<a href="https://www.instagram.com/majorrd/" target="_blank">Major RD</a>
+<a href="https://www.instagram.com/pele.milflows/" target="_blank">Pele Milflows</a>
+<a href="https://www.instagram.com/chrigoroficial/" target="_blank">Chrigor</a>
+<a href="https://www.instagram.com/rastape/" target="_blank">Rastapé</a>
+<a href="https://www.instagram.com/greecassuaprodutora_" target="_blank">Gree Cassua</a>
+<a href="https://www.instagram.com/empuxocriativo/" target="_blank">Empuxo Criativo</a>
 </div>
+
+</div>
+</section>
+
+<!-- CONTATO -->
+<section class="section fade" id="contato">
+<div class="glass">
+<h2>Contato</h2>
+
+<div class="contact">
+<a href="https://wa.me/5511977520741" target="_blank">WhatsApp</a>
+<a href="mailto:mtsvisualss@gmail.com">Email</a>
+<a href="https://instagram.com/mtsvisualss" target="_blank">Instagram</a>
+</div>
+
 </div>
 </section>
 
 <script>
+function scrollToSection(id){
+document.getElementById(id).scrollIntoView({behavior:'smooth'});
+}
+
+function scrollTop(){
+window.scrollTo({top:0,behavior:'smooth'});
+}
+
+/* ANIMAÇÃO */
 const fades=document.querySelectorAll('.fade');
+
 window.addEventListener('scroll',()=>{
 fades.forEach(el=>{
 if(el.getBoundingClientRect().top<window.innerHeight-100){
@@ -273,10 +378,6 @@ el.classList.add('show');
 }
 });
 });
-
-function scrollToTop(){
-scrollTo({top:0,behavior:'smooth'});
-}
 </script>
 
 </body>
