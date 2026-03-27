@@ -17,13 +17,23 @@ color:#fff;
 overflow-x:hidden;
 }
 
-/* CANVAS */
-#bg{
+/* VIDEO FUNDO */
+.bg-video{
 position:fixed;
 top:0;
 left:0;
 width:100%;
 height:100%;
+object-fit:cover;
+z-index:-3;
+filter:brightness(0.4) contrast(1.2) blur(8px);
+}
+
+/* OVERLAY */
+.overlay{
+position:fixed;
+inset:0;
+background:linear-gradient(to bottom, rgba(0,0,0,0.7), #050505);
 z-index:-2;
 }
 
@@ -61,45 +71,27 @@ padding:8%;
 }
 
 .hero h1{
-font-size:68px;
+font-size:70px;
 line-height:1.05;
 }
 
-.light{opacity:.5}
-.strong{font-family:'Playfair Display';font-size:78px}
-.script{font-family:'Great Vibes';font-size:82px;color:#cfcfcf}
+.light{opacity:.6}
+.strong{font-family:'Playfair Display';font-size:80px}
+.script{font-family:'Great Vibes';font-size:85px;color:#d4af37}
 
 /* SECTION */
 .section{
 padding:80px 8%;
 }
 
-/* GLASS METAL */
+/* GLASS */
 .glass{
-background:linear-gradient(145deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
-border:1px solid rgba(255,255,255,0.2);
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(212,175,55,0.2);
 backdrop-filter:blur(18px);
 border-radius:20px;
 padding:30px;
 position:relative;
-overflow:hidden;
-}
-
-.glass::before{
-content:"";
-position:absolute;
-top:0;
-left:-100%;
-width:200%;
-height:100%;
-background:linear-gradient(120deg, transparent, rgba(255,255,255,0.2), transparent);
-transform:skewX(-20deg);
-animation:shine 6s infinite;
-}
-
-@keyframes shine{
-0%{left:-100%}
-100%{left:100%}
 }
 
 /* GRID */
@@ -114,17 +106,17 @@ margin-top:25px;
 padding:28px;
 border-radius:18px;
 background:rgba(255,255,255,0.04);
-border:1px solid rgba(255,255,255,0.15);
+border:1px solid rgba(255,255,255,0.1);
 transition:.4s;
 cursor:pointer;
 text-decoration:none;
 color:#fff;
-position:relative;
 }
 
 .card:hover{
-transform:translateY(-8px) scale(1.02);
-border-color:#fff;
+transform:translateY(-8px);
+border-color:#d4af37;
+box-shadow:0 10px 40px rgba(212,175,55,0.2);
 }
 
 /* TEXT */
@@ -154,7 +146,7 @@ text-align:center;
 }
 
 .numbers h3{
-color:#e5e5e5;
+color:#d4af37;
 font-size:34px;
 }
 
@@ -177,7 +169,7 @@ color:#fff;
 }
 
 .brands a:hover{
-background:#fff;
+background:#d4af37;
 color:#000;
 }
 
@@ -192,14 +184,14 @@ margin-top:20px;
 .contact a{
 padding:10px 18px;
 border-radius:30px;
-border:1px solid rgba(255,255,255,0.2);
+border:1px solid rgba(212,175,55,0.3);
 text-decoration:none;
 color:#fff;
 transition:.3s;
 }
 
 .contact a:hover{
-background:#fff;
+background:#d4af37;
 color:#000;
 }
 
@@ -219,7 +211,12 @@ transform:translateY(0);
 
 <body>
 
-<canvas id="bg"></canvas>
+<!-- VIDEO FUNDO -->
+<video class="bg-video" autoplay muted loop playsinline>
+<source src="https://cdn.coverr.co/videos/coverr-liquid-metal-abstract-5173/1080p.mp4" type="video/mp4">
+</video>
+
+<div class="overlay"></div>
 <div class="texture"></div>
 
 <nav>
@@ -238,14 +235,12 @@ transform:translateY(0);
 <section class="section fade">
 <div class="glass">
 <h2>Criação</h2>
-
 <div class="grid">
 <a href="video.html" class="card">Vídeo</a>
 <div class="card">Motion</div>
 <div class="card">3D</div>
 <div class="card">Ilustração</div>
 </div>
-
 </div>
 </section>
 
@@ -253,54 +248,8 @@ transform:translateY(0);
 <div class="glass">
 <h2>Sobre</h2>
 <p class="text">
-Matheus dos Santos Alves. Mais conhecido como MTS.<br><br>
-Cresci na Zona Norte de São Paulo onde rua, música e desenho sempre caminharam juntos.<br><br>
-Comecei aos 14 anos como freelancer e hoje atuo como diretor audiovisual, construindo projetos do conceito à entrega.<br><br>
-Minha base multidisciplinar — passando por ilustração, vídeo, motion e 3D — me permite enxergar e construir ideias de forma completa.
+(cole aqui seu texto completo que já fizemos)
 </p>
-</div>
-</section>
-
-<section class="section fade">
-<div class="glass">
-<h2>Trajetória</h2>
-<div class="timeline">
-<div>2017 — Freelancer</div>
-<div>2018–22 — Evolução técnica</div>
-<div>2023 — Empuxo Criativo</div>
-<div>Hoje — Direção audiovisual</div>
-</div>
-</div>
-</section>
-
-<section class="section fade">
-<div class="glass">
-<h2>Em números</h2>
-<div class="numbers">
-<div><h3>9+</h3><p>anos</p></div>
-<div><h3>23</h3><p>idade</p></div>
-<div><h3>3+</h3><p>países</p></div>
-<div><h3>50M+</h3><p>views</p></div>
-</div>
-</div>
-</section>
-
-<section class="section fade">
-<div class="glass">
-<p>“A experiência multidisciplinar permite enxergar o projeto de forma completa e potencializar ideias.”</p>
-</div>
-</section>
-
-<section class="section fade">
-<div class="glass">
-<h2>Colaborações</h2>
-<div class="brands">
-<a href="https://www.instagram.com/planoeplano/">Plano&Plano</a>
-<a href="https://www.instagram.com/djmattd/">Matt D</a>
-<a href="https://www.instagram.com/macvlr/">Tiago Mac</a>
-<a href="https://www.instagram.com/majorrd/">Major RD</a>
-<a href="https://www.instagram.com/empuxocriativo/">Empuxo Criativo</a>
-</div>
 </div>
 </section>
 
@@ -315,42 +264,7 @@ Minha base multidisciplinar — passando por ilustração, vídeo, motion e 3D �
 </div>
 </section>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
-
 <script>
-const scene=new THREE.Scene();
-const camera=new THREE.PerspectiveCamera(75,innerWidth/innerHeight,0.1,1000);
-const renderer=new THREE.WebGLRenderer({canvas:bg,alpha:true,antialias:true});
-renderer.setSize(innerWidth,innerHeight);
-
-const geometry=new THREE.IcosahedronGeometry(1.8,50);
-
-const material=new THREE.ShaderMaterial({
-uniforms:{time:{value:0}},
-vertexShader:`
-uniform float time;
-void main(){
-vec3 pos=position;
-float noise=sin(pos.x*4.0+time)*0.15 + sin(pos.y*3.0+time)*0.15;
-pos+=normal*noise;
-gl_Position=projectionMatrix*modelViewMatrix*vec4(pos,1.0);
-}`,
-fragmentShader:`void main(){gl_FragColor=vec4(0.8,0.8,0.8,1.0);}`
-});
-
-const blob=new THREE.Mesh(geometry,material);
-scene.add(blob);
-
-camera.position.z=5;
-
-function animate(){
-requestAnimationFrame(animate);
-material.uniforms.time.value+=0.02;
-blob.rotation.y+=0.002;
-renderer.render(scene,camera);
-}
-animate();
-
 const fades=document.querySelectorAll('.fade');
 window.addEventListener('scroll',()=>{
 fades.forEach(el=>{
