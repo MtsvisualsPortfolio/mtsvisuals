@@ -17,7 +17,7 @@ background:#000;
 overflow-x:hidden;
 }
 
-/* BG VIDEO */
+/* VIDEO BG */
 .bg-video{
 position:fixed;
 width:100%;
@@ -58,63 +58,28 @@ cursor:pointer;
 .mts{
 display:flex;
 align-items:flex-end;
-gap:3px;
+gap:4px;
 }
 
-/* LETRA BASE */
+/* VISOR FIXO */
 .letter{
-width:22px;
-height:32px;
+width:24px;
+height:34px;
 overflow:hidden;
 position:relative;
 }
 
-/* SPRITE */
-.letter span{
+/* SPRITE SEM DISTORÇÃO */
+.letter::before{
+content:"";
 position:absolute;
+left:0;
+top:0;
 width:100%;
-height:900%;
+height:100%;
 background-repeat:no-repeat;
-background-size:100% 100%;
-}
-
-/* 🔥 AJUSTES INDIVIDUAIS REAIS */
-
-/* M */
-.m span{
-background-image:url('sprite-m.png');
-animation: animM 6s steps(8) infinite;
-transform:translateY(-2%);
-}
-
-/* T */
-.t span{
-background-image:url('sprite-t.png');
-animation: animT 5s steps(8) infinite;
-transform:translateY(-6%);
-}
-
-/* S */
-.s span{
-background-image:url('sprite-s.png');
-animation: animS 7s steps(7) infinite;
-transform:translateY(-10%);
-}
-
-/* 🎯 ANIMAÇÕES COM RANGE DIFERENTE */
-@keyframes animM{
-from{transform:translateY(-2%);}
-to{transform:translateY(-89%);}
-}
-
-@keyframes animT{
-from{transform:translateY(-6%);}
-to{transform:translateY(-93%);}
-}
-
-@keyframes animS{
-from{transform:translateY(-10%);}
-to{transform:translateY(-95%);}
+background-size:contain; /* 🔥 mantém proporção */
+background-position:center;
 }
 
 /* TEXTO */
@@ -123,34 +88,12 @@ font-family:'Great Vibes';
 font-size:28px;
 }
 
-/* NAV LINKS */
-nav a{
-margin-left:20px;
-cursor:pointer;
-opacity:.7;
-}
-nav a:hover{opacity:1}
-
-/* HERO */
-.hero{
-height:100vh;
-display:flex;
-align-items:center;
-padding:8%;
-}
-
-.hero h1{
-font-size:64px;
-}
-
+/* RESTO */
+.hero{height:100vh;display:flex;align-items:center;padding:8%}
+.hero h1{font-size:64px}
 .gold{color:#d4af37}
+.section{padding:90px 8%}
 
-/* SECTION */
-.section{
-padding:90px 8%;
-}
-
-/* BOX */
 .box{
 background:rgba(255,255,255,0.05);
 border:1px solid rgba(255,255,255,0.1);
@@ -160,7 +103,6 @@ border-radius:20px;
 margin-top:25px;
 }
 
-/* GRID */
 .grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
@@ -176,23 +118,10 @@ text-decoration:none;
 color:#fff;
 }
 
-/* LINKS */
-.link{
-display:block;
-margin-top:10px;
-color:#d4af37;
-}
+.link{display:block;margin-top:10px;color:#d4af37}
 
-/* ANIMAÇÃO */
-.fade{
-opacity:0;
-transform:translateY(40px);
-transition:1s;
-}
-.fade.show{
-opacity:1;
-transform:translateY(0);
-}
+.fade{opacity:0;transform:translateY(40px);transition:1s}
+.fade.show{opacity:1;transform:translateY(0)}
 </style>
 </head>
 
@@ -205,11 +134,13 @@ transform:translateY(0);
 
 <nav>
 <div class="logo" onclick="goTop()">
+
   <div class="mts">
-    <div class="letter m"><span></span></div>
-    <div class="letter t"><span></span></div>
-    <div class="letter s"><span></span></div>
+    <div class="letter" id="m"></div>
+    <div class="letter" id="t"></div>
+    <div class="letter" id="s"></div>
   </div>
+
   <span class="logo-text">Visuals</span>
 </div>
 
@@ -239,7 +170,6 @@ Visuais são a forma dela existir.
 
 <section class="section fade" id="sobre">
 <h2>Sobre</h2>
-
 <div class="box">
 <p>
 Matheus dos Santos Alves, mais conhecido como MTS.<br><br>
@@ -247,7 +177,6 @@ Como toda criança, eu gostava de desenhar — a diferença é que eu nunca pare
 Hoje atuo de forma multidisciplinar — passando por ilustração, vídeo, motion e 3D.
 </p>
 </div>
-
 </section>
 
 <footer id="contato" class="section fade">
@@ -260,6 +189,43 @@ Hoje atuo de forma multidisciplinar — passando por ilustração, vídeo, motio
 </footer>
 
 <script>
+
+/* CONFIG */
+const interval = 800;
+
+/* FRAMES */
+const frames = {
+  m: 8,
+  t: 8,
+  s: 7
+};
+
+let current = { m:0, t:0, s:0 };
+
+/* FUNÇÃO SEGURA (SEM DISTORCER) */
+function setFrame(el, sprite, frame, total){
+  const step = 100 / (total - 1);
+  el.style.setProperty('--img', `url(${sprite})`);
+  el.style.setProperty('--pos', `${frame * step}%`);
+  el.style.backgroundImage = `url(${sprite})`;
+  el.style.backgroundSize = 'contain';
+  el.style.backgroundPosition = `center ${frame * step}%`;
+}
+
+/* LOOP */
+function animate(){
+  current.m = (current.m + 1) % frames.m;
+  current.t = (current.t + 1) % frames.t;
+  current.s = (current.s + 1) % frames.s;
+
+  setFrame(m, 'sprite-m.png', current.m, frames.m);
+  setFrame(t, 'sprite-t.png', current.t, frames.t);
+  setFrame(s, 'sprite-s.png', current.s, frames.s);
+}
+
+setInterval(animate, interval);
+
+/* SCROLL */
 function goTo(id){
 document.getElementById(id).scrollIntoView({behavior:'smooth'});
 }
@@ -275,6 +241,7 @@ el.classList.add('show');
 }
 });
 });
+
 </script>
 
 </body>
