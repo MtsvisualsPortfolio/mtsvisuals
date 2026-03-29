@@ -42,17 +42,17 @@ align-items:flex-end;
 gap:2px;
 }
 
-/* VISOR FIXO */
+/* VISOR */
 .letter{
-width:auto;
-height:34px;
+height:28px; /* 🔥 altura final no menu */
 overflow:hidden;
 position:relative;
 }
 
-/* IMAGEM ORIGINAL */
+/* IMG */
 .letter img{
 display:block;
+transform-origin:top left;
 }
 
 /* TEXTO */
@@ -72,8 +72,6 @@ padding:8%;
 .hero h1{
 font-size:60px;
 }
-
-/* SCRIPT ANIMAÇÃO */
 </style>
 </head>
 
@@ -98,11 +96,11 @@ font-size:60px;
 
 <script>
 
-/* CONFIG REAL */
-const frameHeights = {
-  m: 904 / 8,   // 113px
-  t: 904 / 8,   // 113px
-  s: 791 / 7    // 113px aprox
+/* SPRITE ORIGINAL */
+const original = {
+  m: 904,
+  t: 904,
+  s: 791
 };
 
 const frames = {
@@ -111,11 +109,24 @@ const frames = {
   s: 7
 };
 
+/* ALTURA FINAL */
+const targetHeight = 28;
+
+/* ESCALA */
+const scale = {
+  m: targetHeight / (original.m / frames.m),
+  t: targetHeight / (original.t / frames.t),
+  s: targetHeight / (original.s / frames.s)
+};
+
 let current = { m:0, t:0, s:0 };
 
-/* FUNÇÃO SIMPLES E PRECISA */
-function setFrame(el, frame, frameHeight){
-  el.style.transform = `translateY(-${frame * frameHeight}px)`;
+/* SET FRAME PERFEITO */
+function setFrame(el, frame, frameHeight, scale){
+  el.style.transform = `
+    translateY(-${frame * frameHeight}px)
+    scale(${scale})
+  `;
 }
 
 /* LOOP */
@@ -125,9 +136,9 @@ setInterval(()=>{
   current.t = (current.t+1)%frames.t;
   current.s = (current.s+1)%frames.s;
 
-  setFrame(m, current.m, frameHeights.m);
-  setFrame(t, current.t, frameHeights.t);
-  setFrame(s, current.s, frameHeights.s);
+  setFrame(m, current.m, original.m/frames.m, scale.m);
+  setFrame(t, current.t, original.t/frames.t, scale.t);
+  setFrame(s, current.s, original.s/frames.s, scale.s);
 
 },800);
 
