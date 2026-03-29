@@ -17,7 +17,7 @@ background:#000;
 overflow-x:hidden;
 }
 
-/* VIDEO BG */
+/* BG */
 .bg-video{
 position:fixed;
 width:100%;
@@ -61,25 +61,24 @@ align-items:flex-end;
 gap:4px;
 }
 
-/* VISOR FIXO */
+/* LETRA */
 .letter{
-width:24px;
+width:auto;
 height:34px;
 overflow:hidden;
 position:relative;
+display:flex;
+align-items:flex-end;
 }
 
-/* SPRITE SEM DISTORÇÃO */
-.letter::before{
-content:"";
+/* IMG SPRITE */
+.letter img{
 position:absolute;
 left:0;
 top:0;
-width:100%;
-height:100%;
-background-repeat:no-repeat;
-background-size:contain; /* 🔥 mantém proporção */
-background-position:center;
+height:auto;
+width:auto;
+transition:opacity .3s ease;
 }
 
 /* TEXTO */
@@ -136,9 +135,9 @@ color:#fff;
 <div class="logo" onclick="goTop()">
 
   <div class="mts">
-    <div class="letter" id="m"></div>
-    <div class="letter" id="t"></div>
-    <div class="letter" id="s"></div>
+    <div class="letter"><img id="m" src="sprite-m.png"></div>
+    <div class="letter"><img id="t" src="sprite-t.png"></div>
+    <div class="letter"><img id="s" src="sprite-s.png"></div>
   </div>
 
   <span class="logo-text">Visuals</span>
@@ -173,8 +172,7 @@ Visuais são a forma dela existir.
 <div class="box">
 <p>
 Matheus dos Santos Alves, mais conhecido como MTS.<br><br>
-Como toda criança, eu gostava de desenhar — a diferença é que eu nunca parei.<br><br>
-Hoje atuo de forma multidisciplinar — passando por ilustração, vídeo, motion e 3D.
+Criador multidisciplinar passando por ilustração, vídeo, motion e 3D.
 </p>
 </div>
 </section>
@@ -191,7 +189,8 @@ Hoje atuo de forma multidisciplinar — passando por ilustração, vídeo, motio
 <script>
 
 /* CONFIG */
-const interval = 800;
+let interval = 800;
+let transition = 300;
 
 /* FRAMES */
 const frames = {
@@ -201,29 +200,39 @@ const frames = {
 };
 
 let current = { m:0, t:0, s:0 };
+let fixed = { m:-1, t:-1, s:-1 };
 
-/* FUNÇÃO SEGURA (SEM DISTORCER) */
-function setFrame(el, sprite, frame, total){
-  const step = 100 / (total - 1);
-  el.style.setProperty('--img', `url(${sprite})`);
-  el.style.setProperty('--pos', `${frame * step}%`);
-  el.style.backgroundImage = `url(${sprite})`;
-  el.style.backgroundSize = 'contain';
-  el.style.backgroundPosition = `center ${frame * step}%`;
+/* SET FRAME */
+function setFrame(img, frame, total, height){
+  const frameHeight = height / total;
+  img.style.transform = `translateY(-${frame * frameHeight}px)`;
 }
 
 /* LOOP */
 function animate(){
-  current.m = (current.m + 1) % frames.m;
-  current.t = (current.t + 1) % frames.t;
-  current.s = (current.s + 1) % frames.s;
 
-  setFrame(m, 'sprite-m.png', current.m, frames.m);
-  setFrame(t, 'sprite-t.png', current.t, frames.t);
-  setFrame(s, 'sprite-s.png', current.s, frames.s);
+  ['m','t','s'].forEach(letter=>{
+
+    if(fixed[letter] !== -1){
+      current[letter] = fixed[letter];
+    } else {
+      current[letter] = (current[letter]+1) % frames[letter];
+    }
+
+  });
+
+  setFrame(m, current.m, 8, 904);
+  setFrame(t, current.t, 8, 904);
+  setFrame(s, current.s, 7, 791);
+
 }
 
 setInterval(animate, interval);
+
+/* API */
+function fixVariant(letter, index){
+  fixed[letter.toLowerCase()] = index;
+}
 
 /* SCROLL */
 function goTo(id){
