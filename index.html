@@ -5,19 +5,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MTS Visuals</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&family=Great+Vibes&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Inter:wght@300;500;700&family=Great+Vibes&display=swap" rel="stylesheet">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 
 body{
 font-family:'Inter',sans-serif;
-background:#050505;
 color:#fff;
+background:#000;
 overflow-x:hidden;
 }
 
-/* VIDEO FUNDO */
+/* VIDEO BACKGROUND */
 .bg-video{
 position:fixed;
 top:0;
@@ -25,24 +25,15 @@ left:0;
 width:100%;
 height:100%;
 object-fit:cover;
-z-index:-3;
-filter:brightness(0.35) contrast(1.4) saturate(0.8);
+z-index:-2;
+filter:brightness(.5) contrast(1.1);
 }
 
-/* OVERLAY ESCURO */
 .overlay{
 position:fixed;
 inset:0;
-background:linear-gradient(to bottom, rgba(0,0,0,0.7), #050505);
-z-index:-2;
-}
-
-/* TEXTURA */
-.texture{
-position:fixed;
-inset:0;
-background:url('https://grainy-gradients.vercel.app/noise.svg');
-opacity:.05;
+background:rgba(0,0,0,0.5);
+backdrop-filter:blur(40px);
 z-index:-1;
 }
 
@@ -54,53 +45,112 @@ width:100%;
 display:flex;
 justify-content:space-between;
 padding:20px 8%;
-backdrop-filter:blur(10px);
+background:rgba(0,0,0,.3);
+backdrop-filter:blur(20px);
 z-index:1000;
 }
 
+/* LOGO */
 .logo{
-font-family:'Great Vibes';
-font-size:26px;
+display:flex;
+align-items:center;
+gap:14px;
 cursor:pointer;
 }
 
+.mts{
+display:flex;
+gap:3px;
+transform:translateY(2px);
+}
+
+.letter{
+width:18px;
+height:28px;
+background-repeat:no-repeat;
+background-size:100% auto;
+}
+
+/* SPRITES */
+.m{
+background-image:url('sprite-m.png');
+animation: animM 6s steps(8) infinite;
+}
+
+.t{
+background-image:url('sprite-t.png');
+animation: animT 5s steps(8) infinite;
+}
+
+.s{
+background-image:url('sprite-s.png');
+animation: animS 7s steps(7) infinite;
+}
+
+@keyframes animM{
+from{background-position:0 0;}
+to{background-position:0 100%;}
+}
+
+@keyframes animT{
+from{background-position:0 0;}
+to{background-position:0 100%;}
+}
+
+@keyframes animS{
+from{background-position:0 0;}
+to{background-position:0 100%;}
+}
+
+.logo-text{
+font-family:'Great Vibes';
+font-size:28px;
+}
+
+/* NAV LINKS */
 nav a{
 margin-left:20px;
 cursor:pointer;
 opacity:.7;
+transition:.3s;
 }
 nav a:hover{opacity:1}
 
 /* HERO */
 .hero{
-height:90vh;
+height:100vh;
 display:flex;
 align-items:center;
 padding:8%;
 }
 
 .hero h1{
-font-size:68px;
-line-height:1.05;
+font-size:64px;
+line-height:1.1;
+max-width:800px;
 }
 
-.light{opacity:.6}
-.strong{font-family:'Playfair Display';font-size:80px}
-.script{font-family:'Great Vibes';font-size:85px;color:#d4af37}
+.gold{color:#d4af37}
 
 /* SECTION */
 .section{
-padding:70px 8%;
+padding:100px 8%;
 }
 
-/* GLASS PREMIUM */
-.glass{
+/* GLASS BOX */
+.box{
 background:rgba(255,255,255,0.05);
-border:1px solid rgba(212,175,55,0.2);
-backdrop-filter:blur(18px);
+border:1px solid rgba(255,255,255,0.1);
+backdrop-filter:blur(30px);
+padding:40px;
 border-radius:20px;
-padding:30px;
-position:relative;
+margin-top:30px;
+transition:.4s;
+}
+
+.box:hover{
+transform:translateY(-5px);
+box-shadow:0 20px 60px rgba(0,0,0,.6);
 }
 
 /* GRID */
@@ -108,110 +158,41 @@ position:relative;
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
 gap:20px;
-margin-top:25px;
 }
 
+/* CARD */
 .card{
-padding:30px;
+padding:40px;
 border-radius:20px;
 background:rgba(255,255,255,0.04);
 border:1px solid rgba(255,255,255,0.1);
 transition:.4s;
 cursor:pointer;
-text-decoration:none;
-color:#fff;
-position:relative;
 }
 
 .card:hover{
 transform:translateY(-10px);
-border-color:#d4af37;
-box-shadow:0 10px 40px rgba(212,175,55,0.2);
+box-shadow:0 20px 60px rgba(0,0,0,.6);
 }
 
-/* TEXT */
-.text{
-font-family:'Playfair Display';
-line-height:1.7;
-opacity:.9;
-}
-
-/* TIMELINE */
-.timeline{
-border-left:1px solid rgba(255,255,255,0.2);
-padding-left:20px;
-}
-
-.timeline div{
-margin-bottom:12px;
-}
-
-/* NUMBERS */
-.numbers{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
-gap:20px;
-margin-top:20px;
-text-align:center;
-}
-
-.numbers h3{
+/* LINKS */
+.link{
+display:block;
+margin-top:10px;
 color:#d4af37;
-font-size:34px;
 }
 
-/* BRANDS */
-.brands{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
-gap:12px;
-margin-top:20px;
+/* FOOTER */
+footer{
+padding:80px 8%;
 }
 
-.brands a{
-padding:10px;
-border-radius:10px;
-background:rgba(255,255,255,0.05);
-text-align:center;
-transition:.3s;
-text-decoration:none;
-color:#fff;
-}
-
-.brands a:hover{
-background:#d4af37;
-color:#000;
-}
-
-/* CONTATO */
-.contact{
-display:flex;
-gap:15px;
-flex-wrap:wrap;
-margin-top:20px;
-}
-
-.contact a{
-padding:10px 18px;
-border-radius:30px;
-border:1px solid rgba(212,175,55,0.3);
-text-decoration:none;
-color:#fff;
-transition:.3s;
-}
-
-.contact a:hover{
-background:#d4af37;
-color:#000;
-}
-
-/* FADE */
+/* ANIMAÇÃO */
 .fade{
 opacity:0;
 transform:translateY(40px);
 transition:1s;
 }
-
 .fade.show{
 opacity:1;
 transform:translateY(0);
@@ -221,159 +202,136 @@ transform:translateY(0);
 
 <body>
 
-<!-- VIDEO FUNDO -->
+<!-- VIDEO -->
 <video class="bg-video" autoplay muted loop playsinline>
-<source src="metal.mp4" type="video/mp4">
+<source src="bg.mp4" type="video/mp4">
 </video>
-
 <div class="overlay"></div>
-<div class="texture"></div>
 
-<!-- NAV -->
 <nav>
-<div class="logo" onclick="scrollTop()">Visuals</div>
+<div class="logo" onclick="goTop()">
+  <div class="mts">
+    <div class="letter m"></div>
+    <div class="letter t"></div>
+    <div class="letter s"></div>
+  </div>
+  <span class="logo-text">Visuals</span>
+</div>
+
 <div>
-<a onclick="scrollToSection('criacao')">Criação</a>
-<a onclick="scrollToSection('sobre')">Sobre</a>
-<a onclick="scrollToSection('contato')">Contato</a>
+<a onclick="goTo('criacao')">Criação</a>
+<a onclick="goTo('sobre')">Sobre</a>
+<a onclick="goTo('contato')">Contato</a>
 </div>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
 <h1>
-<span class="light">Todo projeto carrega</span><br>
-<span class="strong">uma ideia.</span><br><br>
-<span class="light">Visuais são a forma</span><br>
-<span class="script">dela existir.</span>
+Todo projeto carrega <span class="gold">uma ideia</span>.<br>
+Visuais são a forma dela existir.
 </h1>
 </section>
 
-<!-- CRIAÇÃO -->
 <section class="section fade" id="criacao">
-<div class="glass">
 <h2>Criação</h2>
 
 <div class="grid">
-<a href="video.html" class="card">Vídeo</a>
-<a href="motion.html" class="card">Motion</a>
-<a href="3d.html" class="card">3D</a>
-<a href="ilustracao.html" class="card">Ilustração</a>
-</div>
-
+<a href="video.html" class="card"><h3>Vídeo</h3></a>
+<a href="motion.html" class="card"><h3>Motion</h3></a>
+<a href="3d.html" class="card"><h3>3D</h3></a>
+<a href="ilustracao.html" class="card"><h3>Ilustração</h3></a>
 </div>
 </section>
 
-<!-- SOBRE -->
 <section class="section fade" id="sobre">
-<div class="glass">
 <h2>Sobre</h2>
 
-<p class="text">
-Matheus dos Santos Alves. Mais conhecido como MTS.<br><br>
-
-Como toda criança, eu gostava de desenhar. A diferença é que eu nunca parei.<br><br>
-
-Cresci na Zona Norte de São Paulo — a rua, a música e o desenho sempre andaram juntos. Com o tempo ficou claro que criar não era opção, era necessidade.<br><br>
-
-Comecei aos 14 anos vendendo artes como freelancer — logos, capas, retratos.<br><br>
-
-Hoje atuo como diretor audiovisual — da ideia à entrega final.<br><br>
-
-Minha base multidisciplinar — passando por ilustração, vídeo, motion e 3D — me permite construir soluções completas.
-</p>
-
-</div>
-</section>
-
-<!-- TRAJETÓRIA -->
-<section class="section fade">
-<div class="glass">
-<h2>Trajetória</h2>
-
-<div class="timeline">
-<div>2017 — Freelancer</div>
-<div>2018–22 — Evolução técnica</div>
-<div>2023 — Empuxo Criativo</div>
-<div>Hoje — Direção audiovisual</div>
-</div>
-
-</div>
-</section>
-
-<!-- NÚMEROS -->
-<section class="section fade">
-<div class="glass">
-<h2>Em números</h2>
-
-<div class="numbers">
-<div><h3>9+</h3><p>anos</p></div>
-<div><h3>23</h3><p>idade</p></div>
-<div><h3>3+</h3><p>países</p></div>
-<div><h3>50M+</h3><p>views</p></div>
-</div>
-
-</div>
-</section>
-
-<!-- FRASE -->
-<section class="section fade">
-<div class="glass">
+<div class="box">
 <p>
-“A experiência multidisciplinar permite enxergar o projeto de forma completa e potencializar ideias.”
+Matheus dos Santos Alves, mais conhecido como MTS.<br><br>
+Desde cedo, criar nunca foi uma opção — sempre foi necessidade.
+Crescido na Zona Norte de São Paulo, entre a rua, a música e o desenho,
+encontrou na criação visual uma forma de expressão e construção de identidade.
+<br><br>
+Começou com ilustração, evoluiu para o audiovisual e hoje atua de forma
+multidisciplinar — do conceito à execução.
 </p>
 </div>
-</section>
 
-<!-- COLABORAÇÕES -->
-<section class="section fade">
-<div class="glass">
-<h2>Colaborações</h2>
-
-<div class="brands">
-<a href="https://www.instagram.com/planoeplano/" target="_blank">Plano&Plano</a>
-<a href="https://www.instagram.com/djmattd/" target="_blank">Matt D</a>
-<a href="https://www.instagram.com/macvlr/" target="_blank">Tiago Mac</a>
-<a href="https://www.instagram.com/majorrd/" target="_blank">Major RD</a>
-<a href="https://www.instagram.com/pele.milflows/" target="_blank">Pele Milflows</a>
-<a href="https://www.instagram.com/chrigoroficial/" target="_blank">Chrigor</a>
-<a href="https://www.instagram.com/rastape/" target="_blank">Rastapé</a>
-<a href="https://www.instagram.com/greecassuaprodutora_" target="_blank">Gree Cassua</a>
-<a href="https://www.instagram.com/empuxocriativo/" target="_blank">Empuxo Criativo</a>
+<div class="box">
+<h3>Trajetória</h3>
+<p>
+2017 — início como freelancer<br>
+2018–22 — evolução técnica e clientes relevantes<br>
+2023 — entrada na Empuxo Criativo<br>
+Hoje — direção audiovisual completa
+</p>
 </div>
 
+<div class="box">
+<h3>Em números</h3>
+<p>
+9+ anos criando • 23 anos • +3 países • +50M views
+</p>
 </div>
+
+<div class="box">
+<p>
+“Percebi que meu amor nunca foi só por arte — foi por dar vida a projetos criativos.”
+</p>
+</div>
+
+<div class="box">
+<h3>Colaborações</h3>
+
+<a class="link" target="_blank" href="https://www.instagram.com/planoeplano/">Plano&Plano</a>
+<a class="link" target="_blank" href="https://www.instagram.com/djmattd/">Matt D</a>
+<a class="link" target="_blank" href="https://www.instagram.com/macvlr/">Tiago Mac</a>
+<a class="link" target="_blank" href="https://www.instagram.com/majorrd/">Major RD</a>
+<a class="link" target="_blank" href="https://www.instagram.com/pele.milflows/">Pele Milflows</a>
+<a class="link" target="_blank" href="https://www.instagram.com/chrigoroficial/">Chrigor</a>
+<a class="link" target="_blank" href="https://www.instagram.com/rastape/">Rastapé</a>
+<a class="link" target="_blank" href="https://www.instagram.com/greecassuaprodutora_/">Gree Cassua</a>
+<a class="link" target="_blank" href="https://www.instagram.com/empuxocriativo/">Empuxo Criativo</a>
+</div>
+
 </section>
 
-<!-- CONTATO -->
-<section class="section fade" id="contato">
-<div class="glass">
+<footer id="contato" class="fade">
+
+<div class="box">
 <h2>Contato</h2>
 
-<div class="contact">
-<a href="https://wa.me/5511977520741" target="_blank">WhatsApp</a>
-<a href="mailto:mtsvisualss@gmail.com">Email</a>
-<a href="https://instagram.com/mtsvisualss" target="_blank">Instagram</a>
+<a class="link" target="_blank"
+href="https://wa.me/5511977520741">
+WhatsApp
+</a>
+
+<a class="link" href="mailto:mtsvisualss@gmail.com">
+mtsvisualss@gmail.com
+</a>
+
+<a class="link" target="_blank"
+href="https://instagram.com/mtsvisualss">
+Instagram
+</a>
 </div>
 
-</div>
-</section>
+</footer>
 
 <script>
-function scrollToSection(id){
+function goTo(id){
 document.getElementById(id).scrollIntoView({behavior:'smooth'});
 }
-
-function scrollTop(){
+function goTop(){
 window.scrollTo({top:0,behavior:'smooth'});
 }
 
-/* ANIMAÇÃO */
 const fades=document.querySelectorAll('.fade');
 
 window.addEventListener('scroll',()=>{
 fades.forEach(el=>{
-if(el.getBoundingClientRect().top<window.innerHeight-100){
+if(el.getBoundingClientRect().top < window.innerHeight-100){
 el.classList.add('show');
 }
 });
