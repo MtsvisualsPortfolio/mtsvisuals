@@ -5,79 +5,54 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MTS Visuals</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Inter:wght@300;500;700&family=Great+Vibes&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&family=Great+Vibes&display=swap" rel="stylesheet">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 
 body{
 font-family:'Inter',sans-serif;
-color:#fff;
 background:#000;
-overflow-x:hidden;
-}
-
-/* BG */
-.bg-video{
-position:fixed;
-width:100%;
-height:100%;
-object-fit:cover;
-z-index:-2;
-filter:brightness(.5);
-}
-
-.overlay{
-position:fixed;
-inset:0;
-background:rgba(0,0,0,0.5);
-backdrop-filter:blur(30px);
-z-index:-1;
+color:#fff;
 }
 
 /* NAV */
 nav{
 position:fixed;
+top:0;
 width:100%;
 display:flex;
 justify-content:space-between;
 padding:20px 8%;
-background:rgba(0,0,0,.3);
+background:rgba(0,0,0,.4);
 backdrop-filter:blur(20px);
-z-index:1000;
 }
 
 /* LOGO */
 .logo{
 display:flex;
 align-items:center;
-gap:12px;
+gap:10px;
 cursor:pointer;
 }
 
 .mts{
 display:flex;
 align-items:flex-end;
-gap:4px;
+gap:2px;
 }
 
-/* VISOR */
+/* VISOR FIXO */
 .letter{
-height:34px;
 width:auto;
+height:34px;
 overflow:hidden;
 position:relative;
-display:flex;
-align-items:flex-end;
 }
 
-/* IMG */
+/* IMAGEM ORIGINAL */
 .letter img{
-position:absolute;
-left:0;
-top:0;
-height:300px; /* 🔥 escala fixa pra caber no visor */
-width:auto;
+display:block;
 }
 
 /* TEXTO */
@@ -86,115 +61,48 @@ font-family:'Great Vibes';
 font-size:28px;
 }
 
-/* RESTO */
-.hero{height:100vh;display:flex;align-items:center;padding:8%}
-.hero h1{font-size:64px}
-.gold{color:#d4af37}
-.section{padding:90px 8%}
-
-.box{
-background:rgba(255,255,255,0.05);
-border:1px solid rgba(255,255,255,0.1);
-backdrop-filter:blur(25px);
-padding:40px;
-border-radius:20px;
-margin-top:25px;
+/* HERO */
+.hero{
+height:100vh;
+display:flex;
+align-items:center;
+padding:8%;
 }
 
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:20px;
+.hero h1{
+font-size:60px;
 }
 
-.card{
-padding:40px;
-border-radius:20px;
-background:rgba(255,255,255,0.04);
-border:1px solid rgba(255,255,255,0.1);
-text-decoration:none;
-color:#fff;
-}
-
-.link{display:block;margin-top:10px;color:#d4af37}
-
-.fade{opacity:0;transform:translateY(40px);transition:1s}
-.fade.show{opacity:1;transform:translateY(0)}
+/* SCRIPT ANIMAÇÃO */
 </style>
 </head>
 
 <body>
 
-<video class="bg-video" autoplay muted loop playsinline>
-<source src="bg.mp4">
-</video>
-<div class="overlay"></div>
-
 <nav>
-<div class="logo" onclick="goTop()">
+<div class="logo">
 
-  <div class="mts">
-    <div class="letter"><img id="m" src="sprite-m.png"></div>
-    <div class="letter"><img id="t" src="sprite-t.png"></div>
-    <div class="letter"><img id="s" src="sprite-s.png"></div>
-  </div>
-
-  <span class="logo-text">Visuals</span>
+<div class="mts">
+<div class="letter"><img id="m" src="sprite-m.png"></div>
+<div class="letter"><img id="t" src="sprite-t.png"></div>
+<div class="letter"><img id="s" src="sprite-s.png"></div>
 </div>
 
-<div>
-<a onclick="goTo('criacao')">Criação</a>
-<a onclick="goTo('sobre')">Sobre</a>
-<a onclick="goTo('contato')">Contato</a>
+<span class="logo-text">Visuals</span>
 </div>
 </nav>
 
 <section class="hero">
-<h1>
-Todo projeto carrega <span class="gold">uma ideia</span>.<br>
-Visuais são a forma dela existir.
-</h1>
+<h1>MTS Visuals</h1>
 </section>
-
-<section class="section fade" id="criacao">
-<h2>Criação</h2>
-<div class="grid">
-<a href="video.html" class="card">Vídeo</a>
-<a href="motion.html" class="card">Motion</a>
-<a href="3d.html" class="card">3D</a>
-<a href="ilustracao.html" class="card">Ilustração</a>
-</div>
-</section>
-
-<section class="section fade" id="sobre">
-<h2>Sobre</h2>
-<div class="box">
-<p>
-Matheus dos Santos Alves, mais conhecido como MTS.<br><br>
-Criador multidisciplinar passando por ilustração, vídeo, motion e 3D.
-</p>
-</div>
-</section>
-
-<footer id="contato" class="section fade">
-<div class="box">
-<h2>Contato</h2>
-<a class="link" href="https://wa.me/5511977520741">WhatsApp</a>
-<a class="link" href="mailto:mtsvisualss@gmail.com">Email</a>
-<a class="link" href="https://instagram.com/mtsvisualss">Instagram</a>
-</div>
-</footer>
 
 <script>
 
-/* CONFIG */
-let interval = 800;
-
-/* SPRITE HEIGHTS */
-const heights = {
-  m: 904,
-  t: 904,
-  s: 791
+/* CONFIG REAL */
+const frameHeights = {
+  m: 904 / 8,   // 113px
+  t: 904 / 8,   // 113px
+  s: 791 / 7    // 113px aprox
 };
 
 const frames = {
@@ -205,45 +113,23 @@ const frames = {
 
 let current = { m:0, t:0, s:0 };
 
-/* FUNÇÃO */
-function setFrame(img, frame, total, fullHeight){
-  const frameHeight = fullHeight / total;
-  const scale = img.clientHeight / fullHeight;
-  const offset = frame * frameHeight * scale;
-
-  img.style.transform = `translateY(-${offset}px)`;
+/* FUNÇÃO SIMPLES E PRECISA */
+function setFrame(el, frame, frameHeight){
+  el.style.transform = `translateY(-${frame * frameHeight}px)`;
 }
 
 /* LOOP */
-function animate(){
+setInterval(()=>{
 
   current.m = (current.m+1)%frames.m;
   current.t = (current.t+1)%frames.t;
   current.s = (current.s+1)%frames.s;
 
-  setFrame(m, current.m, frames.m, heights.m);
-  setFrame(t, current.t, frames.t, heights.t);
-  setFrame(s, current.s, frames.s, heights.s);
-}
+  setFrame(m, current.m, frameHeights.m);
+  setFrame(t, current.t, frameHeights.t);
+  setFrame(s, current.s, frameHeights.s);
 
-setInterval(animate, interval);
-
-/* SCROLL */
-function goTo(id){
-document.getElementById(id).scrollIntoView({behavior:'smooth'});
-}
-function goTop(){
-window.scrollTo({top:0,behavior:'smooth'});
-}
-
-const fades=document.querySelectorAll('.fade');
-window.addEventListener('scroll',()=>{
-fades.forEach(el=>{
-if(el.getBoundingClientRect().top < window.innerHeight-100){
-el.classList.add('show');
-}
-});
-});
+},800);
 
 </script>
 
