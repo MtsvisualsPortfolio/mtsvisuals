@@ -54,14 +54,14 @@ z-index:1000;
 .logo{
 display:flex;
 align-items:center;
-gap:14px;
+gap:12px;
 cursor:pointer;
 }
 
 .mts{
 display:flex;
-gap:3px;
-transform:translateY(2px);
+align-items:flex-end;
+gap:2px;
 }
 
 .letter{
@@ -69,22 +69,26 @@ width:18px;
 height:28px;
 background-repeat:no-repeat;
 background-size:100% auto;
+display:block;
 }
 
-/* SPRITES */
+/* SPRITES COM AJUSTE FINO */
 .m{
 background-image:url('sprite-m.png');
 animation: animM 6s steps(8) infinite;
+transform:translateY(1px);
 }
 
 .t{
 background-image:url('sprite-t.png');
 animation: animT 5s steps(8) infinite;
+transform:translateY(0px);
 }
 
 .s{
 background-image:url('sprite-s.png');
 animation: animS 7s steps(7) infinite;
+transform:translateY(2px);
 }
 
 @keyframes animM{
@@ -134,17 +138,17 @@ max-width:800px;
 
 /* SECTION */
 .section{
-padding:100px 8%;
+padding:90px 8%;
 }
 
 /* GLASS BOX */
 .box{
 background:rgba(255,255,255,0.05);
 border:1px solid rgba(255,255,255,0.1);
-backdrop-filter:blur(30px);
+backdrop-filter:blur(25px);
 padding:40px;
 border-radius:20px;
-margin-top:30px;
+margin-top:25px;
 transition:.4s;
 }
 
@@ -168,6 +172,8 @@ background:rgba(255,255,255,0.04);
 border:1px solid rgba(255,255,255,0.1);
 transition:.4s;
 cursor:pointer;
+text-decoration:none;
+color:#fff;
 }
 
 .card:hover{
@@ -208,6 +214,7 @@ transform:translateY(0);
 </video>
 <div class="overlay"></div>
 
+<!-- NAV -->
 <nav>
 <div class="logo" onclick="goTop()">
   <div class="mts">
@@ -225,6 +232,7 @@ transform:translateY(0);
 </div>
 </nav>
 
+<!-- HERO -->
 <section class="hero">
 <h1>
 Todo projeto carrega <span class="gold">uma ideia</span>.<br>
@@ -232,6 +240,7 @@ Visuais são a forma dela existir.
 </h1>
 </section>
 
+<!-- CRIAÇÃO -->
 <section class="section fade" id="criacao">
 <h2>Criação</h2>
 
@@ -243,18 +252,18 @@ Visuais são a forma dela existir.
 </div>
 </section>
 
+<!-- SOBRE -->
 <section class="section fade" id="sobre">
 <h2>Sobre</h2>
 
 <div class="box">
 <p>
 Matheus dos Santos Alves, mais conhecido como MTS.<br><br>
-Desde cedo, criar nunca foi uma opção — sempre foi necessidade.
-Crescido na Zona Norte de São Paulo, entre a rua, a música e o desenho,
-encontrou na criação visual uma forma de expressão e construção de identidade.
-<br><br>
-Começou com ilustração, evoluiu para o audiovisual e hoje atua de forma
-multidisciplinar — do conceito à execução.
+Como toda criança, eu gostava de desenhar — a diferença é que eu nunca parei.<br><br>
+Cresci na Zona Norte de São Paulo, onde rua, música e arte sempre caminharam juntas.
+Criar nunca foi uma opção, sempre foi necessidade.<br><br>
+Comecei com ilustração, evoluí para o audiovisual e hoje atuo de forma multidisciplinar —
+passando por ilustração, vídeo, motion e 3D.
 </p>
 </div>
 
@@ -262,7 +271,7 @@ multidisciplinar — do conceito à execução.
 <h3>Trajetória</h3>
 <p>
 2017 — início como freelancer<br>
-2018–22 — evolução técnica e clientes relevantes<br>
+2018–22 — evolução técnica e primeiros grandes projetos<br>
 2023 — entrada na Empuxo Criativo<br>
 Hoje — direção audiovisual completa
 </p>
@@ -277,7 +286,7 @@ Hoje — direção audiovisual completa
 
 <div class="box">
 <p>
-“Percebi que meu amor nunca foi só por arte — foi por dar vida a projetos criativos.”
+“A experiência multidisciplinar permite enxergar o projeto de forma completa e potencializar ideias.”
 </p>
 </div>
 
@@ -297,24 +306,15 @@ Hoje — direção audiovisual completa
 
 </section>
 
+<!-- CONTATO -->
 <footer id="contato" class="fade">
 
 <div class="box">
 <h2>Contato</h2>
 
-<a class="link" target="_blank"
-href="https://wa.me/5511977520741">
-WhatsApp
-</a>
-
-<a class="link" href="mailto:mtsvisualss@gmail.com">
-mtsvisualss@gmail.com
-</a>
-
-<a class="link" target="_blank"
-href="https://instagram.com/mtsvisualss">
-Instagram
-</a>
+<a class="link" target="_blank" href="https://wa.me/5511977520741">WhatsApp</a>
+<a class="link" href="mailto:mtsvisualss@gmail.com">mtsvisualss@gmail.com</a>
+<a class="link" target="_blank" href="https://instagram.com/mtsvisualss">Instagram</a>
 </div>
 
 </footer>
@@ -323,6 +323,7 @@ Instagram
 function goTo(id){
 document.getElementById(id).scrollIntoView({behavior:'smooth'});
 }
+
 function goTop(){
 window.scrollTo({top:0,behavior:'smooth'});
 }
