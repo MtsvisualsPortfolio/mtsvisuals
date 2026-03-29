@@ -61,24 +61,23 @@ align-items:flex-end;
 gap:4px;
 }
 
-/* LETRA */
+/* VISOR */
 .letter{
-width:auto;
 height:34px;
+width:auto;
 overflow:hidden;
 position:relative;
 display:flex;
 align-items:flex-end;
 }
 
-/* IMG SPRITE */
+/* IMG */
 .letter img{
 position:absolute;
 left:0;
 top:0;
-height:auto;
+height:300px; /* 🔥 escala fixa pra caber no visor */
 width:auto;
-transition:opacity .3s ease;
 }
 
 /* TEXTO */
@@ -190,9 +189,14 @@ Criador multidisciplinar passando por ilustração, vídeo, motion e 3D.
 
 /* CONFIG */
 let interval = 800;
-let transition = 300;
 
-/* FRAMES */
+/* SPRITE HEIGHTS */
+const heights = {
+  m: 904,
+  t: 904,
+  s: 791
+};
+
 const frames = {
   m: 8,
   t: 8,
@@ -200,39 +204,29 @@ const frames = {
 };
 
 let current = { m:0, t:0, s:0 };
-let fixed = { m:-1, t:-1, s:-1 };
 
-/* SET FRAME */
-function setFrame(img, frame, total, height){
-  const frameHeight = height / total;
-  img.style.transform = `translateY(-${frame * frameHeight}px)`;
+/* FUNÇÃO */
+function setFrame(img, frame, total, fullHeight){
+  const frameHeight = fullHeight / total;
+  const scale = img.clientHeight / fullHeight;
+  const offset = frame * frameHeight * scale;
+
+  img.style.transform = `translateY(-${offset}px)`;
 }
 
 /* LOOP */
 function animate(){
 
-  ['m','t','s'].forEach(letter=>{
+  current.m = (current.m+1)%frames.m;
+  current.t = (current.t+1)%frames.t;
+  current.s = (current.s+1)%frames.s;
 
-    if(fixed[letter] !== -1){
-      current[letter] = fixed[letter];
-    } else {
-      current[letter] = (current[letter]+1) % frames[letter];
-    }
-
-  });
-
-  setFrame(m, current.m, 8, 904);
-  setFrame(t, current.t, 8, 904);
-  setFrame(s, current.s, 7, 791);
-
+  setFrame(m, current.m, frames.m, heights.m);
+  setFrame(t, current.t, frames.t, heights.t);
+  setFrame(s, current.s, frames.s, heights.s);
 }
 
 setInterval(animate, interval);
-
-/* API */
-function fixVariant(letter, index){
-  fixed[letter.toLowerCase()] = index;
-}
 
 /* SCROLL */
 function goTo(id){
