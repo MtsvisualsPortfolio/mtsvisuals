@@ -33,7 +33,7 @@ filter:brightness(.5) contrast(1.1);
 position:fixed;
 inset:0;
 background:rgba(0,0,0,0.5);
-backdrop-filter:blur(40px);
+backdrop-filter:blur(30px);
 z-index:-1;
 }
 
@@ -61,51 +61,61 @@ cursor:pointer;
 .mts{
 display:flex;
 align-items:flex-end;
-gap:2px;
+gap:4px;
 }
 
+/* CONTAINER (CROP REAL) */
 .letter{
-width:18px;
-height:28px;
-background-repeat:no-repeat;
-background-size:100% auto;
-display:block;
+width:22px;
+height:32px;
+overflow:hidden;
+position:relative;
 }
 
-/* SPRITES COM AJUSTE FINO */
-.m{
+/* SPRITE INTERNO */
+.letter span{
+position:absolute;
+width:100%;
+height:800%; /* baseado nos frames */
+background-repeat:no-repeat;
+background-size:100% 100%;
+}
+
+/* M */
+.m span{
 background-image:url('sprite-m.png');
 animation: animM 6s steps(8) infinite;
-transform:translateY(1px);
 }
 
-.t{
+/* T */
+.t span{
 background-image:url('sprite-t.png');
 animation: animT 5s steps(8) infinite;
-transform:translateY(0px);
 }
 
-.s{
+/* S */
+.s span{
 background-image:url('sprite-s.png');
 animation: animS 7s steps(7) infinite;
-transform:translateY(2px);
 }
 
+/* ANIMAÇÃO */
 @keyframes animM{
-from{background-position:0 0;}
-to{background-position:0 100%;}
+from{transform:translateY(0);}
+to{transform:translateY(-87.5%);}
 }
 
 @keyframes animT{
-from{background-position:0 0;}
-to{background-position:0 100%;}
+from{transform:translateY(0);}
+to{transform:translateY(-87.5%);}
 }
 
 @keyframes animS{
-from{background-position:0 0;}
-to{background-position:0 100%;}
+from{transform:translateY(0);}
+to{transform:translateY(-85.7%);}
 }
 
+/* TEXTO */
 .logo-text{
 font-family:'Great Vibes';
 font-size:28px;
@@ -141,7 +151,7 @@ max-width:800px;
 padding:90px 8%;
 }
 
-/* GLASS BOX */
+/* GLASS */
 .box{
 background:rgba(255,255,255,0.05);
 border:1px solid rgba(255,255,255,0.1);
@@ -164,14 +174,12 @@ grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
 gap:20px;
 }
 
-/* CARD */
 .card{
 padding:40px;
 border-radius:20px;
 background:rgba(255,255,255,0.04);
 border:1px solid rgba(255,255,255,0.1);
 transition:.4s;
-cursor:pointer;
 text-decoration:none;
 color:#fff;
 }
@@ -181,14 +189,12 @@ transform:translateY(-10px);
 box-shadow:0 20px 60px rgba(0,0,0,.6);
 }
 
-/* LINKS */
 .link{
 display:block;
 margin-top:10px;
 color:#d4af37;
 }
 
-/* FOOTER */
 footer{
 padding:80px 8%;
 }
@@ -208,20 +214,20 @@ transform:translateY(0);
 
 <body>
 
-<!-- VIDEO -->
 <video class="bg-video" autoplay muted loop playsinline>
 <source src="bg.mp4" type="video/mp4">
 </video>
 <div class="overlay"></div>
 
-<!-- NAV -->
 <nav>
 <div class="logo" onclick="goTop()">
+
   <div class="mts">
-    <div class="letter m"></div>
-    <div class="letter t"></div>
-    <div class="letter s"></div>
+    <div class="letter m"><span></span></div>
+    <div class="letter t"><span></span></div>
+    <div class="letter s"><span></span></div>
   </div>
+
   <span class="logo-text">Visuals</span>
 </div>
 
@@ -232,7 +238,6 @@ transform:translateY(0);
 </div>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
 <h1>
 Todo projeto carrega <span class="gold">uma ideia</span>.<br>
@@ -240,10 +245,8 @@ Visuais são a forma dela existir.
 </h1>
 </section>
 
-<!-- CRIAÇÃO -->
 <section class="section fade" id="criacao">
 <h2>Criação</h2>
-
 <div class="grid">
 <a href="video.html" class="card"><h3>Vídeo</h3></a>
 <a href="motion.html" class="card"><h3>Motion</h3></a>
@@ -252,7 +255,6 @@ Visuais são a forma dela existir.
 </div>
 </section>
 
-<!-- SOBRE -->
 <section class="section fade" id="sobre">
 <h2>Sobre</h2>
 
@@ -262,8 +264,7 @@ Matheus dos Santos Alves, mais conhecido como MTS.<br><br>
 Como toda criança, eu gostava de desenhar — a diferença é que eu nunca parei.<br><br>
 Cresci na Zona Norte de São Paulo, onde rua, música e arte sempre caminharam juntas.
 Criar nunca foi uma opção, sempre foi necessidade.<br><br>
-Comecei com ilustração, evoluí para o audiovisual e hoje atuo de forma multidisciplinar —
-passando por ilustração, vídeo, motion e 3D.
+Hoje atuo de forma multidisciplinar — passando por ilustração, vídeo, motion e 3D.
 </p>
 </div>
 
@@ -271,9 +272,9 @@ passando por ilustração, vídeo, motion e 3D.
 <h3>Trajetória</h3>
 <p>
 2017 — início como freelancer<br>
-2018–22 — evolução técnica e primeiros grandes projetos<br>
-2023 — entrada na Empuxo Criativo<br>
-Hoje — direção audiovisual completa
+2018–22 — evolução e clientes relevantes<br>
+2023 — Empuxo Criativo<br>
+Hoje — direção audiovisual
 </p>
 </div>
 
@@ -306,17 +307,15 @@ Hoje — direção audiovisual completa
 
 </section>
 
-<!-- CONTATO -->
 <footer id="contato" class="fade">
-
 <div class="box">
 <h2>Contato</h2>
 
 <a class="link" target="_blank" href="https://wa.me/5511977520741">WhatsApp</a>
 <a class="link" href="mailto:mtsvisualss@gmail.com">mtsvisualss@gmail.com</a>
 <a class="link" target="_blank" href="https://instagram.com/mtsvisualss">Instagram</a>
-</div>
 
+</div>
 </footer>
 
 <script>
