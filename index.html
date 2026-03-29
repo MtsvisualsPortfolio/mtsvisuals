@@ -17,16 +17,14 @@ background:#000;
 overflow-x:hidden;
 }
 
-/* VIDEO BACKGROUND */
+/* BG VIDEO */
 .bg-video{
 position:fixed;
-top:0;
-left:0;
 width:100%;
 height:100%;
 object-fit:cover;
 z-index:-2;
-filter:brightness(.5) contrast(1.1);
+filter:brightness(.5);
 }
 
 .overlay{
@@ -40,7 +38,6 @@ z-index:-1;
 /* NAV */
 nav{
 position:fixed;
-top:0;
 width:100%;
 display:flex;
 justify-content:space-between;
@@ -61,10 +58,10 @@ cursor:pointer;
 .mts{
 display:flex;
 align-items:flex-end;
-gap:4px;
+gap:3px;
 }
 
-/* CONTAINER (CROP REAL) */
+/* LETRA BASE */
 .letter{
 width:22px;
 height:32px;
@@ -72,47 +69,52 @@ overflow:hidden;
 position:relative;
 }
 
-/* SPRITE INTERNO */
+/* SPRITE */
 .letter span{
 position:absolute;
 width:100%;
-height:800%; /* baseado nos frames */
+height:900%;
 background-repeat:no-repeat;
 background-size:100% 100%;
 }
+
+/* 🔥 AJUSTES INDIVIDUAIS REAIS */
 
 /* M */
 .m span{
 background-image:url('sprite-m.png');
 animation: animM 6s steps(8) infinite;
+transform:translateY(-2%);
 }
 
 /* T */
 .t span{
 background-image:url('sprite-t.png');
 animation: animT 5s steps(8) infinite;
+transform:translateY(-6%);
 }
 
 /* S */
 .s span{
 background-image:url('sprite-s.png');
 animation: animS 7s steps(7) infinite;
+transform:translateY(-10%);
 }
 
-/* ANIMAÇÃO */
+/* 🎯 ANIMAÇÕES COM RANGE DIFERENTE */
 @keyframes animM{
-from{transform:translateY(0);}
-to{transform:translateY(-87.5%);}
+from{transform:translateY(-2%);}
+to{transform:translateY(-89%);}
 }
 
 @keyframes animT{
-from{transform:translateY(0);}
-to{transform:translateY(-87.5%);}
+from{transform:translateY(-6%);}
+to{transform:translateY(-93%);}
 }
 
 @keyframes animS{
-from{transform:translateY(0);}
-to{transform:translateY(-85.7%);}
+from{transform:translateY(-10%);}
+to{transform:translateY(-95%);}
 }
 
 /* TEXTO */
@@ -126,7 +128,6 @@ nav a{
 margin-left:20px;
 cursor:pointer;
 opacity:.7;
-transition:.3s;
 }
 nav a:hover{opacity:1}
 
@@ -140,8 +141,6 @@ padding:8%;
 
 .hero h1{
 font-size:64px;
-line-height:1.1;
-max-width:800px;
 }
 
 .gold{color:#d4af37}
@@ -151,7 +150,7 @@ max-width:800px;
 padding:90px 8%;
 }
 
-/* GLASS */
+/* BOX */
 .box{
 background:rgba(255,255,255,0.05);
 border:1px solid rgba(255,255,255,0.1);
@@ -159,12 +158,6 @@ backdrop-filter:blur(25px);
 padding:40px;
 border-radius:20px;
 margin-top:25px;
-transition:.4s;
-}
-
-.box:hover{
-transform:translateY(-5px);
-box-shadow:0 20px 60px rgba(0,0,0,.6);
 }
 
 /* GRID */
@@ -179,24 +172,15 @@ padding:40px;
 border-radius:20px;
 background:rgba(255,255,255,0.04);
 border:1px solid rgba(255,255,255,0.1);
-transition:.4s;
 text-decoration:none;
 color:#fff;
 }
 
-.card:hover{
-transform:translateY(-10px);
-box-shadow:0 20px 60px rgba(0,0,0,.6);
-}
-
+/* LINKS */
 .link{
 display:block;
 margin-top:10px;
 color:#d4af37;
-}
-
-footer{
-padding:80px 8%;
 }
 
 /* ANIMAÇÃO */
@@ -215,19 +199,17 @@ transform:translateY(0);
 <body>
 
 <video class="bg-video" autoplay muted loop playsinline>
-<source src="bg.mp4" type="video/mp4">
+<source src="bg.mp4">
 </video>
 <div class="overlay"></div>
 
 <nav>
 <div class="logo" onclick="goTop()">
-
   <div class="mts">
     <div class="letter m"><span></span></div>
     <div class="letter t"><span></span></div>
     <div class="letter s"><span></span></div>
   </div>
-
   <span class="logo-text">Visuals</span>
 </div>
 
@@ -248,10 +230,10 @@ Visuais são a forma dela existir.
 <section class="section fade" id="criacao">
 <h2>Criação</h2>
 <div class="grid">
-<a href="video.html" class="card"><h3>Vídeo</h3></a>
-<a href="motion.html" class="card"><h3>Motion</h3></a>
-<a href="3d.html" class="card"><h3>3D</h3></a>
-<a href="ilustracao.html" class="card"><h3>Ilustração</h3></a>
+<a href="video.html" class="card">Vídeo</a>
+<a href="motion.html" class="card">Motion</a>
+<a href="3d.html" class="card">3D</a>
+<a href="ilustracao.html" class="card">Ilustração</a>
 </div>
 </section>
 
@@ -262,59 +244,18 @@ Visuais são a forma dela existir.
 <p>
 Matheus dos Santos Alves, mais conhecido como MTS.<br><br>
 Como toda criança, eu gostava de desenhar — a diferença é que eu nunca parei.<br><br>
-Cresci na Zona Norte de São Paulo, onde rua, música e arte sempre caminharam juntas.
-Criar nunca foi uma opção, sempre foi necessidade.<br><br>
 Hoje atuo de forma multidisciplinar — passando por ilustração, vídeo, motion e 3D.
 </p>
 </div>
 
-<div class="box">
-<h3>Trajetória</h3>
-<p>
-2017 — início como freelancer<br>
-2018–22 — evolução e clientes relevantes<br>
-2023 — Empuxo Criativo<br>
-Hoje — direção audiovisual
-</p>
-</div>
-
-<div class="box">
-<h3>Em números</h3>
-<p>
-9+ anos criando • 23 anos • +3 países • +50M views
-</p>
-</div>
-
-<div class="box">
-<p>
-“A experiência multidisciplinar permite enxergar o projeto de forma completa e potencializar ideias.”
-</p>
-</div>
-
-<div class="box">
-<h3>Colaborações</h3>
-
-<a class="link" target="_blank" href="https://www.instagram.com/planoeplano/">Plano&Plano</a>
-<a class="link" target="_blank" href="https://www.instagram.com/djmattd/">Matt D</a>
-<a class="link" target="_blank" href="https://www.instagram.com/macvlr/">Tiago Mac</a>
-<a class="link" target="_blank" href="https://www.instagram.com/majorrd/">Major RD</a>
-<a class="link" target="_blank" href="https://www.instagram.com/pele.milflows/">Pele Milflows</a>
-<a class="link" target="_blank" href="https://www.instagram.com/chrigoroficial/">Chrigor</a>
-<a class="link" target="_blank" href="https://www.instagram.com/rastape/">Rastapé</a>
-<a class="link" target="_blank" href="https://www.instagram.com/greecassuaprodutora_/">Gree Cassua</a>
-<a class="link" target="_blank" href="https://www.instagram.com/empuxocriativo/">Empuxo Criativo</a>
-</div>
-
 </section>
 
-<footer id="contato" class="fade">
+<footer id="contato" class="section fade">
 <div class="box">
 <h2>Contato</h2>
-
-<a class="link" target="_blank" href="https://wa.me/5511977520741">WhatsApp</a>
-<a class="link" href="mailto:mtsvisualss@gmail.com">mtsvisualss@gmail.com</a>
-<a class="link" target="_blank" href="https://instagram.com/mtsvisualss">Instagram</a>
-
+<a class="link" href="https://wa.me/5511977520741">WhatsApp</a>
+<a class="link" href="mailto:mtsvisualss@gmail.com">Email</a>
+<a class="link" href="https://instagram.com/mtsvisualss">Instagram</a>
 </div>
 </footer>
 
@@ -322,13 +263,11 @@ Hoje — direção audiovisual
 function goTo(id){
 document.getElementById(id).scrollIntoView({behavior:'smooth'});
 }
-
 function goTop(){
 window.scrollTo({top:0,behavior:'smooth'});
 }
 
 const fades=document.querySelectorAll('.fade');
-
 window.addEventListener('scroll',()=>{
 fades.forEach(el=>{
 if(el.getBoundingClientRect().top < window.innerHeight-100){
