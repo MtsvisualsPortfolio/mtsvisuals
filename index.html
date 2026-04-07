@@ -4,18 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MTS Visuals</title>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300;1,600&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@900&family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,600&family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,300;1,300&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet">
 <style>
  
-/* ══════════════════════════════════════
-   RESET & BASE
-══════════════════════════════════════ */
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
  
 :root {
   --gold: #d4af37;
   --black: #0a0a0a;
   --card-radius: 22px;
+  /* tracking equivalências: -50 ≈ -0.05em | -75 ≈ -0.075em | -25 ≈ -0.025em */
 }
  
 html { scroll-behavior: smooth; }
@@ -28,605 +26,461 @@ body {
   overflow-x: hidden;
 }
  
-/* ══════════════════════════════════════
-   GRAIN OVERLAY (global)
-══════════════════════════════════════ */
+/* grain global */
 body::after {
   content: '';
-  position: fixed;
-  inset: 0;
+  position: fixed; inset: 0;
   z-index: 9999;
   pointer-events: none;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
-  background-repeat: repeat;
-  background-size: 180px 180px;
-  opacity: 0.045;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 180px;
+  opacity: 0.04;
   mix-blend-mode: overlay;
 }
  
-/* ══════════════════════════════════════
-   NAV
-══════════════════════════════════════ */
+/* ── NAV ── */
 nav {
-  position: fixed;
-  top: 0; left: 0; right: 0;
+  position: fixed; top:0; left:0; right:0;
   z-index: 1000;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  display: flex; align-items: center; justify-content: space-between;
   padding: 20px 48px;
   background: var(--black);
   border-bottom: 1px solid rgba(255,255,255,0.06);
 }
  
 .logo-sprite {
-  display: flex;
-  align-items: center;
-  gap: 3px;
-  cursor: pointer;
-  text-decoration: none;
+  display: flex; align-items: center; gap: 3px;
+  cursor: pointer; text-decoration: none;
 }
- 
 .letter-m { width:34px; height:56px; overflow:hidden; }
-.letter-m img {
-  display:block; width:34px; height:calc(56px * 8);
-  animation: sprite-m calc(8/5*1s) steps(8) infinite;
-}
-@keyframes sprite-m {
-  from { transform: translateY(0); }
-  to   { transform: translateY(calc(-56px * 8)); }
-}
- 
+.letter-m img { display:block; width:34px; height:calc(56px*8); animation:sm calc(8/5*1s) steps(8) infinite; }
+@keyframes sm { from{transform:translateY(0)} to{transform:translateY(calc(-56px*8))} }
 .letter-t { width:20px; height:56px; overflow:hidden; }
-.letter-t img {
-  display:block; width:20px; height:calc(56px * 8);
-  animation: sprite-t calc(8/5*1s) steps(8) infinite;
-  animation-delay: 0.04s;
-}
-@keyframes sprite-t {
-  from { transform: translateY(0); }
-  to   { transform: translateY(calc(-56px * 8)); }
-}
- 
+.letter-t img { display:block; width:20px; height:calc(56px*8); animation:st calc(8/5*1s) steps(8) infinite; animation-delay:.04s; }
+@keyframes st { from{transform:translateY(0)} to{transform:translateY(calc(-56px*8))} }
 .letter-s { width:30px; height:56px; overflow:hidden; }
-.letter-s img {
-  display:block; width:30px; height:calc(56px * 7);
-  animation: sprite-s calc(7/5*1s) steps(7) infinite;
-  animation-delay: 0.08s;
-}
-@keyframes sprite-s {
-  from { transform: translateY(0); }
-  to   { transform: translateY(calc(-56px * 7)); }
-}
+.letter-s img { display:block; width:30px; height:calc(56px*7); animation:ss calc(7/5*1s) steps(7) infinite; animation-delay:.08s; }
+@keyframes ss { from{transform:translateY(0)} to{transform:translateY(calc(-56px*7))} }
  
 .logo-visuals {
   font-family: 'Great Vibes', cursive;
-  font-size: 28px;
-  color: #fff;
-  margin-left: 7px;
-  line-height: 1;
+  font-size: 28px; color: #fff; margin-left: 7px; line-height: 1;
 }
  
-.nav-links {
-  display: flex;
-  gap: 40px;
-  list-style: none;
-}
- 
+.nav-links { display:flex; gap:40px; list-style:none; }
 .nav-links a {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 18px;
-  font-weight: 300;
-  color: rgba(255,255,255,0.75);
-  text-decoration: none;
-  letter-spacing: .04em;
-  transition: color .25s;
-  cursor: pointer;
+  font-size: 18px; font-weight: 300;
+  color: rgba(255,255,255,0.75); text-decoration: none;
+  letter-spacing: .04em; transition: color .25s; cursor: pointer;
 }
 .nav-links a:hover { color: #fff; }
  
-/* ══════════════════════════════════════
-   PAGE WRAPPER
-══════════════════════════════════════ */
-.page {
-  padding: 112px 48px 80px;
-  display: flex;
-  flex-direction: column;
-  gap: 28px;
-}
+/* ── PAGE ── */
+.page { padding: 112px 48px 80px; display:flex; flex-direction:column; gap:28px; }
  
-/* ══════════════════════════════════════
-   HERO CARD (carrossel)
-══════════════════════════════════════ */
+/* ── HERO CARD ── */
 .hero-card {
-  position: relative;
-  border-radius: var(--card-radius);
-  overflow: hidden;
-  height: 78vh;
-  min-height: 520px;
-  cursor: grab;
-  user-select: none;
+  position: relative; border-radius: var(--card-radius);
+  overflow: hidden; height: 78vh; min-height: 520px;
+  cursor: grab; user-select: none;
 }
- 
-/* slides wrapper */
 .slides-track {
-  display: flex;
-  width: 500%;
-  height: 100%;
+  display: flex; width: 500%; height: 100%;
   transition: transform .55s cubic-bezier(.77,0,.175,1);
 }
- 
-.slide {
-  width: 20%;
-  height: 100%;
-  flex-shrink: 0;
-  position: relative;
-}
- 
-/* gradiente único por slide */
+.slide { width:20%; height:100%; flex-shrink:0; position:relative; }
 .slide-1 { background: radial-gradient(ellipse at 70% 30%, #7b5ea7 0%, #3b7dd8 35%, #2d9c6e 65%, #1a1a2e 100%); }
 .slide-2 { background: radial-gradient(ellipse at 30% 60%, #c2185b 0%, #7b1fa2 40%, #1565c0 80%, #0d1117 100%); }
 .slide-3 { background: radial-gradient(ellipse at 60% 40%, #e65100 0%, #ad1457 45%, #283593 80%, #0d1117 100%); }
 .slide-4 { background: radial-gradient(ellipse at 40% 70%, #00695c 0%, #1565c0 45%, #4a148c 80%, #0d1117 100%); }
 .slide-5 { background: radial-gradient(ellipse at 80% 20%, #f9a825 0%, #e53935 40%, #6a1b9a 80%, #0d1117 100%); }
- 
-/* blur central em cada slide */
 .slide::before {
-  content: '';
-  position: absolute;
-  top: 15%; left: 25%;
-  width: 50%; height: 55%;
-  border-radius: 50%;
-  background: rgba(0,0,0,0.45);
-  filter: blur(60px);
-  pointer-events: none;
+  content:''; position:absolute; top:15%; left:25%; width:50%; height:55%;
+  border-radius:50%; background:rgba(0,0,0,.45); filter:blur(60px); pointer-events:none;
 }
  
-/* dots de navegação */
+/* dots */
 .hero-dots {
-  position: absolute;
-  top: 22px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 10px;
-  z-index: 10;
+  position:absolute; top:22px; left:50%; transform:translateX(-50%);
+  display:flex; gap:10px; z-index:10;
 }
- 
 .dot {
-  width: 34px; height: 14px;
-  border-radius: 7px;
-  border: 1.5px solid rgba(255,255,255,0.5);
-  background: transparent;
-  cursor: pointer;
-  transition: background .3s, border-color .3s;
+  height:14px; border-radius:7px;
+  border:1.5px solid rgba(255,255,255,0.5);
+  background:transparent; cursor:pointer;
+  transition: all .3s ease; width:34px;
 }
-.dot.active {
-  background: #fff;
-  border-color: #fff;
-  width: 14px;
-}
-/* dot ativo menor e redondo */
-.hero-dots .dot:first-child {
-  width: 14px;
-  border-radius: 50%;
-  background: #fff;
-  border-color: #fff;
-}
+.dot.active { width:14px; border-radius:50%; background:#fff; border-color:#fff; }
  
-/* texto hero */
+/* ── HERO TEXT ── */
 .hero-text {
-  position: absolute;
-  bottom: 48px;
-  left: 48px;
-  right: 48px;
-  z-index: 5;
+  position:absolute; bottom:48px; left:48px; right:48px; z-index:5;
 }
  
-.hero-text h1 {
-  font-family: 'Anton', sans-serif;
-  font-size: clamp(48px, 6.5vw, 88px);
-  line-height: 1.0;
-  font-weight: 400;
-  text-transform: uppercase;
-  letter-spacing: -.01em;
+/* linha 1: MTS */
+.ht-mts {
+  font-family: 'Big Shoulders Display', sans-serif;
+  font-weight: 900;
+  font-size: clamp(72px, 10vw, 140px);
+  letter-spacing: -0.05em;
+  line-height: 0.9;
+  display: block;
+  color: #fff;
 }
  
-.hero-word-script {
+/* linha 2: Visuals */
+.ht-visuals-hero {
   font-family: 'Great Vibes', cursive;
-  font-size: clamp(40px, 5.5vw, 74px);
-  font-weight: 400;
-  text-transform: none;
-  letter-spacing: 0;
-  vertical-align: middle;
+  font-size: clamp(52px, 7vw, 96px);
+  letter-spacing: -0.025em;
   line-height: 1;
+  display: block;
+  color: #fff;
+  margin-top: -8px;
 }
  
-.hero-word-strike {
-  position: relative;
-  display: inline-block;
-  font-family: 'Great Vibes', cursive;
-  font-size: clamp(40px, 5.5vw, 74px);
-  font-weight: 400;
-  text-transform: none;
-  vertical-align: middle;
-}
- 
-.hero-word-strike::after {
-  content: '';
-  position: absolute;
-  left: -4px; right: -4px;
-  top: 50%; transform: translateY(-50%);
-  height: 2.5px;
-  background: rgba(255,255,255,0.6);
-  border-radius: 2px;
-}
- 
-.hero-word-gold {
-  font-family: 'Great Vibes', cursive;
-  color: var(--gold);
-  font-size: clamp(44px, 6vw, 80px);
-  font-weight: 400;
-  text-transform: none;
-  vertical-align: middle;
-}
- 
-.hero-dot-end {
-  display: inline-block;
-  width: 10px; height: 10px;
-  border-radius: 50%;
-  background: var(--gold);
-  margin-left: 4px;
-  vertical-align: middle;
-  position: relative;
-  top: -4px;
-}
- 
-/* ══════════════════════════════════════
-   SECTION HEADER
-══════════════════════════════════════ */
-.section-header {
-  display: flex;
-  align-items: baseline;
-  gap: 16px;
-  margin-bottom: 20px;
-}
- 
-.section-title {
-  font-family: 'Great Vibes', cursive;
-  font-size: 48px;
-  color: var(--gold);
-  font-weight: 400;
+/* linha 3: A assinatura */
+.ht-assinatura {
+  font-family: 'Big Shoulders Display', sans-serif;
+  font-weight: 900;
+  font-size: clamp(40px, 5.5vw, 76px);
+  letter-spacing: -0.05em;
   line-height: 1;
+  display: block;
+  color: #fff;
+  margin-top: 10px;
 }
  
-.section-line {
-  flex: 1;
-  height: 1px;
-  background: rgba(255,255,255,0.08);
+/* linha 4: por trás dos */
+.ht-portras {
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+  font-size: clamp(36px, 4.8vw, 66px);
+  letter-spacing: -0.075em;
+  line-height: 1;
+  display: inline;
+  color: #fff;
 }
  
-/* ══════════════════════════════════════
-   GRID CARDS
-══════════════════════════════════════ */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
+/* linha 4: Visuais. dourado */
+.ht-visuais-gold {
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(52px, 7vw, 96px);
+  letter-spacing: -0.025em;
+  line-height: 1;
+  display: inline;
+  color: var(--gold);
+  vertical-align: middle;
+  margin-left: 6px;
 }
+ 
+/* ── SECTION HEADER ── */
+.section-header { display:flex; align-items:baseline; gap:16px; margin-bottom:20px; }
+.section-title { font-family:'Great Vibes',cursive; font-size:48px; color:var(--gold); font-weight:400; line-height:1; }
+.section-line { flex:1; height:1px; background:rgba(255,255,255,0.08); }
+ 
+/* ── CARDS CRIAÇÃO ── */
+.grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
  
 .card {
   border-radius: var(--card-radius);
   background: rgba(255,255,255,0.04);
   border: 1px solid rgba(255,255,255,0.08);
   padding: 32px 28px 24px;
-  text-decoration: none;
-  color: #fff;
-  display: flex;
-  flex-direction: column;
+  text-decoration: none; color: #fff;
+  display: flex; flex-direction: column;
   min-height: 160px;
-  transition: transform .4s ease, box-shadow .4s ease, border-color .4s ease;
-  position: relative;
-  overflow: hidden;
+  transition: transform .4s, box-shadow .4s, border-color .4s;
+  position: relative; overflow: hidden;
 }
- 
 .card::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at 50% 0%, rgba(212,175,55,0.07), transparent 60%);
-  opacity: 0;
-  transition: opacity .4s;
+  content:''; position:absolute; inset:0;
+  background:radial-gradient(circle at 50% 0%, rgba(255,255,255,0.05), transparent 60%);
+  opacity:0; transition:opacity .4s;
 }
+.card:hover { transform:translateY(-8px) scale(1.02); }
+.card:hover::before { opacity:1; }
  
-.card:hover { transform: translateY(-8px) scale(1.02); }
-.card:hover::before { opacity: 1; }
-.card.video:hover   { box-shadow: 0 24px 60px rgba(212,175,55,.2); border-color: rgba(212,175,55,.25); }
-.card.motion:hover  { box-shadow: 0 24px 60px rgba(255,120,0,.2);  border-color: rgba(255,120,0,.25); }
-.card.threed:hover  { box-shadow: 0 24px 60px rgba(60,150,255,.2); border-color: rgba(60,150,255,.25); }
-.card.illus:hover   { box-shadow: 0 24px 60px rgba(180,0,255,.2);  border-color: rgba(180,0,255,.25); }
+/* cores por card */
+.card.video  { border-color: rgba(37,99,235,0.25); }
+.card.motion { border-color: rgba(22,163,74,0.25); }
+.card.threed { border-color: rgba(220,38,38,0.25); }
+.card.illus  { border-color: rgba(147,51,234,0.25); }
+ 
+.card.video::before  { background: radial-gradient(circle at 50% 0%, rgba(37,99,235,0.08), transparent 60%); }
+.card.motion::before { background: radial-gradient(circle at 50% 0%, rgba(22,163,74,0.08), transparent 60%); }
+.card.threed::before { background: radial-gradient(circle at 50% 0%, rgba(220,38,38,0.08), transparent 60%); }
+.card.illus::before  { background: radial-gradient(circle at 50% 0%, rgba(147,51,234,0.08), transparent 60%); }
+ 
+.card.video:hover  { box-shadow:0 24px 60px rgba(37,99,235,.3);  border-color:rgba(37,99,235,.5); }
+.card.motion:hover { box-shadow:0 24px 60px rgba(22,163,74,.3);  border-color:rgba(22,163,74,.5); }
+.card.threed:hover { box-shadow:0 24px 60px rgba(220,38,38,.3);  border-color:rgba(220,38,38,.5); }
+.card.illus:hover  { box-shadow:0 24px 60px rgba(147,51,234,.3); border-color:rgba(147,51,234,.5); }
  
 .card-number {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 11px;
-  letter-spacing: .2em;
-  opacity: .3;
-  text-transform: uppercase;
-  margin-bottom: 12px;
+  font-family:'Cormorant Garamond',serif; font-size:11px;
+  letter-spacing:.2em; opacity:.3; text-transform:uppercase; margin-bottom:12px;
 }
  
+/* títulos dos cards — Fraunces SemiBold tracking -75 */
 .card h3 {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
   font-size: 32px;
-  font-weight: 300;
-  letter-spacing: .02em;
+  letter-spacing: -0.075em;
   color: #fff;
   line-height: 1;
   margin-bottom: 8px;
 }
  
-.card-desc {
-  font-size: 12px;
-  opacity: .45;
-  line-height: 1.5;
-  flex: 1;
-}
+/* cor do título por card */
+.card.video h3  { color: #60a5fa; }
+.card.motion h3 { color: #4ade80; }
+.card.threed h3 { color: #f87171; }
+.card.illus h3  { color: #c084fc; }
  
+.card-desc { font-size:12px; opacity:.45; line-height:1.5; flex:1; }
 .subs {
-  margin-top: 16px;
-  opacity: 0;
-  transform: translateY(6px);
-  transition: opacity .35s, transform .35s;
-  font-size: 11px;
-  line-height: 1.8;
-  color: rgba(255,255,255,.4);
-  letter-spacing: .02em;
+  margin-top:16px; opacity:0; transform:translateY(6px);
+  transition:opacity .35s, transform .35s;
+  font-size:11px; line-height:1.8; color:rgba(255,255,255,.4); letter-spacing:.02em;
+}
+.card:hover .subs { opacity:1; transform:translateY(0); }
+ 
+/* ── SOBRE ── */
+/* box de vídeo topo */
+.video-banner {
+  border-radius: var(--card-radius);
+  overflow: hidden;
+  width: 100%;
+  /* proporção 353:48 ≈ 7.35:1 */
+  aspect-ratio: 353 / 48;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  margin-bottom: 16px;
+  display: flex; align-items: center; justify-content: center;
+}
+.video-banner video {
+  width:100%; height:100%; object-fit:cover; display:block;
+}
+.video-banner-placeholder {
+  font-size:12px; opacity:.25; letter-spacing:.1em; text-transform:uppercase;
 }
  
-.card:hover .subs { opacity: 1; transform: translateY(0); }
- 
-/* ══════════════════════════════════════
-   SOBRE
-══════════════════════════════════════ */
-.sobre-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-}
+.sobre-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
  
 .box {
-  border-radius: var(--card-radius);
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.07);
-  padding: 40px;
-  position: relative;
-  overflow: hidden;
+  border-radius:var(--card-radius);
+  background:rgba(255,255,255,0.03);
+  border:1px solid rgba(255,255,255,0.07);
+  padding:40px; position:relative; overflow:hidden;
 }
- 
 .box::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(212,175,55,0.3), transparent);
+  content:''; position:absolute; top:0; left:0; right:0; height:1px;
+  background:linear-gradient(90deg,transparent,rgba(212,175,55,.3),transparent);
 }
  
+/* subtítulos Sobre — Fraunces SemiBold Italic tracking -75 dourado */
 .sub-heading {
-  font-family: 'Great Vibes', cursive;
-  font-size: 34px;
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-weight: 600;
+  font-size: 28px;
+  letter-spacing: -0.075em;
   color: var(--gold);
-  font-weight: 400;
   margin-bottom: 18px;
   line-height: 1;
 }
  
 .body-text {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 16px;
+  font-family: 'DM Sans', sans-serif;
   font-weight: 300;
+  font-size: 15px;
   line-height: 1.85;
   opacity: .85;
 }
  
-.highlight {
-  font-style: italic;
-  color: var(--gold);
-}
+.highlight { font-style:italic; color:var(--gold); }
  
 .traj-item {
-  display: flex;
-  gap: 20px;
-  padding: 14px 0;
-  border-bottom: 1px solid rgba(255,255,255,0.05);
-  align-items: flex-start;
+  display:flex; gap:20px; padding:14px 0;
+  border-bottom:1px solid rgba(255,255,255,0.05);
+  align-items:flex-start;
 }
-.traj-item:last-child { border-bottom: none; }
- 
+.traj-item:last-child { border-bottom:none; }
 .traj-year {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
-  color: var(--gold);
-  font-size: 15px;
-  min-width: 76px;
-  line-height: 1.6;
+  font-family:'Cormorant Garamond',serif; font-style:italic;
+  color:var(--gold); font-size:15px; min-width:76px; line-height:1.6;
 }
+.traj-text { font-size:13px; opacity:.7; line-height:1.7; font-family:'DM Sans',sans-serif; font-weight:300; }
  
-.traj-text {
-  font-size: 13px;
-  opacity: .7;
-  line-height: 1.7;
-}
- 
-/* ══════════════════════════════════════
-   FRASE DESTAQUE
-══════════════════════════════════════ */
+/* ── FRASE ── */
 .quote-card {
-  border-radius: var(--card-radius);
-  background: rgba(212,175,55,0.04);
-  border: 1px solid rgba(212,175,55,0.15);
-  padding: 48px 52px;
-  position: relative;
-  overflow: hidden;
+  border-radius:var(--card-radius);
+  background:rgba(212,175,55,0.04);
+  border:1px solid rgba(212,175,55,0.15);
+  padding:48px 52px; position:relative; overflow:hidden;
 }
- 
 .quote-card::before {
-  content: '"';
-  position: absolute;
-  top: -20px; left: 36px;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 160px;
-  color: var(--gold);
-  opacity: .08;
-  line-height: 1;
-  pointer-events: none;
+  content:'"'; position:absolute; top:-20px; left:36px;
+  font-family:'Cormorant Garamond',serif; font-size:160px;
+  color:var(--gold); opacity:.08; line-height:1; pointer-events:none;
 }
- 
 .quote-card p {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
-  font-size: 20px;
-  font-weight: 300;
-  line-height: 1.85;
-  opacity: .9;
-  position: relative;
-  z-index: 1;
+  font-family:'Cormorant Garamond',serif; font-style:italic;
+  font-size:20px; font-weight:300; line-height:1.85; opacity:.9;
+  position:relative; z-index:1;
 }
  
-/* ══════════════════════════════════════
-   NÚMEROS
-══════════════════════════════════════ */
-.numeros-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
-}
- 
+/* ── NÚMEROS ── */
+.numeros-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
 .numero-card {
-  border-radius: var(--card-radius);
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.07);
-  padding: 32px 28px;
-  text-align: center;
+  border-radius:var(--card-radius);
+  background:rgba(255,255,255,0.03);
+  border:1px solid rgba(255,255,255,0.07);
+  padding:32px 28px; text-align:center;
 }
- 
 .numero-val {
-  font-family: 'Anton', sans-serif;
-  font-size: 52px;
-  color: var(--gold);
-  line-height: 1;
-  margin-bottom: 8px;
+  font-family:'Big Shoulders Display',sans-serif; font-weight:900;
+  font-size:52px; color:var(--gold); line-height:1; margin-bottom:8px;
+  letter-spacing:-0.05em;
 }
+.numero-label { font-size:12px; opacity:.45; letter-spacing:.08em; text-transform:uppercase; }
  
-.numero-label {
-  font-size: 12px;
-  opacity: .45;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-}
- 
-/* ══════════════════════════════════════
-   COLABS
-══════════════════════════════════════ */
+/* ── COLABS ── */
 .colabs-wrap {
-  border-radius: var(--card-radius);
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.07);
-  padding: 36px 40px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px 28px;
+  border-radius:var(--card-radius);
+  background:rgba(255,255,255,0.03);
+  border:1px solid rgba(255,255,255,0.07);
+  padding:36px 40px;
+  display:flex; flex-wrap:wrap; gap:12px 32px;
 }
  
-.link {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 17px;
-  font-weight: 300;
+/* nomes — Fraunces SemiBold Italic tracking -75 */
+.colab-link {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-weight: 600;
+  font-size: 18px;
+  letter-spacing: -0.075em;
   color: rgba(255,255,255,0.65);
   text-decoration: none;
   transition: color .25s;
   position: relative;
 }
- 
-.link::after {
-  content: '';
-  position: absolute;
-  bottom: -2px; left: 0; right: 100%;
-  height: 1px;
-  background: var(--gold);
-  transition: right .3s ease;
+.colab-link::after {
+  content:''; position:absolute; bottom:-2px; left:0; right:100%;
+  height:1px; background:var(--gold); transition:right .3s ease;
 }
+.colab-link:hover { color:#fff; }
+.colab-link:hover::after { right:0; }
  
-.link:hover { color: #fff; }
-.link:hover::after { right: 0; }
- 
-/* ══════════════════════════════════════
-   CONTATO (footer)
-══════════════════════════════════════ */
-footer {
-  padding: 0 48px 80px;
-}
+/* ── FOOTER CONTATO ── */
+footer { padding:0 48px 80px; }
  
 .contato-card {
-  border-radius: var(--card-radius);
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.07);
-  padding: 48px 52px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 40px;
+  border-radius:var(--card-radius);
+  background:rgba(255,255,255,0.03);
+  border:1px solid rgba(255,255,255,0.07);
+  padding:52px;
+}
+ 
+.contato-top {
+  display:flex; align-items:center; justify-content:space-between;
+  margin-bottom:40px;
 }
  
 .contato-title {
-  font-family: 'Great Vibes', cursive;
-  font-size: 56px;
-  color: var(--gold);
-  font-weight: 400;
+  font-family:'Great Vibes',cursive; font-size:64px;
+  color:var(--gold); font-weight:400; line-height:1;
+}
+ 
+.contato-sub {
+  font-family:'DM Sans',sans-serif; font-weight:300;
+  font-size:13px; opacity:.4; letter-spacing:.1em; text-transform:uppercase;
+}
+ 
+.contato-buttons {
+  display:flex; gap:16px; flex-wrap:wrap;
+}
+ 
+/* botões elaborados */
+.btn-contact {
+  display: flex; align-items: center; gap: 14px;
+  padding: 18px 28px;
+  border-radius: 14px;
+  text-decoration: none;
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.04);
+  transition: all .35s ease;
+  position: relative; overflow: hidden;
+  flex: 1; min-width: 200px;
+}
+ 
+.btn-contact::before {
+  content:''; position:absolute; inset:0;
+  opacity:0; transition:opacity .35s;
+}
+ 
+.btn-contact.btn-whatsapp::before { background: radial-gradient(circle at 50% 0%, rgba(37,211,102,0.12), transparent 70%); }
+.btn-contact.btn-email::before    { background: radial-gradient(circle at 50% 0%, rgba(212,175,55,0.1), transparent 70%); }
+.btn-contact.btn-insta::before    { background: radial-gradient(circle at 50% 0%, rgba(225,48,108,0.12), transparent 70%); }
+ 
+.btn-contact:hover { transform:translateY(-4px); }
+.btn-contact:hover::before { opacity:1; }
+.btn-contact.btn-whatsapp:hover { border-color:rgba(37,211,102,.4); box-shadow:0 16px 40px rgba(37,211,102,.15); }
+.btn-contact.btn-email:hover    { border-color:rgba(212,175,55,.4);  box-shadow:0 16px 40px rgba(212,175,55,.15); }
+.btn-contact.btn-insta:hover    { border-color:rgba(225,48,108,.4);  box-shadow:0 16px 40px rgba(225,48,108,.15); }
+ 
+.btn-icon {
+  width:40px; height:40px; border-radius:10px;
+  display:flex; align-items:center; justify-content:center;
+  flex-shrink:0; font-size:18px;
+}
+.btn-contact.btn-whatsapp .btn-icon { background:rgba(37,211,102,.15); color:#25d366; }
+.btn-contact.btn-email    .btn-icon { background:rgba(212,175,55,.15);  color:var(--gold); }
+.btn-contact.btn-insta    .btn-icon { background:rgba(225,48,108,.15);  color:#e1306c; }
+ 
+.btn-content { display:flex; flex-direction:column; gap:3px; position:relative; z-index:1; }
+ 
+/* label do botão — Fraunces SemiBold Italic */
+.btn-label {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-weight: 600;
+  font-size: 17px;
+  letter-spacing: -0.075em;
   line-height: 1;
 }
  
-.contato-links {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  text-align: right;
+.btn-handle {
+  font-family:'DM Sans',sans-serif; font-weight:300;
+  font-size:12px; opacity:.45; letter-spacing:.03em;
 }
  
-/* ══════════════════════════════════════
-   FADE IN
-══════════════════════════════════════ */
-.fade {
-  opacity: 0;
-  transform: translateY(32px);
-  transition: opacity .8s ease, transform .8s ease;
-}
-.fade.show {
-  opacity: 1;
-  transform: translateY(0);
-}
+/* ── FADE ── */
+.fade { opacity:0; transform:translateY(32px); transition:opacity .8s ease,transform .8s ease; }
+.fade.show { opacity:1; transform:translateY(0); }
  
-/* ══════════════════════════════════════
-   RESPONSIVE
-══════════════════════════════════════ */
-@media (max-width: 900px) {
-  nav { padding: 16px 24px; }
-  .page { padding: 90px 20px 60px; gap: 20px; }
-  footer { padding: 0 20px 60px; }
-  .grid { grid-template-columns: repeat(2,1fr); }
-  .sobre-grid { grid-template-columns: 1fr; }
-  .numeros-grid { grid-template-columns: repeat(2,1fr); }
-  .hero-text h1 { font-size: 36px; }
-  .contato-card { flex-direction: column; align-items: flex-start; }
-  .contato-links { text-align: left; }
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  nav { padding:16px 24px; }
+  .page { padding:90px 20px 60px; gap:20px; }
+  footer { padding:0 20px 60px; }
+  .grid { grid-template-columns:repeat(2,1fr); }
+  .sobre-grid { grid-template-columns:1fr; }
+  .numeros-grid { grid-template-columns:repeat(2,1fr); }
+  .hero-text { left:28px; right:28px; bottom:32px; }
+  .contato-buttons { flex-direction:column; }
+  .btn-contact { min-width:unset; }
 }
- 
-@media (max-width: 580px) {
-  .grid { grid-template-columns: 1fr; }
-  .numeros-grid { grid-template-columns: repeat(2,1fr); }
-  .nav-links { gap: 20px; }
-  .nav-links a { font-size: 14px; }
+@media(max-width:580px){
+  .grid { grid-template-columns:1fr; }
+  .nav-links { gap:20px; }
+  .nav-links a { font-size:14px; }
 }
- 
 </style>
 </head>
 <body>
@@ -646,10 +500,9 @@ footer {
   </ul>
 </nav>
  
-<!-- PAGE -->
 <div class="page">
  
-  <!-- HERO CARD (carrossel) -->
+  <!-- HERO -->
   <div class="hero-card" id="heroCard">
     <div class="slides-track" id="slidesTrack">
       <div class="slide slide-1"></div>
@@ -659,7 +512,6 @@ footer {
       <div class="slide slide-5"></div>
     </div>
  
-    <!-- Dots -->
     <div class="hero-dots" id="heroDots">
       <div class="dot active" onclick="goToSlide(0)"></div>
       <div class="dot" onclick="goToSlide(1)"></div>
@@ -668,14 +520,14 @@ footer {
       <div class="dot" onclick="goToSlide(4)"></div>
     </div>
  
-    <!-- Texto hero -->
     <div class="hero-text">
-      <h1>
-        Todo <span class="hero-word-script">projeto</span><br>
-        <span class="hero-word-strike">carrega</span> uma ideia.<br>
-        <span class="hero-word-gold">Visuais</span> são a forma<br>
-        dela existir<span class="hero-dot-end"></span>
-      </h1>
+      <span class="ht-mts">MTS</span>
+      <span class="ht-visuals-hero">Visuals</span>
+      <span class="ht-assinatura">A assinatura</span>
+      <div style="margin-top:4px;">
+        <span class="ht-portras">por trás dos</span>
+        <span class="ht-visuais-gold">Visuais.</span>
+      </div>
     </div>
   </div>
  
@@ -719,6 +571,13 @@ footer {
       <span class="section-title">Sobre</span>
       <div class="section-line"></div>
     </div>
+ 
+    <!-- Banner vídeo loop 353:48 -->
+    <div class="video-banner">
+      <!-- Quando tiver o vídeo: <video src="banner.mp4" autoplay muted loop playsinline></video> -->
+      <span class="video-banner-placeholder">vídeo loop — 353 × 48</span>
+    </div>
+ 
     <div class="sobre-grid">
       <div class="box">
         <p class="sub-heading">Quem sou</p>
@@ -761,22 +620,10 @@ footer {
       <div class="section-line"></div>
     </div>
     <div class="numeros-grid">
-      <div class="numero-card">
-        <div class="numero-val">9+</div>
-        <div class="numero-label">anos criando</div>
-      </div>
-      <div class="numero-card">
-        <div class="numero-val">23</div>
-        <div class="numero-label">anos de idade</div>
-      </div>
-      <div class="numero-card">
-        <div class="numero-val">+3</div>
-        <div class="numero-label">países</div>
-      </div>
-      <div class="numero-card">
-        <div class="numero-val">50M+</div>
-        <div class="numero-label">views</div>
-      </div>
+      <div class="numero-card"><div class="numero-val">9+</div><div class="numero-label">anos criando</div></div>
+      <div class="numero-card"><div class="numero-val">23</div><div class="numero-label">anos de idade</div></div>
+      <div class="numero-card"><div class="numero-val">+3</div><div class="numero-label">países</div></div>
+      <div class="numero-card"><div class="numero-val">50M+</div><div class="numero-label">views</div></div>
     </div>
   </section>
  
@@ -787,81 +634,105 @@ footer {
       <div class="section-line"></div>
     </div>
     <div class="colabs-wrap">
-      <a class="link" target="_blank" href="https://www.instagram.com/planoeplano/">Plano&amp;Plano</a>
-      <a class="link" target="_blank" href="https://www.instagram.com/djmattd/">Matt D</a>
-      <a class="link" target="_blank" href="https://www.instagram.com/macvlr/">Tiago Mac</a>
-      <a class="link" target="_blank" href="https://www.instagram.com/majorrd/">Major RD</a>
-      <a class="link" target="_blank" href="https://www.instagram.com/pele.milflows/">Pelé Milflows</a>
-      <a class="link" target="_blank" href="https://www.instagram.com/chrigoroficial/">Chrigor</a>
-      <a class="link" target="_blank" href="https://www.instagram.com/rastape/">Rastapé</a>
-      <a class="link" target="_blank" href="https://www.instagram.com/greecassuaprodutora_/">Gree Cassua</a>
-      <a class="link" target="_blank" href="https://www.instagram.com/empuxocriativo/">Empuxo Criativo</a>
+      <a class="colab-link" target="_blank" href="https://www.instagram.com/planoeplano/">Plano&amp;Plano</a>
+      <a class="colab-link" target="_blank" href="https://www.instagram.com/djmattd/">Matt D</a>
+      <a class="colab-link" target="_blank" href="https://www.instagram.com/macvlr/">Tiago Mac</a>
+      <a class="colab-link" target="_blank" href="https://www.instagram.com/majorrd/">Major RD</a>
+      <a class="colab-link" target="_blank" href="https://www.instagram.com/pele.milflows/">Pelé Milflows</a>
+      <a class="colab-link" target="_blank" href="https://www.instagram.com/chrigoroficial/">Chrigor</a>
+      <a class="colab-link" target="_blank" href="https://www.instagram.com/rastape/">Rastapé</a>
+      <a class="colab-link" target="_blank" href="https://www.instagram.com/greecassuaprodutora_/">Gree Cassua</a>
+      <a class="colab-link" target="_blank" href="https://www.instagram.com/empuxocriativo/">Empuxo Criativo</a>
     </div>
   </section>
  
-</div><!-- /page -->
+</div>
  
 <!-- FOOTER CONTATO -->
 <footer id="contato">
   <div class="contato-card fade">
-    <div class="contato-title">Contato</div>
-    <div class="contato-links">
-      <a class="link" href="https://wa.me/5511977520741">WhatsApp</a>
-      <a class="link" href="mailto:mtsvisualss@gmail.com">mtsvisualss@gmail.com</a>
-      <a class="link" href="https://instagram.com/mtsvisualss">@mtsvisualss</a>
+    <div class="contato-top">
+      <div>
+        <div class="contato-title">Contato</div>
+        <div class="contato-sub">Vamos criar juntos</div>
+      </div>
+    </div>
+    <div class="contato-buttons">
+ 
+      <a class="btn-contact btn-whatsapp" href="https://wa.me/5511977520741" target="_blank">
+        <div class="btn-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </div>
+        <div class="btn-content">
+          <span class="btn-label">WhatsApp</span>
+          <span class="btn-handle">+55 11 97752-0741</span>
+        </div>
+      </a>
+ 
+      <a class="btn-contact btn-email" href="mailto:mtsvisualss@gmail.com">
+        <div class="btn-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        </div>
+        <div class="btn-content">
+          <span class="btn-label">E-mail</span>
+          <span class="btn-handle">mtsvisualss@gmail.com</span>
+        </div>
+      </a>
+ 
+      <a class="btn-contact btn-insta" href="https://instagram.com/mtsvisualss" target="_blank">
+        <div class="btn-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </div>
+        <div class="btn-content">
+          <span class="btn-label">Instagram</span>
+          <span class="btn-handle">@mtsvisualss</span>
+        </div>
+      </a>
+ 
     </div>
   </div>
 </footer>
  
 <script>
-/* ── Carrossel ── */
-let current = 0;
-const total = 5;
-const track = document.getElementById('slidesTrack');
-const dots  = document.querySelectorAll('.dot');
+let current=0; const total=5;
+const track=document.getElementById('slidesTrack');
+const dots=document.querySelectorAll('.dot');
  
-function goToSlide(n) {
-  current = n;
-  track.style.transform = 'translateX(-' + (100/total * n) + '%)';
-  dots.forEach((d,i) => {
-    d.classList.toggle('active', i === n);
-    d.style.width = i === n ? '14px' : '34px';
-    d.style.borderRadius = i === n ? '50%' : '7px';
-    d.style.background = i === n ? '#fff' : 'transparent';
+function goToSlide(n){
+  current=n;
+  track.style.transform='translateX(-'+(100/total*n)+'%)';
+  dots.forEach((d,i)=>{
+    const a=i===n;
+    d.classList.toggle('active',a);
+    d.style.width=a?'14px':'34px';
+    d.style.borderRadius=a?'50%':'7px';
+    d.style.background=a?'#fff':'transparent';
+    d.style.borderColor=a?'#fff':'rgba(255,255,255,0.5)';
   });
 }
  
-/* Swipe / drag */
-let startX = 0, isDragging = false;
-const hero = document.getElementById('heroCard');
- 
-hero.addEventListener('mousedown',  e => { isDragging = true; startX = e.clientX; hero.style.cursor='grabbing'; });
-hero.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, {passive:true});
- 
-window.addEventListener('mouseup', e => {
-  if (!isDragging) return;
-  isDragging = false;
-  hero.style.cursor = 'grab';
-  const dx = e.clientX - startX;
-  if (dx < -50 && current < total-1) goToSlide(current+1);
-  if (dx >  50 && current > 0)       goToSlide(current-1);
+let startX=0,isDragging=false;
+const hero=document.getElementById('heroCard');
+hero.addEventListener('mousedown',e=>{isDragging=true;startX=e.clientX;hero.style.cursor='grabbing';});
+hero.addEventListener('touchstart',e=>{startX=e.touches[0].clientX;},{passive:true});
+window.addEventListener('mouseup',e=>{
+  if(!isDragging)return; isDragging=false; hero.style.cursor='grab';
+  const dx=e.clientX-startX;
+  if(dx<-50&&current<total-1)goToSlide(current+1);
+  if(dx>50&&current>0)goToSlide(current-1);
 });
- 
-hero.addEventListener('touchend', e => {
-  const dx = e.changedTouches[0].clientX - startX;
-  if (dx < -50 && current < total-1) goToSlide(current+1);
-  if (dx >  50 && current > 0)       goToSlide(current-1);
+hero.addEventListener('touchend',e=>{
+  const dx=e.changedTouches[0].clientX-startX;
+  if(dx<-50&&current<total-1)goToSlide(current+1);
+  if(dx>50&&current>0)goToSlide(current-1);
 });
+setInterval(()=>goToSlide((current+1)%total),5000);
  
-/* Auto-avança a cada 5s */
-setInterval(() => goToSlide((current+1) % total), 5000);
- 
-/* ── Fade on scroll ── */
-const fades = document.querySelectorAll('.fade');
-const io = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('show'); });
-}, { threshold: 0.12 });
-fades.forEach(el => io.observe(el));
+const fades=document.querySelectorAll('.fade');
+const io=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show');});
+},{threshold:0.12});
+fades.forEach(el=>io.observe(el));
 </script>
 </body>
 </html>
