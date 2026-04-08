@@ -6,18 +6,18 @@
 <title>MTS Visuals</title>
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@900&family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,600&family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,300;1,300&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet">
 <style>
- 
+
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
- 
+
 :root {
   --gold: #d4af37;
   --black: #0a0a0a;
   --card-radius: 22px;
   /* tracking equivalências: -50 ≈ -0.05em | -75 ≈ -0.075em | -25 ≈ -0.025em */
 }
- 
+
 html { scroll-behavior: smooth; }
- 
+
 body {
   background: var(--black);
   color: #fff;
@@ -25,7 +25,7 @@ body {
   font-weight: 300;
   overflow-x: hidden;
 }
- 
+
 /* grain global */
 body::after {
   content: '';
@@ -37,7 +37,7 @@ body::after {
   opacity: 0.04;
   mix-blend-mode: overlay;
 }
- 
+
 /* ── NAV ── */
 nav {
   position: fixed; top:0; left:0; right:0;
@@ -47,7 +47,7 @@ nav {
   background: var(--black);
   border-bottom: 1px solid rgba(255,255,255,0.06);
 }
- 
+
 .logo-sprite {
   display: flex; align-items: center; gap: 3px;
   cursor: pointer; text-decoration: none;
@@ -61,12 +61,12 @@ nav {
 .letter-s { width:30px; height:56px; overflow:hidden; }
 .letter-s img { display:block; width:30px; height:calc(56px*7); animation:ss calc(7/5*1s) steps(7) infinite; animation-delay:.08s; }
 @keyframes ss { from{transform:translateY(0)} to{transform:translateY(calc(-56px*7))} }
- 
+
 .logo-visuals {
   font-family: 'Great Vibes', cursive;
   font-size: 28px; color: #fff; margin-left: 7px; line-height: 1;
 }
- 
+
 .nav-links { display:flex; gap:40px; list-style:none; }
 .nav-links a {
   font-family: 'Cormorant Garamond', serif;
@@ -75,10 +75,10 @@ nav {
   letter-spacing: .04em; transition: color .25s; cursor: pointer;
 }
 .nav-links a:hover { color: #fff; }
- 
+
 /* ── PAGE ── */
 .page { padding: 112px 48px 80px; display:flex; flex-direction:column; gap:28px; }
- 
+
 /* ── HERO CARD ── */
 .hero-card {
   position: relative; border-radius: var(--card-radius);
@@ -99,7 +99,7 @@ nav {
   content:''; position:absolute; top:15%; left:25%; width:50%; height:55%;
   border-radius:50%; background:rgba(0,0,0,.45); filter:blur(60px); pointer-events:none;
 }
- 
+
 /* dots */
 .hero-dots {
   position:absolute; top:22px; left:50%; transform:translateX(-50%);
@@ -112,12 +112,12 @@ nav {
   transition: all .3s ease; width:34px;
 }
 .dot.active { width:14px; border-radius:50%; background:#fff; border-color:#fff; }
- 
+
 /* ── HERO TEXT ── */
 .hero-text {
   position:absolute; bottom:48px; left:48px; right:48px; z-index:5;
 }
- 
+
 /* linha 1: MTS */
 .ht-mts {
   font-family: 'Big Shoulders Display', sans-serif;
@@ -128,7 +128,7 @@ nav {
   display: block;
   color: #fff;
 }
- 
+
 /* linha 2: Visuals */
 .ht-visuals-hero {
   font-family: 'Great Vibes', cursive;
@@ -139,7 +139,7 @@ nav {
   color: #fff;
   margin-top: -8px;
 }
- 
+
 /* linha 3: A assinatura */
 .ht-assinatura {
   font-family: 'Big Shoulders Display', sans-serif;
@@ -151,7 +151,7 @@ nav {
   color: #fff;
   margin-top: 10px;
 }
- 
+
 /* linha 4: por trás dos */
 .ht-portras {
   font-family: 'Fraunces', serif;
@@ -162,7 +162,7 @@ nav {
   display: inline;
   color: #fff;
 }
- 
+
 /* linha 4: Visuais. dourado */
 .ht-visuais-gold {
   font-family: 'Great Vibes', cursive;
@@ -174,15 +174,15 @@ nav {
   vertical-align: middle;
   margin-left: 6px;
 }
- 
+
 /* ── SECTION HEADER ── */
 .section-header { display:flex; align-items:baseline; gap:16px; margin-bottom:20px; }
 .section-title { font-family:'Great Vibes',cursive; font-size:48px; color:var(--gold); font-weight:400; line-height:1; }
 .section-line { flex:1; height:1px; background:rgba(255,255,255,0.08); }
- 
+
 /* ── CARDS CRIAÇÃO ── */
 .grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
- 
+
 .card {
   border-radius: var(--card-radius);
   background: rgba(255,255,255,0.04);
@@ -201,28 +201,28 @@ nav {
 }
 .card:hover { transform:translateY(-8px) scale(1.02); }
 .card:hover::before { opacity:1; }
- 
+
 /* cores por card */
 .card.video  { border-color: rgba(37,99,235,0.25); }
 .card.motion { border-color: rgba(22,163,74,0.25); }
 .card.threed { border-color: rgba(220,38,38,0.25); }
 .card.illus  { border-color: rgba(147,51,234,0.25); }
- 
+
 .card.video::before  { background: radial-gradient(circle at 50% 0%, rgba(37,99,235,0.08), transparent 60%); }
 .card.motion::before { background: radial-gradient(circle at 50% 0%, rgba(22,163,74,0.08), transparent 60%); }
 .card.threed::before { background: radial-gradient(circle at 50% 0%, rgba(220,38,38,0.08), transparent 60%); }
 .card.illus::before  { background: radial-gradient(circle at 50% 0%, rgba(147,51,234,0.08), transparent 60%); }
- 
+
 .card.video:hover  { box-shadow:0 24px 60px rgba(37,99,235,.3);  border-color:rgba(37,99,235,.5); }
 .card.motion:hover { box-shadow:0 24px 60px rgba(22,163,74,.3);  border-color:rgba(22,163,74,.5); }
 .card.threed:hover { box-shadow:0 24px 60px rgba(220,38,38,.3);  border-color:rgba(220,38,38,.5); }
 .card.illus:hover  { box-shadow:0 24px 60px rgba(147,51,234,.3); border-color:rgba(147,51,234,.5); }
- 
+
 .card-number {
   font-family:'Cormorant Garamond',serif; font-size:11px;
   letter-spacing:.2em; opacity:.3; text-transform:uppercase; margin-bottom:12px;
 }
- 
+
 /* títulos dos cards — Fraunces SemiBold tracking -75 */
 .card h3 {
   font-family: 'Fraunces', serif;
@@ -233,13 +233,13 @@ nav {
   line-height: 1;
   margin-bottom: 8px;
 }
- 
+
 /* cor do título por card */
 .card.video h3  { color: #60a5fa; }
 .card.motion h3 { color: #4ade80; }
 .card.threed h3 { color: #f87171; }
 .card.illus h3  { color: #c084fc; }
- 
+
 .card-desc { font-size:12px; opacity:.45; line-height:1.5; flex:1; }
 .subs {
   margin-top:16px; opacity:0; transform:translateY(6px);
@@ -247,7 +247,7 @@ nav {
   font-size:11px; line-height:1.8; color:rgba(255,255,255,.4); letter-spacing:.02em;
 }
 .card:hover .subs { opacity:1; transform:translateY(0); }
- 
+
 /* ── SOBRE ── */
 /* box de vídeo topo */
 .video-banner {
@@ -267,9 +267,9 @@ nav {
 .video-banner-placeholder {
   font-size:12px; opacity:.25; letter-spacing:.1em; text-transform:uppercase;
 }
- 
+
 .sobre-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
- 
+
 .box {
   border-radius:var(--card-radius);
   background:rgba(255,255,255,0.03);
@@ -280,7 +280,7 @@ nav {
   content:''; position:absolute; top:0; left:0; right:0; height:1px;
   background:linear-gradient(90deg,transparent,rgba(212,175,55,.3),transparent);
 }
- 
+
 /* subtítulos Sobre — Fraunces SemiBold Italic tracking -75 dourado */
 .sub-heading {
   font-family: 'Fraunces', serif;
@@ -292,7 +292,7 @@ nav {
   margin-bottom: 18px;
   line-height: 1;
 }
- 
+
 .body-text {
   font-family: 'DM Sans', sans-serif;
   font-weight: 300;
@@ -300,9 +300,9 @@ nav {
   line-height: 1.85;
   opacity: .85;
 }
- 
+
 .highlight { font-style:italic; color:var(--gold); }
- 
+
 .traj-item {
   display:flex; gap:20px; padding:14px 0;
   border-bottom:1px solid rgba(255,255,255,0.05);
@@ -314,7 +314,7 @@ nav {
   color:var(--gold); font-size:15px; min-width:76px; line-height:1.6;
 }
 .traj-text { font-size:13px; opacity:.7; line-height:1.7; font-family:'DM Sans',sans-serif; font-weight:300; }
- 
+
 /* ── FRASE ── */
 .quote-card {
   border-radius:var(--card-radius);
@@ -332,7 +332,7 @@ nav {
   font-size:20px; font-weight:300; line-height:1.85; opacity:.9;
   position:relative; z-index:1;
 }
- 
+
 /* ── NÚMEROS ── */
 .numeros-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
 .numero-card {
@@ -347,7 +347,7 @@ nav {
   letter-spacing:-0.05em;
 }
 .numero-label { font-size:12px; opacity:.45; letter-spacing:.08em; text-transform:uppercase; }
- 
+
 /* ── COLABS ── */
 .colabs-wrap {
   border-radius:var(--card-radius);
@@ -356,7 +356,7 @@ nav {
   padding:36px 40px;
   display:flex; flex-wrap:wrap; gap:12px 32px;
 }
- 
+
 /* nomes — Fraunces SemiBold Italic tracking -75 */
 .colab-link {
   font-family: 'Fraunces', serif;
@@ -375,36 +375,36 @@ nav {
 }
 .colab-link:hover { color:#fff; }
 .colab-link:hover::after { right:0; }
- 
+
 /* ── FOOTER CONTATO ── */
 footer { padding:0 48px 80px; }
- 
+
 .contato-card {
   border-radius:var(--card-radius);
   background:rgba(255,255,255,0.03);
   border:1px solid rgba(255,255,255,0.07);
   padding:52px;
 }
- 
+
 .contato-top {
   display:flex; align-items:center; justify-content:space-between;
   margin-bottom:40px;
 }
- 
+
 .contato-title {
   font-family:'Great Vibes',cursive; font-size:64px;
   color:var(--gold); font-weight:400; line-height:1;
 }
- 
+
 .contato-sub {
   font-family:'DM Sans',sans-serif; font-weight:300;
   font-size:13px; opacity:.4; letter-spacing:.1em; text-transform:uppercase;
 }
- 
+
 .contato-buttons {
   display:flex; gap:16px; flex-wrap:wrap;
 }
- 
+
 /* botões elaborados */
 .btn-contact {
   display: flex; align-items: center; gap: 14px;
@@ -418,22 +418,22 @@ footer { padding:0 48px 80px; }
   position: relative; overflow: hidden;
   flex: 1; min-width: 200px;
 }
- 
+
 .btn-contact::before {
   content:''; position:absolute; inset:0;
   opacity:0; transition:opacity .35s;
 }
- 
+
 .btn-contact.btn-whatsapp::before { background: radial-gradient(circle at 50% 0%, rgba(37,211,102,0.12), transparent 70%); }
 .btn-contact.btn-email::before    { background: radial-gradient(circle at 50% 0%, rgba(212,175,55,0.1), transparent 70%); }
 .btn-contact.btn-insta::before    { background: radial-gradient(circle at 50% 0%, rgba(225,48,108,0.12), transparent 70%); }
- 
+
 .btn-contact:hover { transform:translateY(-4px); }
 .btn-contact:hover::before { opacity:1; }
 .btn-contact.btn-whatsapp:hover { border-color:rgba(37,211,102,.4); box-shadow:0 16px 40px rgba(37,211,102,.15); }
 .btn-contact.btn-email:hover    { border-color:rgba(212,175,55,.4);  box-shadow:0 16px 40px rgba(212,175,55,.15); }
 .btn-contact.btn-insta:hover    { border-color:rgba(225,48,108,.4);  box-shadow:0 16px 40px rgba(225,48,108,.15); }
- 
+
 .btn-icon {
   width:40px; height:40px; border-radius:10px;
   display:flex; align-items:center; justify-content:center;
@@ -442,9 +442,9 @@ footer { padding:0 48px 80px; }
 .btn-contact.btn-whatsapp .btn-icon { background:rgba(37,211,102,.15); color:#25d366; }
 .btn-contact.btn-email    .btn-icon { background:rgba(212,175,55,.15);  color:var(--gold); }
 .btn-contact.btn-insta    .btn-icon { background:rgba(225,48,108,.15);  color:#e1306c; }
- 
+
 .btn-content { display:flex; flex-direction:column; gap:3px; position:relative; z-index:1; }
- 
+
 /* label do botão — Fraunces SemiBold Italic */
 .btn-label {
   font-family: 'Fraunces', serif;
@@ -454,16 +454,16 @@ footer { padding:0 48px 80px; }
   letter-spacing: -0.075em;
   line-height: 1;
 }
- 
+
 .btn-handle {
   font-family:'DM Sans',sans-serif; font-weight:300;
   font-size:12px; opacity:.45; letter-spacing:.03em;
 }
- 
+
 /* ── FADE ── */
 .fade { opacity:0; transform:translateY(32px); transition:opacity .8s ease,transform .8s ease; }
 .fade.show { opacity:1; transform:translateY(0); }
- 
+
 /* ── RESPONSIVE ── */
 @media(max-width:900px){
   nav { padding:16px 24px; }
@@ -484,7 +484,7 @@ footer { padding:0 48px 80px; }
 </style>
 </head>
 <body>
- 
+
 <!-- NAV -->
 <nav>
   <a class="logo-sprite" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="MTS Visuals">
@@ -499,9 +499,9 @@ footer { padding:0 48px 80px; }
     <li><a onclick="document.getElementById('contato').scrollIntoView({behavior:'smooth'})">Contato</a></li>
   </ul>
 </nav>
- 
+
 <div class="page">
- 
+
   <!-- HERO -->
   <div class="hero-card" id="heroCard">
     <div class="slides-track" id="slidesTrack">
@@ -511,7 +511,7 @@ footer { padding:0 48px 80px; }
       <div class="slide slide-4"></div>
       <div class="slide slide-5"></div>
     </div>
- 
+
     <div class="hero-dots" id="heroDots">
       <div class="dot active" onclick="goToSlide(0)"></div>
       <div class="dot" onclick="goToSlide(1)"></div>
@@ -519,18 +519,15 @@ footer { padding:0 48px 80px; }
       <div class="dot" onclick="goToSlide(3)"></div>
       <div class="dot" onclick="goToSlide(4)"></div>
     </div>
- 
+
     <div class="hero-text">
-      <span class="ht-mts">MTS</span>
-      <span class="ht-visuals-hero">Visuals</span>
-      <span class="ht-assinatura">A assinatura</span>
-      <div style="margin-top:4px;">
-        <span class="ht-portras">por trás dos</span>
-        <span class="ht-visuais-gold">Visuais.</span>
-      </div>
-    </div>
+  <div><span class="ht-mts" style="font-size:clamp(40px,5.5vw,72px);">MTS</span><span class="ht-visuals-hero" style="font-size:clamp(32px,4.5vw,60px);margin-left:6px;">Visuals</span></div>
+  <span class="ht-assinatura">A assinatura</span>
+  <span class="ht-portras" style="font-size:clamp(48px,6.5vw,88px);display:block;">por trás dos</span>
+  <span class="ht-visuais-gold" style="display:block;">Visuais.</span>
+</div>
   </div>
- 
+
   <!-- CRIAÇÃO -->
   <section id="criacao" class="fade">
     <div class="section-header">
@@ -564,20 +561,20 @@ footer { padding:0 48px 80px; }
       </a>
     </div>
   </section>
- 
+
   <!-- SOBRE -->
   <section id="sobre" class="fade">
     <div class="section-header">
       <span class="section-title">Sobre</span>
       <div class="section-line"></div>
     </div>
- 
+
     <!-- Banner vídeo loop 353:48 -->
     <div class="video-banner">
       <!-- Quando tiver o vídeo: <video src="banner.mp4" autoplay muted loop playsinline></video> -->
       <span class="video-banner-placeholder">vídeo loop — 353 × 48</span>
     </div>
- 
+
     <div class="sobre-grid">
       <div class="box">
         <p class="sub-heading">Quem sou</p>
@@ -607,12 +604,12 @@ footer { padding:0 48px 80px; }
       </div>
     </div>
   </section>
- 
+
   <!-- FRASE -->
   <div class="quote-card fade">
     <p>"Percebi que meu amor nunca foi só por arte — foi por dar vida a projetos criativos. Tudo que aprendi foram diferentes meios de construí-los. Entender todos os processos, criar de todas as formas: é o que me faz uma peça útil em qualquer projeto criativo."</p>
   </div>
- 
+
   <!-- NÚMEROS -->
   <section class="fade">
     <div class="section-header">
@@ -626,7 +623,7 @@ footer { padding:0 48px 80px; }
       <div class="numero-card"><div class="numero-val">50M+</div><div class="numero-label">views</div></div>
     </div>
   </section>
- 
+
   <!-- COLABS -->
   <section class="fade">
     <div class="section-header">
@@ -645,9 +642,9 @@ footer { padding:0 48px 80px; }
       <a class="colab-link" target="_blank" href="https://www.instagram.com/empuxocriativo/">Empuxo Criativo</a>
     </div>
   </section>
- 
+
 </div>
- 
+
 <!-- FOOTER CONTATO -->
 <footer id="contato">
   <div class="contato-card fade">
@@ -658,7 +655,7 @@ footer { padding:0 48px 80px; }
       </div>
     </div>
     <div class="contato-buttons">
- 
+
       <a class="btn-contact btn-whatsapp" href="https://wa.me/5511977520741" target="_blank">
         <div class="btn-icon">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
@@ -668,7 +665,7 @@ footer { padding:0 48px 80px; }
           <span class="btn-handle">+55 11 97752-0741</span>
         </div>
       </a>
- 
+
       <a class="btn-contact btn-email" href="mailto:mtsvisualss@gmail.com">
         <div class="btn-icon">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
@@ -678,7 +675,7 @@ footer { padding:0 48px 80px; }
           <span class="btn-handle">mtsvisualss@gmail.com</span>
         </div>
       </a>
- 
+
       <a class="btn-contact btn-insta" href="https://instagram.com/mtsvisualss" target="_blank">
         <div class="btn-icon">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
@@ -688,16 +685,16 @@ footer { padding:0 48px 80px; }
           <span class="btn-handle">@mtsvisualss</span>
         </div>
       </a>
- 
+
     </div>
   </div>
 </footer>
- 
+
 <script>
 let current=0; const total=5;
 const track=document.getElementById('slidesTrack');
 const dots=document.querySelectorAll('.dot');
- 
+
 function goToSlide(n){
   current=n;
   track.style.transform='translateX(-'+(100/total*n)+'%)';
@@ -710,7 +707,7 @@ function goToSlide(n){
     d.style.borderColor=a?'#fff':'rgba(255,255,255,0.5)';
   });
 }
- 
+
 let startX=0,isDragging=false;
 const hero=document.getElementById('heroCard');
 hero.addEventListener('mousedown',e=>{isDragging=true;startX=e.clientX;hero.style.cursor='grabbing';});
@@ -727,7 +724,7 @@ hero.addEventListener('touchend',e=>{
   if(dx>50&&current>0)goToSlide(current-1);
 });
 setInterval(()=>goToSlide((current+1)%total),5000);
- 
+
 const fades=document.querySelectorAll('.fade');
 const io=new IntersectionObserver(entries=>{
   entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show');});
