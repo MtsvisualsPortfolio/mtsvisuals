@@ -517,31 +517,24 @@ footer { padding:0 48px 80px; }
   font-size:12px; opacity:.45; letter-spacing:.03em;
 }
  
-/* ── FADE ── */
-.fade { opacity:0; transform:translateY(32px); transition:opacity .8s ease,transform .8s ease; }
-.fade.show { opacity:1; transform:translateY(0); }
- 
-/* ── RESPONSIVE ── */
-@media(max-width:900px){
-  nav { padding:16px 24px; }
-  .page { padding:90px 20px 60px; gap:60px; }
-  footer { padding:0 20px 60px; }
-  .grid { grid-template-columns:repeat(2,1fr); }
-  .sobre-grid { grid-template-columns:1fr; }
-  .numeros-grid { grid-template-columns:repeat(2,1fr); }
-  .hero-text { left:28px; right:28px; bottom:32px; }
-  .contato-buttons { flex-direction:column; }
-  .btn-contact { min-width:unset; }
+/* ── FADE (ANIMAÇÃO DE ENTRADA) ── */
+.fade {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  will-change: transform, opacity;
 }
-@media(max-width:580px){
-  .grid { grid-template-columns:1fr; }
-  .nav-links { gap:20px; }
-  .nav-links a { font-size:14px; }
+
+.fade.show {
+  opacity: 1;
+  transform: translateY(0);
 }
-</style>
-</head>
-<body>
- 
+
+/* evita interação antes de aparecer (mais estável) */
+.fade:not(.show) {
+  pointer-events: none;
+}
+
 <!-- NAV -->
 <nav>
   <a class="logo-sprite" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="MTS Visuals">
