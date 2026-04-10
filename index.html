@@ -111,7 +111,15 @@ nav {
 .nav-links a:hover { color: #fff; }
  
 /* ── PAGE ── */
-.page { padding: 112px 48px 80px; display:flex; flex-direction:column; gap:60px; }
+.page {
+  padding: 112px 20px 80px; /* mobile */
+}
+
+@media (min-width: 768px) {
+  .page {
+    padding: 112px 48px 80px; /* desktop */
+  }
+}
  
 /* ── HERO CARD ── */
 .hero-card {
