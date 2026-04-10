@@ -6,59 +6,8 @@
 <title>MTS Visuals</title>
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@900&family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,600&family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,300;1,300&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet">
 <style>
-/* ── ESPAÇAMENTO GLOBAL SEGURO ── */
-
-/* espaço entre seções */
-section {
-  margin-bottom: 80px;
-}
-
-/* espaço entre título e conteúdo */
-.section-header {
-  margin-bottom: 32px;
-}
-
-/* espaço entre blocos internos */
-.grid,
-.sobre-grid,
-.video-banner,
-.box {
-  margin-top: 24px;
-}
  
-*, *::before, *::after { margin:40; padding:40; box-sizing:border-box; }
-/* ── ESPAÇAMENTO GLOBAL DO SITE ── */
-
-/* espaço entre seções */
-.page {
-  gap: 80px;
-}
-
-/* estrutura interna das seções */
-section {
-  padding: 0 4px;
-}
-
-/* remove conflito do header */
-.section-header {
-  margin-bottom: 32px;
-}
-
-/* grids / cards */
-.cards, .grid {
-  display: grid;
-  gap: 24px;
-}
-
-/* espaçamento de texto */
-h1, h2, h3 {
-  margin-bottom: 12px;
-}
-
-p {
-  margin-bottom: 16px;
-  line-height: 1.4;
-}
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
  
 :root {
   --gold: #d4af37;
@@ -128,15 +77,7 @@ nav {
 .nav-links a:hover { color: #fff; }
  
 /* ── PAGE ── */
-.page {
-  padding: 112px 20px 80px; /* mobile */
-}
-
-@media (min-width: 768px) {
-  .page {
-    padding: 112px 48px 80px; /* desktop */
-  }
-}
+.page { padding: 112px 48px 80px; display:flex; flex-direction:column; gap:28px; }
  
 /* ── HERO CARD ── */
 .hero-card {
@@ -174,84 +115,68 @@ nav {
  
 /* ── HERO TEXT ── */
 .hero-text {
-  position: absolute;
-  bottom: 48px;
-  left: 48px;
-  right: 48px;
-  z-index: 5;
-  display: flex;
-  flex-direction: column;
+  position:absolute; bottom:48px; left:48px; right:48px; z-index:5;
 }
-
+ 
 /* linha 1: MTS */
 .ht-mts {
   font-family: 'Big Shoulders Display', sans-serif;
   font-weight: 900;
-  font-size: clamp(37px, 4.6vw, 63px);
+  font-size: clamp(72px, 10vw, 140px);
   letter-spacing: -0.05em;
-  line-height: 0.8;
+  line-height: 0.9;
+  display: block;
   color: #fff;
 }
-
-/* linha 1: Visuals */
+ 
+/* linha 2: Visuals */
 .ht-visuals-hero {
   font-family: 'Great Vibes', cursive;
-  font-size: clamp(44px, 6vw, 82px);
+  font-size: clamp(52px, 7vw, 96px);
   letter-spacing: -0.025em;
-  line-height: 0.6;
+  line-height: 1;
+  display: block;
   color: #fff;
-
-  margin-top: -18px; /* aproxima do MTS */
-  margin-left: 60px;
+  margin-top: -8px;
 }
-
-/* linha 2 */
+ 
+/* linha 3: A assinatura */
 .ht-assinatura {
   font-family: 'Big Shoulders Display', sans-serif;
   font-weight: 900;
   font-size: clamp(40px, 5.5vw, 76px);
   letter-spacing: -0.05em;
-  line-height: 0.85;
+  line-height: 1;
+  display: block;
   color: #fff;
-
-  margin-top: -8px;
+  margin-top: 10px;
 }
-
-/* linha 3 */
+ 
+/* linha 4: por trás dos */
 .ht-portras {
   font-family: 'Fraunces', serif;
   font-weight: 600;
-  font-size: clamp(37px, 4.9vw, 67px);
+  font-size: clamp(36px, 4.8vw, 66px);
   letter-spacing: -0.075em;
-  line-height: 0.8;
+  line-height: 1;
+  display: inline;
   color: #fff;
-
-  margin-top: -6px;
 }
-
-/* linha 4 (efeito especial) */
+ 
+/* linha 4: Visuais. dourado */
 .ht-visuais-gold {
   font-family: 'Great Vibes', cursive;
   font-size: clamp(52px, 7vw, 96px);
   letter-spacing: -0.025em;
+  line-height: 1;
+  display: inline;
   color: var(--gold);
-
-  margin-top: -40px; /* puxa pra cima (sobreposição) */
-  position: relative;
-}
-
-/* controla só o "V" */
-.ht-visuais-gold::first-letter {
-  font-size: 1.3em;
-  position: relative;
-  top: -10px; /* sobe só o V */
+  vertical-align: middle;
+  margin-left: 6px;
 }
  
 /* ── SECTION HEADER ── */
-.section-header { display:flex; align-items:baseline; gap:16px; margin-bottom:60px; }
-h1, h2, h3, p {
-  line-height: 1.2;
-}
+.section-header { display:flex; align-items:baseline; gap:16px; margin-bottom:20px; }
 .section-title { font-family:'Great Vibes',cursive; font-size:48px; color:var(--gold); font-weight:400; line-height:1; }
 .section-line { flex:1; height:1px; background:rgba(255,255,255,0.08); }
  
@@ -325,8 +250,7 @@ h1, h2, h3, p {
  
 /* ── SOBRE ── */
 /* box de vídeo topo */
-.box,
-.video-banner,
+.video-banner {
   border-radius: var(--card-radius);
   overflow: hidden;
   width: 100%;
@@ -537,22 +461,30 @@ footer { padding:0 48px 80px; }
 }
  
 /* ── FADE ── */
-.fade {
-  opacity: 0;
-  transform: translateY(32px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-  will-change: transform, opacity;
+.fade { opacity:0; transform:translateY(32px); transition:opacity .8s ease,transform .8s ease; }
+.fade.show { opacity:1; transform:translateY(0); }
+ 
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  nav { padding:16px 24px; }
+  .page { padding:90px 20px 60px; gap:20px; }
+  footer { padding:0 20px 60px; }
+  .grid { grid-template-columns:repeat(2,1fr); }
+  .sobre-grid { grid-template-columns:1fr; }
+  .numeros-grid { grid-template-columns:repeat(2,1fr); }
+  .hero-text { left:28px; right:28px; bottom:32px; }
+  .contato-buttons { flex-direction:column; }
+  .btn-contact { min-width:unset; }
 }
-
-.fade.show {
-  opacity: 1;
-  transform: translateY(0);
+@media(max-width:580px){
+  .grid { grid-template-columns:1fr; }
+  .nav-links { gap:20px; }
+  .nav-links a { font-size:14px; }
 }
-
-.fade:not(.show) {
-  pointer-events: none;
-}
-
+</style>
+</head>
+<body>
+ 
 <!-- NAV -->
 <nav>
   <a class="logo-sprite" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="MTS Visuals">
@@ -588,13 +520,14 @@ footer { padding:0 48px 80px; }
       <div class="dot" onclick="goToSlide(4)"></div>
     </div>
  
- <div class="hero-text">
-  <span class="ht-mts">MTS</span>
-  <span class="ht-visuals-hero">Visuals</span>
-  <span class="ht-assinatura">A assinatura</span>
-  <span class="ht-portras">por trás dos</span>
-  <span class="ht-visuais-gold">Visuais.</span>
-</div>
+    <div class="hero-text">
+      <span class="ht-mts">MTS</span>
+      <span class="ht-visuals-hero">Visuals</span>
+      <span class="ht-assinatura">A assinatura</span>
+      <div style="margin-top:4px;">
+        <span class="ht-portras">por trás dos</span>
+        <span class="ht-visuais-gold">Visuais.</span>
+      </div>
     </div>
   </div>
  
