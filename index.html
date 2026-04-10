@@ -530,13 +530,27 @@ footer { padding:0 48px 80px; }
   transform: translateY(0);
 }
 
-/* evita interação antes de aparecer (mais estável) */
 .fade:not(.show) {
   pointer-events: none;
 }
-/* ── ESPAÇAMENTO REAL ENTRE SEÇÕES ── */
+/* ── ESPAÇAMENTO GLOBAL SEGURO ── */
+
+/* espaço entre seções */
 section {
   margin-bottom: 80px;
+}
+
+/* espaço entre título e conteúdo */
+.section-header {
+  margin-bottom: 32px;
+}
+
+/* espaço entre blocos internos */
+.grid,
+.sobre-grid,
+.video-banner,
+.box {
+  margin-top: 24px;
 }
 
 <!-- NAV -->
