@@ -517,7 +517,7 @@ footer { padding:0 48px 80px; }
   font-size:12px; opacity:.45; letter-spacing:.03em;
 }
  
-/* ── FADE (ANIMAÇÃO DE ENTRADA) ── */
+/* ── FADE ── */
 .fade {
   opacity: 0;
   transform: translateY(32px);
@@ -533,6 +533,10 @@ footer { padding:0 48px 80px; }
 /* evita interação antes de aparecer (mais estável) */
 .fade:not(.show) {
   pointer-events: none;
+}
+/* ── ESPAÇAMENTO REAL ENTRE SEÇÕES ── */
+section {
+  margin-bottom: 80px;
 }
 
 <!-- NAV -->
