@@ -77,7 +77,7 @@ nav {
 .nav-links a:hover { color: #fff; }
  
 /* ── PAGE ── */
-.page { padding: 112px 72px 80px; display:flex; flex-direction:column; gap:80px; }
+.page { padding: 112px 48px 80px; display:flex; flex-direction:column; gap:28px; }
  
 /* ── HERO CARD ── */
 .hero-card {
@@ -118,88 +118,67 @@ nav {
   position:absolute; bottom:48px; left:48px; right:48px; z-index:5;
 }
  
-/* linha 1: MTSVisuals juntos — fonte menor */
+/* linha 1: MTS */
 .ht-mts {
   font-family: 'Big Shoulders Display', sans-serif;
   font-weight: 900;
-  font-size: clamp(28px, 3.5vw, 48px);
+  font-size: clamp(72px, 10vw, 140px);
   letter-spacing: -0.05em;
-  line-height: 1;
-  display: inline;
+  line-height: 0.9;
+  display: block;
   color: #fff;
 }
+ 
+/* linha 2: Visuals */
 .ht-visuals-hero {
   font-family: 'Great Vibes', cursive;
-  font-size: clamp(24px, 3vw, 42px);
+  font-size: clamp(52px, 7vw, 96px);
   letter-spacing: -0.025em;
+  line-height: 1;
+  display: block;
+  color: #fff;
+  margin-top: -8px;
+}
+ 
+/* linha 3: A assinatura */
+.ht-assinatura {
+  font-family: 'Big Shoulders Display', sans-serif;
+  font-weight: 900;
+  font-size: clamp(40px, 5.5vw, 76px);
+  letter-spacing: -0.05em;
+  line-height: 1;
+  display: block;
+  color: #fff;
+  margin-top: 10px;
+}
+ 
+/* linha 4: por trás dos */
+.ht-portras {
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+  font-size: clamp(36px, 4.8vw, 66px);
+  letter-spacing: -0.075em;
   line-height: 1;
   display: inline;
   color: #fff;
-  margin-left: 4px;
 }
-/* linha 2: A assinatura — médio */
-.ht-assinatura {
-  font-family: 'Big Shoulders Display', sans-serif;
-  font-weight: 900;
-  font-size: clamp(52px, 7.5vw, 110px);
-  letter-spacing: -0.05em;
-  line-height: 0.9;
-  display: block;
-  color: #fff;
-}
-/* linha 3: por trás dos — um pouco maior */
-.ht-portras {
-  font-family: 'Fraunces', serif;
-  font-weight: 600;
-  font-size: clamp(60px, 8.5vw, 124px);
-  letter-spacing: -0.075em;
-  line-height: 0.9;
-  display: block;
-  color: #fff;
-}
-/* linha 4: Visuais. — maior de todos */
+ 
+/* linha 4: Visuais. dourado */
 .ht-visuais-gold {
   font-family: 'Great Vibes', cursive;
-  font-size: clamp(72px, 10vw, 144px);
+  font-size: clamp(52px, 7vw, 96px);
   letter-spacing: -0.025em;
-  line-height: 0.9;
-  display: block;
+  line-height: 1;
+  display: inline;
   color: var(--gold);
-}
-/* linha 2: A assinatura — médio */
-.ht-assinatura {
-  font-family: 'Big Shoulders Display', sans-serif;
-  font-weight: 900;
-  font-size: clamp(52px, 7.5vw, 110px);
-  letter-spacing: -0.05em;
-  line-height: 0.5;
-  display: block;
-  color: #fff;
-}
-/* linha 3: por trás dos — um pouco maior */
-.ht-portras {
-  font-family: 'Fraunces', serif;
-  font-weight: 600;
-  font-size: clamp(60px, 8.5vw, 124px);
-  letter-spacing: -0.075em;
-  line-height: 0.9;
-  display: block;
-  color: #fff;
-}
-/* linha 4: Visuais. — maior de todos */
-.ht-visuais-gold {
-  font-family: 'Great Vibes', cursive;
-  font-size: clamp(72px, 10vw, 144px);
-  letter-spacing: -0.025em;
-  line-height: 0.9;
-  display: block;
-  color: var(--gold);
+  vertical-align: middle;
+  margin-left: 6px;
 }
  
 /* ── SECTION HEADER ── */
-.section-header { display:flex; align-items:baseline; gap:80px; margin-bottom:20px; }
-.section-title { font-family:'Great Vibes',cursive; font-size:48px; color:var(--gold); font-weight:400; line-height:10; }
-.section-line { flex:1; height:10px; background:rgba(255,255,255,0.08); }
+.section-header { display:flex; align-items:baseline; gap:16px; margin-bottom:20px; }
+.section-title { font-family:'Great Vibes',cursive; font-size:48px; color:var(--gold); font-weight:400; line-height:1; }
+.section-line { flex:1; height:1px; background:rgba(255,255,255,0.08); }
  
 /* ── CARDS CRIAÇÃO ── */
 .grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
@@ -251,7 +230,7 @@ nav {
   font-size: 32px;
   letter-spacing: -0.075em;
   color: #fff;
-  line-height: 1;sobre
+  line-height: 1;
   margin-bottom: 8px;
 }
  
@@ -488,7 +467,7 @@ footer { padding:0 48px 80px; }
 /* ── RESPONSIVE ── */
 @media(max-width:900px){
   nav { padding:16px 24px; }
-  .page { padding:90px 24px 60px; gap:60px; }
+  .page { padding:90px 20px 60px; gap:20px; }
   footer { padding:0 20px 60px; }
   .grid { grid-template-columns:repeat(2,1fr); }
   .sobre-grid { grid-template-columns:1fr; }
@@ -541,12 +520,14 @@ footer { padding:0 48px 80px; }
       <div class="dot" onclick="goToSlide(4)"></div>
     </div>
  
-    <div class="hero-text" style="display:flex; flex-direction:column; gap:2px;">
-  <div style="white-space:nowrap; line-height:1;"><span class="ht-mts">MTS</span><span class="ht-visuals-hero">Visuals</span></div>
-  <span class="ht-assinatura">A assinatura</span>
-  <span class="ht-portras">por trás dos</span>
-  <span class="ht-visuais-gold">Visuais.</span>
-</div>
+    <div class="hero-text">
+      <span class="ht-mts">MTS</span>
+      <span class="ht-visuals-hero">Visuals</span>
+      <span class="ht-assinatura">A assinatura</span>
+      <div style="margin-top:4px;">
+        <span class="ht-portras">por trás dos</span>
+        <span class="ht-visuais-gold">Visuais.</span>
+      </div>
     </div>
   </div>
  
@@ -754,4 +735,4 @@ const io=new IntersectionObserver(entries=>{
 fades.forEach(el=>io.observe(el));
 </script>
 </body>
-</html>
+</html> 
