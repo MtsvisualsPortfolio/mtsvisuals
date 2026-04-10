@@ -115,52 +115,77 @@ nav {
  
 /* ── HERO TEXT ── */
 .hero-text {
-  position:absolute; bottom:48px; left:48px; right:48px; z-index:5;
+  position: absolute;
+  bottom: 48px;
+  left: 48px;
+  right: 48px;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
 }
- 
+
 /* linha 1: MTS */
 .ht-mts {
   font-family: 'Big Shoulders Display', sans-serif;
   font-weight: 900;
-  font-size: clamp(72px, 10vw, 140px);
+  font-size: clamp(37px, 4.6vw, 63px);
   letter-spacing: -0.05em;
-  line-height: 0.9;
-  display: block;
+  line-height: 0.8;
   color: #fff;
 }
- 
-/* linha 2: Visuals */
+
+/* linha 1: Visuals */
 .ht-visuals-hero {
   font-family: 'Great Vibes', cursive;
-  font-size: clamp(52px, 7vw, 96px);
+  font-size: clamp(44px, 6vw, 82px);
   letter-spacing: -0.025em;
-  line-height: 1;
-  display: block;
+  line-height: 0.6;
   color: #fff;
-  margin-top: -8px;
+
+  margin-top: -18px; /* aproxima do MTS */
+  margin-left: 60px;
 }
- 
-/* linha 3: A assinatura */
+
+/* linha 2 */
 .ht-assinatura {
   font-family: 'Big Shoulders Display', sans-serif;
   font-weight: 900;
   font-size: clamp(40px, 5.5vw, 76px);
   letter-spacing: -0.05em;
-  line-height: 1;
-  display: block;
+  line-height: 0.85;
   color: #fff;
-  margin-top: 10px;
+
+  margin-top: -8px;
 }
- 
-/* linha 4: por trás dos */
+
+/* linha 3 */
 .ht-portras {
   font-family: 'Fraunces', serif;
   font-weight: 600;
-  font-size: clamp(36px, 4.8vw, 66px);
+  font-size: clamp(37px, 4.9vw, 67px);
   letter-spacing: -0.075em;
-  line-height: 1;
-  display: inline;
+  line-height: 0.8;
   color: #fff;
+
+  margin-top: -6px;
+}
+
+/* linha 4 (efeito especial) */
+.ht-visuais-gold {
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(52px, 7vw, 96px);
+  letter-spacing: -0.025em;
+  color: var(--gold);
+
+  margin-top: -40px; /* puxa pra cima (sobreposição) */
+  position: relative;
+}
+
+/* controla só o "V" */
+.ht-visuais-gold::first-letter {
+  font-size: 1.3em;
+  position: relative;
+  top: -10px; /* sobe só o V */
 }
  
 /* linha 4: Visuais. dourado */
