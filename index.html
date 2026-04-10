@@ -7,7 +7,41 @@
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@900&family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,600&family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,300;1,300&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet">
 <style>
  
-*, *::before, *::after { margin:30; padding:30; box-sizing:border-box; }
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+/* ── ESPAÇAMENTO GLOBAL DO SITE ── */
+
+/* espaço entre seções */
+.page {
+  gap: 80px;
+}
+
+/* estrutura interna das seções */
+section {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+/* remove conflito do header */
+.section-header {
+  margin-bottom: 0;
+}
+
+/* grids / cards */
+.cards, .grid {
+  display: grid;
+  gap: 24px;
+}
+
+/* espaçamento de texto */
+h1, h2, h3 {
+  margin-bottom: 12px;
+}
+
+p {
+  margin-bottom: 16px;
+  line-height: 1.4;
+}
  
 :root {
   --gold: #d4af37;
